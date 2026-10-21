@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SERVICES_CONFIG } from '@/config/disciplines'
 import { consultationStore } from '@/store/consultation.store'
-import { ArrowUpRight, Sparkles, Layers, CheckCircle2 } from 'lucide-react'
+import { ArrowUpRight, Sparkles, CheckCircle2 } from 'lucide-react'
 import AppButton from '@/components/shared/ui/AppButton'
 import Image from 'next/image'
 
@@ -18,7 +18,7 @@ export default function ServicesOverview() {
     { id: 'podcast-production', icon: '🎙️', label: 'Podcast Production' },
     { id: 'content-creation', icon: '📱', label: 'Content Creation' },
     { id: 'commercial-advertising', icon: '📢', label: 'Commercial & Ads' },
-    { id: 'studio-design', icon: '🏗️', label: 'Studio Design & Build' },
+    { id: 'studio-design', icon: '🏗️', label: 'Studio Design & Fabrication' },
     { id: 'media-consultation', icon: '🎬', label: 'Media Consultation' },
   ]
 
@@ -32,10 +32,10 @@ export default function ServicesOverview() {
             <span>Creative Solutions for Powerful Ideas</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white max-w-3xl mb-4">
-            Full-Spectrum Production & Studio Engineering
+            Media Production & Studio Solutions
           </h2>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl">
-            We provide seven core disciplines engineered to help brands, organisations, and creators communicate, connect, and build memorable spaces.
+          <p className="text-sm sm:text-base text-neutral-300 max-w-3xl leading-relaxed">
+            We provide a range of media production and studio solutions designed to help individuals, brands and organisations communicate, connect and create.
           </p>
         </div>
 

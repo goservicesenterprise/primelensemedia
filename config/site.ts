@@ -6,7 +6,7 @@ export const siteConfig = {
     'Creative media production and studio solutions company dedicated to transforming ideas into compelling visual stories and purposeful creative spaces.',
   url: 'https://primelensemedia.com',
   tagline: 'Ideas in Motion. Spaces with Purpose.',
-  subTagline: 'Ideas in Motion. Spaces with Purpose. Stories That Last.',
+  subTagline: 'Ideas in Motion. Spaces with Purpose.',
   operatingHours: '9:00 AM – 7:00 PM (Mon – Sat)',
   phoneNumbers: ['08035128084', '08038604624'],
   whatsapp: {

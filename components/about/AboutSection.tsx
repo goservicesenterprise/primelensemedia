@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { siteConfig } from '@/config/site'
-import { CheckCircle2, Target, Award, Sparkles, Building2, Users } from 'lucide-react'
+import { Target, Award, Sparkles, Users } from 'lucide-react'
 import Image from 'next/image'
 
 export default function AboutSection() {
@@ -20,7 +20,7 @@ export default function AboutSection() {
             We Create. We Produce. We Build.
           </h2>
           <p className="text-sm sm:text-base text-neutral-400 max-w-2xl">
-            Born out of a deep passion for cinematography, directing, and design, PrimeLense Media Ltd. ({siteConfig.registrationNumber}) unites creative storytelling with practical production knowledge.
+            Born out of a deep passion for cinematography, directing, and design, PrimeLense Media Ltd. brings a combination of hands-on experience, creative, practical, and professional solutions tailored to our clients' needs.
           </p>
         </div>
 
@@ -28,10 +28,10 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           <div className="space-y-5 text-sm sm:text-base text-neutral-300 leading-relaxed font-light">
             <p>
-              At PrimeLense Media, we believe every great idea deserves exceptional execution. Born out of hands-on experience in cinematography and editing that evolved into directing, producing, and turnkey studio architecture, we have served television stations, corporate organisations, government parastatals, churches, and digital creators.
+              At PrimeLense Media, we believe every great idea deserves exceptional execution. Born out of hands-on experience in cinematography and editing that evolved into directing, producing, and turnkey studio fabrication, we have served television stations, corporate organisations, government parastatals, churches, individuals, and digital creators.
             </p>
             <p>
-              Whether you are looking to tell a powerful documentary story, launch a high-impact advertising campaign, produce a multi-camera television programme, or construct an acoustically tuned broadcast studio, our team brings creativity, strategy, and execution tailored to your vision.
+              Whether you are looking to tell a powerful documentary story, launch a high-impact advertising campaign, produce a multi-camera event/television programme, create engaging digital content, or construct an acoustically tuned broadcast studio, our team brings creativity, strategy, and execution tailored to your vision.
             </p>
             <div className="pt-4 flex flex-wrap gap-4 text-xs font-mono text-white/60">
               <span className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
@@ -81,7 +81,7 @@ export default function AboutSection() {
             </div>
             <h4 className="text-lg font-bold text-white mb-2">Our Vision</h4>
             <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              To become a leading creative media and studio solutions company recognised for excellence, technical innovation, and culturally impactful storytelling across Africa and globally.
+              To become a leading creative media and studio solutions company recognised for excellence, technical innovation, and impactful storytelling.
             </p>
           </div>
 
@@ -91,7 +91,7 @@ export default function AboutSection() {
             </div>
             <h4 className="text-lg font-bold text-white mb-2">Who We Serve</h4>
             <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Corporate organisations, broadcasters, growing brands, churches and religious institutions, NGOs, and ambitious content creators who need professional media and studios.
+              Corporate organisations, SMEs and growing brands, broadcast stations, government institutions, advertising agencies, churches, NGOs, content creators, and individuals.
             </p>
           </div>
         </div>

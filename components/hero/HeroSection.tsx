@@ -31,7 +31,7 @@ const HeroSection = observer(function HeroSection() {
       {/* Dynamic Ambient Background Glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] rounded-full blur-[140px] pointer-events-none opacity-30 transition-all duration-1000 -z-10"
-        style={{ backgroundColor: currentDiscipline.accentHex }}
+        style={{ backgroundColor: currentDiscipline?.accentHex || '#8B0A1A' }}
       />
 
       <div className="max-w-5xl mx-auto flex flex-col items-center">
@@ -46,7 +46,7 @@ const HeroSection = observer(function HeroSection() {
           <span>Creative Media Production & Studio Solutions</span>
         </motion.div>
 
-        {/* Primary Headline from Technical Requirements */}
+        {/* Primary Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,12 +57,11 @@ const HeroSection = observer(function HeroSection() {
           <span
             className="italic font-light transition-colors duration-700 bg-clip-text text-transparent bg-gradient-to-r from-white via-white/80 to-white/40"
             style={{
-              textShadow: `0 0 40px ${currentDiscipline.accentHex}40`,
+              textShadow: `0 0 40px ${currentDiscipline?.accentHex || '#8B0A1A'}40`,
             }}
           >
             Spaces with Purpose.
-          </span>{' '}
-          Stories That Last.
+          </span>
         </motion.h1>
 
         {/* Supporting Copy */}
@@ -72,7 +71,7 @@ const HeroSection = observer(function HeroSection() {
           transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="text-sm sm:text-base md:text-lg text-neutral-300 max-w-2xl font-normal leading-relaxed mb-10 tracking-tight"
         >
-          {siteConfig.description} From documentaries and commercials to podcasts, television productions, and custom-built studios, we combine creativity, strategy, and technical expertise to bring visions to life.
+          Creative media production and studio solutions company dedicated to transforming ideas into compelling visual experiences and functional creative spaces. From documentaries and commercials to podcasts, television productions, and custom-built studios, we combine creativity, strategy, and technical expertise to bring visions to life.
         </motion.p>
 
         {/* Call to Actions */}

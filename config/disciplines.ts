@@ -10,15 +10,15 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
     ambientGlow: 'rgba(180, 20, 40, 0.40)',
     accentHex: '#8B0A1A',
     description:
-      'We create professional video productions that communicate ideas, tell meaningful stories and connect with audiences across broadcast, cinema, and digital screens.',
+      'We create professional productions that communicate ideas, tell meaningful stories and connect with audiences across different platforms.',
     leadParagraph:
-      'From in-depth investigative documentaries and corporate brand profiles to cinematic short films, high-level interviews, and full-scale event coverage, we deploy seasoned cinematographers, precision lighting, and world-class post-production finishing.',
+      'From in-depth investigative documentaries and corporate brand profiles to cinematic short films, high-level interviews, and full-scale event production & coverage, we deploy seasoned directors, cinematographers, precision lighting, and world-class post-production finishing.',
     specialties: [
       'Documentary Production',
       'Corporate Videos & Executive Profiles',
       'High-Level Interviews & Dialogue',
       'Short Films & Cinematic Storytelling',
-      'Event Production & Multi-Camera Coverage',
+      'Full-Scale Event Production & Coverage',
       'Branded Video Content & Creative Series',
     ],
     specs: [
@@ -58,7 +58,7 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
         'Documentary Production (Short or Feature)',
         'Corporate Profile / Institutional Video',
         'High-End Interview / Dialogue Series',
-        'Event Production & Live Multi-Cam Coverage',
+        'Full-Scale Event Production & Coverage',
       ],
       placeholder: 'e.g. 5-day documentary shoot across Lagos & Abuja with drone coverage',
     },
@@ -284,7 +284,7 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
     id: 'studio-design',
     title: 'Studio Design & Fabrication',
     tagline: 'Spaces designed for creativity. Built for production.',
-    heroBadge: 'Architecture & Fabrication',
+    heroBadge: 'Design & Fabrication',
     ambientColor: 'rgba(16, 185, 129, 0.18)',
     ambientGlow: 'rgba(52, 211, 153, 0.35)',
     accentHex: '#059669',

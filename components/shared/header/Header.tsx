@@ -26,25 +26,30 @@ const Header = observer(function Header() {
 
   return (
     <>
-      <header className="fixed top-3 sm:top-5 inset-x-0 z-40 flex justify-center px-3 sm:px-6 pointer-events-none">
+      <header className="fixed top-2 sm:top-4 inset-x-0 z-40 flex justify-center px-3 sm:px-6 pointer-events-none">
         <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-4 pointer-events-auto">
-          {/* Brand Logo: Clean transparent presentation with NO enclosing box or pill border */}
-          <a
-            href="#"
-            className="flex items-center transition-transform duration-300 hover:scale-105 active:scale-95 group focus:outline-none"
-            aria-label={`${siteConfig.name} Home`}
-          >
-            <div className="relative h-11 sm:h-14 w-44 sm:w-56 flex items-center justify-start">
-              <Image
-                src="/primelense_media_logo_clean.png"
-                alt="PrimeLense Media"
-                fill
-                priority
-                sizes="(max-width: 640px) 176px, 224px"
-                className="object-contain object-left drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
-              />
-            </div>
-          </a>
+          {/* Brand Logo & RC Tag on Top Left */}
+          <div className="flex flex-col items-start">
+            <span className="text-[9px] sm:text-[10px] font-mono tracking-widest text-white/50 uppercase ml-0.5">
+              {siteConfig.registrationNumber}
+            </span>
+            <a
+              href="#"
+              className="flex items-center transition-transform duration-300 hover:scale-105 active:scale-95 group focus:outline-none"
+              aria-label={`${siteConfig.name} Home`}
+            >
+              <div className="relative h-10 sm:h-13 w-40 sm:w-56 flex items-center justify-start">
+                <Image
+                  src="/primelense_media_logo_clean.png"
+                  alt="PrimeLense Media"
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 160px, 224px"
+                  className="object-contain object-left drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
+                />
+              </div>
+            </a>
+          </div>
 
           {/* Central Navigation - Desktop */}
           <nav className="hidden lg:flex items-center gap-1 p-1.5 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl">
@@ -80,7 +85,7 @@ const Header = observer(function Header() {
             <AppButton
               variant="glass"
               size="sm"
-              onClick={() => consultationStore.open(currentDiscipline.id)}
+              onClick={() => consultationStore.open(currentDiscipline?.id || 'media-production')}
               className="border-white/20 hover:border-white/50 text-xs font-semibold shadow-lg shadow-black/50"
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
@@ -91,7 +96,7 @@ const Header = observer(function Header() {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2.5 rounded-full bg-black/70 backdrop-blur-xl border border-white/15 text-white/90 hover:text-white transition-all"
+              className="lg:hidden p-2 rounded-full bg-black/70 backdrop-blur-xl border border-white/15 text-white/90 hover:text-white transition-all"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
