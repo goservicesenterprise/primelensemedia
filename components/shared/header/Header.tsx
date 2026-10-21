@@ -50,9 +50,8 @@ const Header = observer(function Header() {
                 key={item.id}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`relative px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
-                  isActive ? 'text-white' : 'text-white/60 hover:text-white'
-                }`}
+                className={`relative px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${isActive ? 'text-white' : 'text-white/60 hover:text-white'
+                  }`}
               >
                 {isActive && (
                   <motion.div
