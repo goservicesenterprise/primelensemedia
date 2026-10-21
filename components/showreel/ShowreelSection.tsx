@@ -13,14 +13,14 @@ export default function ShowreelSection() {
       <div className="max-w-6xl mx-auto text-center">
         {/* Header */}
         <div className="flex flex-col items-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono uppercase tracking-widest text-rose-400 mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-rose-400 font-semibold mb-4">
+            <Sparkles className="w-4 h-4" />
             <span>Cinematic Experience</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white max-w-3xl mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
             Experience PrimeLense Media
           </h2>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl">
+          <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
             A montage of moments, productions, studio transformations, and creative stories that define our craft.
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function ShowreelSection() {
                 <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white text-black flex items-center justify-center shadow-[0_0_50px_rgba(255,255,255,0.4)] group-hover:scale-110 active:scale-95 transition-all">
                   <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-current ml-1" />
                 </div>
-                <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-white/90">
+                <span className="text-sm sm:text-sm font-mono uppercase tracking-widest text-white font-bold">
                   ▶ Watch Official Showreel
                 </span>
               </div>

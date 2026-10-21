@@ -65,14 +65,14 @@ export default function WhyChooseUsSection() {
         {/* Why Choose Us */}
         <div>
           <div className="flex flex-col items-center text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono uppercase tracking-widest text-amber-400 mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-amber-400 font-semibold mb-4">
+              <Sparkles className="w-4 h-4" />
               <span>Core Values</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white max-w-3xl mb-4">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
               Why PrimeLense Media
             </h2>
-            <p className="text-sm sm:text-base text-neutral-400 max-w-2xl">
+            <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
               We merge hands-on experience, creative vision, integrated production, and architectural capabilities under one roof.
             </p>
           </div>
@@ -83,16 +83,16 @@ export default function WhyChooseUsSection() {
               return (
                 <div
                   key={i}
-                  className="p-8 rounded-3xl bg-neutral-950 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between"
+                  className="p-7 sm:p-8 rounded-3xl bg-neutral-950 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between"
                 >
                   <div>
                     <div
-                      className={`w-12 h-12 rounded-2xl flex items-center justify-center border mb-6 ${p.color}`}
+                      className={`w-14 h-14 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center border mb-6 ${p.color}`}
                     >
-                      <Icon className="w-6 h-6" />
+                      <Icon className="w-7 h-7 sm:w-6 sm:h-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">{p.title}</h3>
-                    <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-light">
+                    <h3 className="text-2xl sm:text-xl font-bold text-white mb-2">{p.title}</h3>
+                    <p className="text-sm sm:text-sm text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal sm:font-light">
                       {p.desc}
                     </p>
                   </div>
@@ -105,13 +105,13 @@ export default function WhyChooseUsSection() {
         {/* The 5-Step Process */}
         <div id="process" className="pt-8 border-t border-white/10">
           <div className="flex flex-col items-center text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono uppercase tracking-widest text-emerald-400 mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-semibold mb-4">
               <span>Production Pipeline</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white max-w-3xl mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
               From Idea to Final Delivery
             </h2>
-            <p className="text-sm text-neutral-400 max-w-2xl">
+            <p className="text-base sm:text-sm text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
               A structured, transparent methodology ensuring creative brilliance and punctual handovers.
             </p>
           </div>
@@ -123,11 +123,11 @@ export default function WhyChooseUsSection() {
                 className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col justify-between relative group hover:border-white/30 transition-all"
               >
                 <div>
-                  <span className="text-2xl font-bold font-mono text-amber-400/80 block mb-3">
+                  <span className="text-2xl sm:text-2xl font-bold font-mono text-amber-400/90 block mb-3">
                     {w.num}
                   </span>
-                  <h4 className="text-base font-bold text-white mb-2">{w.title}</h4>
-                  <p className="text-xs text-neutral-400 leading-relaxed">
+                  <h4 className="text-lg sm:text-base font-bold text-white mb-2">{w.title}</h4>
+                  <p className="text-sm sm:text-xs text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal">
                     {w.desc}
                   </p>
                 </div>

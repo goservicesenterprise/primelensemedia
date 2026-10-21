@@ -85,28 +85,28 @@ export default function WorkShowcaseSection() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono uppercase tracking-widest text-amber-400 mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-amber-400 font-semibold mb-4">
+            <Sparkles className="w-4 h-4" />
             <span>Featured Portfolio</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white max-w-3xl mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
             Ideas Brought to Life. Stories Told. Spaces Transformed.
           </h2>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl">
+          <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
             Explore selected documentaries, commercials, television broadcasts, podcast series, and turnkey studio fabrication projects.
           </p>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2 mb-12">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setActiveFilter(f)}
-              className={`px-3.5 py-1.5 rounded-full text-[11px] font-mono tracking-wider transition-all ${
+              className={`px-4 sm:px-3.5 py-2.5 sm:py-1.5 rounded-full text-xs sm:text-[11px] font-mono tracking-wider transition-all ${
                 activeFilter === f
-                  ? 'bg-white text-black font-semibold'
-                  : 'bg-white/[0.03] text-white/60 hover:text-white border border-white/10'
+                  ? 'bg-white text-black font-bold shadow-md shadow-white/10 scale-105'
+                  : 'bg-white/[0.05] text-white/80 hover:text-white border border-white/10'
               }`}
             >
               {f}
@@ -136,20 +136,20 @@ export default function WorkShowcaseSection() {
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
-                  <span className="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-mono text-white/80 border border-white/10">
+                  <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-xs sm:text-[10px] font-mono text-white font-semibold border border-white/15">
                     {proj.category}
                   </span>
                 </div>
 
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <span className="text-[11px] font-mono text-amber-400 block mb-1">
+                    <span className="text-xs sm:text-[11px] font-mono text-amber-400 font-bold block mb-1.5">
                       Client: {proj.client} • {proj.year}
                     </span>
-                    <h3 className="text-lg font-bold text-white group-hover:text-amber-200 transition-colors">
+                    <h3 className="text-xl sm:text-lg font-bold text-white group-hover:text-amber-200 transition-colors">
                       {proj.title}
                     </h3>
-                    <p className="text-xs text-neutral-400 mt-2 leading-relaxed">
+                    <p className="text-sm sm:text-xs text-neutral-300 sm:text-neutral-400 mt-2 leading-relaxed font-normal">
                       {proj.description}
                     </p>
                   </div>

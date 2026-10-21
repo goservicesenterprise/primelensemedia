@@ -60,14 +60,14 @@ export default function ContactAndEnquirySection() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono uppercase tracking-widest text-amber-400 mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-amber-400 font-semibold mb-4">
+            <Sparkles className="w-4 h-4" />
             <span>Start a Project • Contact Us</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white max-w-3xl mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
             Have an Idea? Let's Bring It to Life.
           </h2>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl">
+          <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
             Whether you are planning a documentary, television show, podcast, commercial, or turnkey studio build, our team is ready to discuss your goals.
           </p>
         </div>
@@ -76,53 +76,53 @@ export default function ContactAndEnquirySection() {
         <div id="start-a-project" className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Company Details Column */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-3xl bg-black/60 border border-white/10 space-y-6">
+            <div className="p-6 sm:p-8 rounded-3xl bg-black/60 border border-white/10 space-y-6">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 block mb-1">
+                <span className="text-xs sm:text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold block mb-1">
                   Registered Enterprise
                 </span>
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-2xl sm:text-xl font-bold text-white">
                   {siteConfig.legalName}
                 </h3>
-                <p className="text-xs text-white/50 font-mono">
+                <p className="text-sm sm:text-xs text-white/60 font-mono font-medium">
                   Registration No: {siteConfig.registrationNumber}
                 </p>
               </div>
 
               <div className="space-y-4 pt-2">
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-amber-400">
-                    <MapPin className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-amber-400">
+                    <MapPin className="w-5 h-5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-mono uppercase text-white/50">Office Address</h4>
-                    <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed">
+                    <h4 className="text-xs font-mono uppercase text-white/60 font-semibold">Office Address</h4>
+                    <p className="text-sm sm:text-sm text-neutral-100 leading-relaxed font-medium">
                       {siteConfig.office.address}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-emerald-400">
-                    <Phone className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-emerald-400">
+                    <Phone className="w-5 h-5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-mono uppercase text-white/50">Phone Numbers</h4>
-                    <p className="text-xs sm:text-sm text-neutral-200">
+                    <h4 className="text-xs font-mono uppercase text-white/60 font-semibold">Phone Numbers</h4>
+                    <p className="text-sm sm:text-sm text-neutral-100 font-medium">
                       {siteConfig.phoneNumbers.join(' / ')}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-cyan-400">
-                    <Mail className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-cyan-400">
+                    <Mail className="w-5 h-5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-mono uppercase text-white/50">Direct Email</h4>
+                    <h4 className="text-xs font-mono uppercase text-white/60 font-semibold">Direct Email</h4>
                     <a
                       href={`mailto:${siteConfig.email}`}
-                      className="text-xs sm:text-sm text-neutral-200 hover:text-white hover:underline"
+                      className="text-sm sm:text-sm text-neutral-100 hover:text-white font-medium hover:underline"
                     >
                       {siteConfig.email}
                     </a>
@@ -130,12 +130,12 @@ export default function ContactAndEnquirySection() {
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-rose-400">
-                    <Clock className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-rose-400">
+                    <Clock className="w-5 h-5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-mono uppercase text-white/50">Operating Hours</h4>
-                    <p className="text-xs sm:text-sm text-neutral-200">
+                    <h4 className="text-xs font-mono uppercase text-white/60 font-semibold">Operating Hours</h4>
+                    <p className="text-sm sm:text-sm text-neutral-100 font-medium">
                       {siteConfig.operatingHours}
                     </p>
                   </div>
@@ -143,14 +143,14 @@ export default function ContactAndEnquirySection() {
               </div>
 
               {/* Direct WhatsApp Callout */}
-              <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30">
+              <div className="p-4 sm:p-5 rounded-2xl bg-emerald-950/40 border border-emerald-500/30">
                 <div className="flex items-center gap-2 mb-2">
-                  <MessageSquare className="w-4 h-4 text-emerald-400" />
-                  <span className="text-xs font-semibold text-emerald-300">
+                  <MessageSquare className="w-5 h-5 text-emerald-400" />
+                  <span className="text-sm sm:text-xs font-bold text-emerald-300">
                     Instant WhatsApp Enquiry
                   </span>
                 </div>
-                <p className="text-xs text-neutral-300 mb-3">
+                <p className="text-sm sm:text-xs text-neutral-200 mb-3 font-medium">
                   Have an urgent question or need immediate studio availability?
                 </p>
                 <a

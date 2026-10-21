@@ -27,16 +27,16 @@ export default function Footer() {
     <footer className="relative bg-neutral-950 border-t border-white/10 pt-20 pb-12 px-4 sm:px-6 md:px-12 text-white overflow-hidden z-20">
       <div className="max-w-6xl mx-auto">
         {/* Top Callout Card */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-neutral-900/90 to-neutral-950 border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-20 shadow-2xl">
+        <div className="p-7 sm:p-12 rounded-3xl bg-gradient-to-b from-neutral-900/90 to-neutral-950 border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-20 shadow-2xl">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-amber-400 mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="flex items-center gap-2 text-xs sm:text-xs font-mono uppercase tracking-widest text-amber-400 font-bold mb-2">
+              <Sparkles className="w-4 h-4" />
               <span>Full-Service Creative Media & Studio Solutions</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-2">
+            <h3 className="text-3xl sm:text-4xl font-black sm:font-bold tracking-tight text-white mb-2 leading-tight">
               Have an Idea? Let's Bring It to Life.
             </h3>
-            <p className="text-sm text-neutral-400 max-w-xl">
+            <p className="text-base sm:text-sm text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-xl leading-relaxed">
               From documentaries and commercials to custom-fabricated podcast and television studios, PrimeLense Media is ready to help turn your vision into reality.
             </p>
           </div>
@@ -45,7 +45,7 @@ export default function Footer() {
             variant="primary"
             size="lg"
             onClick={() => consultationStore.open('media-production')}
-            className="shrink-0 font-semibold text-sm shadow-[0_0_35px_rgba(255,255,255,0.25)]"
+            className="w-full sm:w-auto shrink-0 font-bold text-base sm:text-sm shadow-[0_0_35px_rgba(255,255,255,0.25)] py-4 sm:py-3.5"
           >
             Start a Project
           </AppButton>
@@ -64,10 +64,10 @@ export default function Footer() {
                 className="object-contain object-left"
               />
             </div>
-            <p className="text-xs text-neutral-400 leading-relaxed">
+            <p className="text-sm sm:text-xs text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal">
               {siteConfig.description}
             </p>
-            <div className="text-[11px] font-mono text-white/50 space-y-1 pt-1">
+            <div className="text-xs sm:text-[11px] font-mono text-white/70 sm:text-white/50 space-y-1 pt-1 font-medium sm:font-normal">
               <p>Registered: {siteConfig.legalName}</p>
               <p>RC Number: {siteConfig.registrationNumber}</p>
               <p>{siteConfig.office.coordinates}</p>
@@ -76,10 +76,10 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div className="md:col-span-1">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
+            <h4 className="text-xs sm:text-xs font-mono uppercase tracking-widest text-white/70 sm:text-white/50 mb-4 font-bold">
               Quick Links
             </h4>
-            <ul className="space-y-2.5 text-xs text-neutral-400">
+            <ul className="space-y-3 sm:space-y-2.5 text-sm sm:text-xs text-neutral-300 sm:text-neutral-400 font-medium sm:font-normal">
               {primaryMenu.map((m) => (
                 <li key={m.id}>
                   <a
@@ -95,10 +95,10 @@ export default function Footer() {
 
           {/* Column 3: Core Services */}
           <div className="md:col-span-1">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
+            <h4 className="text-xs sm:text-xs font-mono uppercase tracking-widest text-white/70 sm:text-white/50 mb-4 font-bold">
               Our Services
             </h4>
-            <ul className="space-y-2.5 text-xs text-neutral-400">
+            <ul className="space-y-3 sm:space-y-2.5 text-sm sm:text-xs text-neutral-300 sm:text-neutral-400 font-medium sm:font-normal">
               {servicesList.map((service, i) => (
                 <li key={i}>
                   <a
@@ -114,20 +114,20 @@ export default function Footer() {
 
           {/* Column 4: Contact & Socials */}
           <div className="md:col-span-1 space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
+            <h4 className="text-xs sm:text-xs font-mono uppercase tracking-widest text-white/70 sm:text-white/50 mb-4 font-bold">
               Connect With Us
             </h4>
-            <div className="space-y-2 text-xs text-neutral-400">
+            <div className="space-y-3 sm:space-y-2 text-sm sm:text-xs text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal">
               <p className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <Phone className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-amber-400 shrink-0" />
                 <span>{siteConfig.phoneNumbers[0]}</span>
               </p>
               <p className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <Mail className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-cyan-400 shrink-0" />
                 <span>{siteConfig.email}</span>
               </p>
               <p className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-rose-400 shrink-0 mt-0.5" />
                 <span className="leading-tight">Oyodu Berger, Lagos</span>
               </p>
             </div>

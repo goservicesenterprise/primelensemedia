@@ -52,14 +52,14 @@ export default function StudioDesignSection() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono uppercase tracking-widest text-emerald-400 mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-semibold mb-4">
+            <Sparkles className="w-4 h-4" />
             <span>Turnkey Studio Architecture</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white max-w-3xl mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
             We Don't Just Produce Content. We Build the Spaces Where It Comes Alive.
           </h2>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl">
+          <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
             PrimeLense Media designs and fabricates custom production environments tailored to broadcasters, corporate organisations, brands, churches, and digital creators.
           </p>
         </div>
@@ -67,18 +67,18 @@ export default function StudioDesignSection() {
         {/* What We Design List + Transformation Interactive Preview */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-20">
           <div className="lg:col-span-5 space-y-6">
-            <h3 className="text-xl sm:text-2xl font-bold text-white">
+            <h3 className="text-2xl sm:text-2xl md:text-3xl font-black sm:font-bold text-white">
               Studio Environments Tailored to Your Vision
             </h3>
-            <p className="text-sm text-neutral-300 leading-relaxed">
+            <p className="text-base sm:text-sm text-neutral-200 sm:text-neutral-300 font-medium sm:font-normal leading-relaxed">
               Every great broadcast begins with an inspiring environment. Whether turning an ordinary corporate boardroom into a multi-cam podcast studio or fabricating a prime-time television set, our fabrication teams deliver turnkey excellence.
             </p>
 
-            <div className="space-y-2.5">
+            <div className="space-y-3 sm:space-y-2.5">
               {spacesDesigned.map((space, i) => (
-                <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-neutral-200">
-                  <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0">
-                    <Check className="w-3 h-3 text-emerald-400" />
+                <div key={i} className="flex items-center gap-3 text-sm sm:text-sm text-neutral-100 font-medium sm:font-normal">
+                  <div className="w-6 h-6 sm:w-5 sm:h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 sm:w-3 sm:h-3 text-emerald-400" />
                   </div>
                   <span>{space}</span>
                 </div>
@@ -90,7 +90,7 @@ export default function StudioDesignSection() {
                 variant="primary"
                 size="md"
                 onClick={() => consultationStore.open('studio-design')}
-                className="font-semibold text-xs bg-emerald-600 hover:bg-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.3)]"
+                className="w-full sm:w-auto font-bold text-sm sm:text-xs bg-emerald-600 hover:bg-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.3)] py-3.5"
               >
                 Start a Studio Project
               </AppButton>
@@ -99,12 +99,12 @@ export default function StudioDesignSection() {
 
           {/* Interactive 4-Stage Showcase (Before -> 3D -> Build -> Result) */}
           <div className="lg:col-span-7">
-            <div className="p-6 rounded-3xl bg-black/60 border border-white/10 shadow-2xl">
+            <div className="p-5 sm:p-6 rounded-3xl bg-black/60 border border-white/10 shadow-2xl">
               <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
-                <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">
+                <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">
                   Project Evolution Workflow
                 </span>
-                <span className="text-xs text-white/50 font-mono">
+                <span className="text-xs text-white/70 font-mono font-medium">
                   Stage {activeStep + 1} of 4
                 </span>
               </div>
@@ -115,10 +115,10 @@ export default function StudioDesignSection() {
                   <button
                     key={i}
                     onClick={() => setActiveStep(i)}
-                    className={`py-2 px-1 text-[11px] font-mono rounded-lg transition-all text-center truncate ${
+                    className={`py-2.5 sm:py-2 px-1 text-xs sm:text-[11px] font-mono rounded-lg transition-all text-center truncate ${
                       activeStep === i
-                        ? 'bg-emerald-500/20 border border-emerald-400 text-emerald-300 font-semibold'
-                        : 'bg-white/5 hover:bg-white/10 text-white/50'
+                        ? 'bg-emerald-500/20 border border-emerald-400 text-emerald-300 font-bold'
+                        : 'bg-white/5 hover:bg-white/10 text-white/70'
                     }`}
                   >
                     {st.title.split('.')[1]}
@@ -148,16 +148,16 @@ export default function StudioDesignSection() {
                   </motion.div>
                 </AnimatePresence>
                 <div className="absolute bottom-4 left-4 right-4">
-                  <h4 className="text-lg font-bold text-white">
+                  <h4 className="text-xl sm:text-lg font-bold text-white">
                     {steps[activeStep].title}
                   </h4>
-                  <p className="text-xs text-amber-300/90 font-mono">
+                  <p className="text-xs sm:text-xs text-amber-300 font-mono font-medium">
                     {steps[activeStep].subtitle}
                   </p>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              <p className="text-sm sm:text-sm text-neutral-200 sm:text-neutral-300 leading-relaxed font-medium sm:font-normal">
                 {steps[activeStep].desc}
               </p>
             </div>

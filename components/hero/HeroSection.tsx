@@ -40,9 +40,9 @@ const HeroSection = observer(function HeroSection() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] uppercase tracking-widest text-white/80 mb-6"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/10 text-xs sm:text-[11px] uppercase tracking-wider sm:tracking-widest font-semibold text-white/90 mb-6"
         >
-          <Clapperboard className="w-3.5 h-3.5 text-amber-400" />
+          <Clapperboard className="w-4 h-4 text-amber-400" />
           <span>Creative Media Production & Studio Solutions</span>
         </motion.div>
 
@@ -51,13 +51,14 @@ const HeroSection = observer(function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white max-w-4xl leading-[1.02] mb-6"
+          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight sm:tracking-tighter text-white max-w-5xl leading-[1.05] sm:leading-[1.0] mb-6"
         >
           Ideas in Motion.{' '}
           <span
-            className="italic font-light transition-colors duration-700 bg-clip-text text-transparent bg-gradient-to-r from-white via-white/80 to-white/40"
+            className="italic font-extrabold transition-colors duration-700 block sm:inline mt-1 sm:mt-0"
             style={{
-              textShadow: `0 0 40px ${currentDiscipline?.accentHex || '#8B0A1A'}40`,
+              color: currentDiscipline?.accentHex || '#8B0A1A',
+              textShadow: `0 0 35px ${currentDiscipline?.accentHex || '#8B0A1A'}80`,
             }}
           >
             Spaces with Purpose.
@@ -69,9 +70,9 @@ const HeroSection = observer(function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="text-sm sm:text-base md:text-lg text-neutral-300 max-w-2xl font-normal leading-relaxed mb-10 tracking-tight"
+          className="text-base sm:text-lg md:text-xl text-neutral-200 font-medium sm:font-normal max-w-2xl leading-relaxed mb-10 tracking-normal"
         >
-          Creative media production and studio solutions company dedicated to transforming ideas into compelling visual experiences and functional creative spaces. From documentaries and commercials to podcasts, television productions, and custom-built studios, we combine creativity, strategy, and technical expertise to bring visions to life.
+          Creative media production and turnkey studio solutions. From documentaries, commercials, and podcasts to broadcast television and custom-built studios.
         </motion.p>
 
         {/* Call to Actions */}
@@ -85,7 +86,7 @@ const HeroSection = observer(function HeroSection() {
             variant="primary"
             size="lg"
             onClick={() => consultationStore.open('media-production')}
-            className="w-full sm:w-auto font-semibold text-sm shadow-[0_0_40px_rgba(255,255,255,0.25)]"
+            className="w-full sm:w-auto font-bold text-base sm:text-sm shadow-[0_0_40px_rgba(255,255,255,0.25)] py-4 sm:py-3.5"
           >
             <Sparkles className="w-4 h-4 text-amber-400" />
             Start a Project
@@ -95,7 +96,7 @@ const HeroSection = observer(function HeroSection() {
             variant="glass"
             size="lg"
             onClick={scrollToWork}
-            className="w-full sm:w-auto text-sm border-white/20 hover:border-white/40 text-neutral-200"
+            className="w-full sm:w-auto text-base sm:text-sm font-semibold border-white/20 hover:border-white/40 text-neutral-100 py-4 sm:py-3.5"
           >
             <Play className="w-3.5 h-3.5 fill-current text-white/70" />
             View Our Work
@@ -107,10 +108,10 @@ const HeroSection = observer(function HeroSection() {
           onClick={scrollToServices}
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex flex-col items-center gap-2 text-white/40 hover:text-white text-xs font-mono tracking-wider transition-colors"
+          className="flex flex-col items-center gap-2 text-white/60 hover:text-white text-xs font-mono tracking-wider transition-colors"
           aria-label="Scroll to explore services"
         >
-          <span className="uppercase text-[10px]">Explore Capabilities</span>
+          <span className="uppercase text-xs sm:text-[10px] font-bold sm:font-normal">Explore Capabilities</span>
           <ArrowDown className="w-4 h-4" />
         </motion.button>
       </div>
