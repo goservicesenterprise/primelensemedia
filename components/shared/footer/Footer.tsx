@@ -4,7 +4,8 @@ import React from 'react'
 import { siteConfig } from '@/config/site'
 import { consultationStore } from '@/store/consultation.store'
 import { primaryMenu } from '@/config/menus/primary-menu'
-import { Disc, Sparkles, MapPin, ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
+import { Sparkles, MapPin, ArrowUpRight } from 'lucide-react'
 import AppButton from '@/components/shared/ui/AppButton'
 
 export default function Footer() {
@@ -43,13 +44,14 @@ export default function Footer() {
         {/* Global Studio Locations Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 border-b border-white/10">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-7 h-7 rounded-full bg-neutral-800 border border-white/20 flex items-center justify-center">
-                <Disc className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-semibold text-sm tracking-tight">
-                PRIMELENSE<span className="font-light text-white/50">MEDIA</span>
-              </span>
+            <div className="relative h-10 w-44 mb-4">
+              <Image
+                src="/primelense_media_logo_4k.png"
+                alt="Primelense Media"
+                fill
+                sizes="176px"
+                className="object-contain object-left"
+              />
             </div>
             <p className="text-xs text-neutral-400 leading-relaxed mb-4">
               {siteConfig.tagline}

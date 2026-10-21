@@ -6,7 +6,8 @@ import { observer } from 'mobx-react-lite'
 import { themeStore } from '@/store/theme.store'
 import { consultationStore } from '@/store/consultation.store'
 import { primaryMenu } from '@/config/menus/primary-menu'
-import { Disc, Eye, EyeOff, Sparkles } from 'lucide-react'
+import Image from 'next/image'
+import { Eye, EyeOff, Sparkles } from 'lucide-react'
 import AppButton from '@/components/shared/ui/AppButton'
 
 const Header = observer(function Header() {
@@ -26,18 +27,19 @@ const Header = observer(function Header() {
         {/* Brand Logo Pill */}
         <a
           href="#"
-          className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl hover:border-white/30 transition-all duration-300 group"
+          className="flex items-center rounded-full bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl hover:border-white/30 transition-all duration-300 group"
+          aria-label="Primelense Media Home"
         >
-          <div className="relative w-7 h-7 rounded-full bg-neutral-900 border border-white/20 flex items-center justify-center overflow-hidden">
-            <Disc className="w-4 h-4 text-white group-hover:rotate-180 transition-transform duration-700" />
-            <div
-              className="absolute inset-0 opacity-40 blur-xs transition-colors duration-500"
-              style={{ backgroundColor: currentDiscipline.accentHex }}
+          <div className="relative h-14 w-56 sm:w-60 flex items-center justify-center">
+            <Image
+              src="/primelense_media_logo_4k.png"
+              alt="Primelense Media"
+              fill
+              priority
+              sizes="(max-width: 640px) 144px, 160px"
+              className="object-contain group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <span className="font-semibold text-sm tracking-tight text-white flex items-center gap-1.5">
-            PRIMELENSE<span className="font-light text-white/50">MEDIA</span>
-          </span>
         </a>
 
         {/* Central Discipline Navigation */}
