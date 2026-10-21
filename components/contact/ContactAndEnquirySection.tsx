@@ -5,7 +5,22 @@ import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { siteConfig } from '@/config/site'
 import { useToast } from '@/hooks/notifications/useToast'
-import { Phone, Mail, MapPin, MessageSquare, Clock, Send, Sparkles, CheckCircle2 } from 'lucide-react'
+import {
+  Phone,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Clock,
+  Send,
+  Sparkles,
+  CheckCircle2,
+  Calendar,
+  FileText,
+  User,
+  Building2,
+  Link as LinkIcon,
+  DollarSign,
+} from 'lucide-react'
 import AppButton from '@/components/shared/ui/AppButton'
 import confetti from 'canvas-confetti'
 
@@ -15,8 +30,10 @@ interface ContactFormInputs {
   email: string
   phone: string
   service: string
+  location: string
   budget: string
   timeline: string
+  referenceLinks: string
   message: string
 }
 
@@ -32,7 +49,8 @@ export default function ContactAndEnquirySection() {
   } = useForm<ContactFormInputs>({
     defaultValues: {
       service: 'Media Production',
-      budget: 'Medium ($5k - $20k)',
+      location: 'Lagos, Nigeria',
+      budget: '₦1,500,000 – ₦5,000,000',
       timeline: 'Next 30 Days',
     },
   })
@@ -40,9 +58,9 @@ export default function ContactAndEnquirySection() {
   const onSubmit = async (data: ContactFormInputs) => {
     const task = new Promise((resolve) => setTimeout(resolve, 1200))
     await promise(task, {
-      loading: 'Transmitting enquiry to PrimeLense Media team...',
-      success: 'Enquiry received! Our executive producer will contact you shortly.',
-      error: `Could not send message. Please reach us directly at ${siteConfig.email}.`,
+      loading: 'Transmitting brief to PrimeLense Media team...',
+      success: 'Enquiry received! Our executive producer will send an itemised quote shortly.',
+      error: `Could not send message. Please reach us directly on WhatsApp or at ${siteConfig.email}.`,
     })
 
     try {
@@ -60,15 +78,15 @@ export default function ContactAndEnquirySection() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-amber-400 font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono uppercase tracking-widest text-amber-400 font-bold mb-4">
             <Sparkles className="w-4 h-4" />
             <span>Start a Project • Contact Us</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white max-w-3xl mb-4 leading-tight">
             Have an Idea? Let's Bring It to Life.
           </h2>
-          <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
-            Whether you are planning a documentary, television show, podcast, commercial, or turnkey studio build, our team is ready to discuss your goals.
+          <p className="text-sm sm:text-base md:text-lg text-neutral-300 font-medium max-w-2xl leading-relaxed">
+            Tell us about your shoot, production, or studio project. We'll prepare an itemised quote and tailored creative roadmap.
           </p>
         </div>
 
@@ -78,25 +96,50 @@ export default function ContactAndEnquirySection() {
           <div className="lg:col-span-5 space-y-6">
             <div className="p-6 sm:p-8 rounded-3xl bg-black/60 border border-white/10 space-y-6">
               <div>
-                <span className="text-xs sm:text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold block mb-1">
+                <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold block mb-1">
                   Registered Enterprise
                 </span>
-                <h3 className="text-2xl sm:text-xl font-bold text-white">
+                <h3 className="text-2xl font-black text-white">
                   {siteConfig.legalName}
                 </h3>
-                <p className="text-sm sm:text-xs text-white/60 font-mono font-medium">
+                <p className="text-xs text-white/60 font-mono font-medium">
                   Registration No: {siteConfig.registrationNumber}
                 </p>
               </div>
 
-              <div className="space-y-4 pt-2">
+              {/* Direct Booking & Production Steps */}
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold block">
+                  How Booking Works
+                </span>
+                <ul className="space-y-2.5 text-xs text-neutral-300">
+                  <li className="flex items-start gap-2">
+                    <span className="font-bold text-white shrink-0">1.</span>
+                    <span><strong>Tell us about the shoot:</strong> Share your timeline, services, deliverables, and references.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="font-bold text-white shrink-0">2.</span>
+                    <span><strong>Get your quote:</strong> Receive an itemised estimate within 1 business day.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="font-bold text-white shrink-0">3.</span>
+                    <span><strong>Plan & shoot / build:</strong> We lock details, coordinate crew/fabrication, and execute.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="font-bold text-white shrink-0">4.</span>
+                    <span><strong>Review & deliver:</strong> You send notes, and we deliver finished masters or turnkey handover.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-4 pt-1">
                 <div className="flex items-start gap-3.5">
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-amber-400">
-                    <MapPin className="w-5 h-5 sm:w-4 sm:h-4" />
+                    <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-mono uppercase text-white/60 font-semibold">Office Address</h4>
-                    <p className="text-sm sm:text-sm text-neutral-100 leading-relaxed font-medium">
+                    <h4 className="text-xs font-mono uppercase text-white/50 font-bold">Office Address</h4>
+                    <p className="text-sm text-neutral-200 leading-relaxed font-semibold">
                       {siteConfig.office.address}
                     </p>
                   </div>
@@ -104,11 +147,11 @@ export default function ContactAndEnquirySection() {
 
                 <div className="flex items-start gap-3.5">
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-emerald-400">
-                    <Phone className="w-5 h-5 sm:w-4 sm:h-4" />
+                    <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-mono uppercase text-white/60 font-semibold">Phone Numbers</h4>
-                    <p className="text-sm sm:text-sm text-neutral-100 font-medium">
+                    <h4 className="text-xs font-mono uppercase text-white/50 font-bold">Phone Numbers</h4>
+                    <p className="text-sm text-neutral-200 font-semibold">
                       {siteConfig.phoneNumbers.join(' / ')}
                     </p>
                   </div>
@@ -116,13 +159,13 @@ export default function ContactAndEnquirySection() {
 
                 <div className="flex items-start gap-3.5">
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-cyan-400">
-                    <Mail className="w-5 h-5 sm:w-4 sm:h-4" />
+                    <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-mono uppercase text-white/60 font-semibold">Direct Email</h4>
+                    <h4 className="text-xs font-mono uppercase text-white/50 font-bold">Direct Email</h4>
                     <a
                       href={`mailto:${siteConfig.email}`}
-                      className="text-sm sm:text-sm text-neutral-100 hover:text-white font-medium hover:underline"
+                      className="text-sm text-neutral-200 hover:text-white font-semibold hover:underline"
                     >
                       {siteConfig.email}
                     </a>
@@ -131,11 +174,11 @@ export default function ContactAndEnquirySection() {
 
                 <div className="flex items-start gap-3.5">
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-rose-400">
-                    <Clock className="w-5 h-5 sm:w-4 sm:h-4" />
+                    <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-mono uppercase text-white/60 font-semibold">Operating Hours</h4>
-                    <p className="text-sm sm:text-sm text-neutral-100 font-medium">
+                    <h4 className="text-xs font-mono uppercase text-white/50 font-bold">Operating Hours</h4>
+                    <p className="text-sm text-neutral-200 font-semibold">
                       {siteConfig.operatingHours}
                     </p>
                   </div>
@@ -146,12 +189,12 @@ export default function ContactAndEnquirySection() {
               <div className="p-4 sm:p-5 rounded-2xl bg-emerald-950/40 border border-emerald-500/30">
                 <div className="flex items-center gap-2 mb-2">
                   <MessageSquare className="w-5 h-5 text-emerald-400" />
-                  <span className="text-sm sm:text-xs font-bold text-emerald-300">
+                  <span className="text-sm font-bold text-emerald-300">
                     Instant WhatsApp Enquiry
                   </span>
                 </div>
-                <p className="text-sm sm:text-xs text-neutral-200 mb-3 font-medium">
-                  Have an urgent question or need immediate studio availability?
+                <p className="text-xs text-neutral-200 mb-3 font-medium">
+                  Need quick availability, day rates, or urgent studio booking?
                 </p>
                 <a
                   href={`https://wa.me/${siteConfig.whatsapp.international}?text=${encodeURIComponent(
@@ -159,7 +202,7 @@ export default function ContactAndEnquirySection() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition-colors"
+                  className="inline-flex items-center justify-center w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs transition-colors shadow-lg shadow-emerald-950"
                 >
                   Chat with Executive Producer ({siteConfig.whatsapp.number})
                 </a>
@@ -169,23 +212,23 @@ export default function ContactAndEnquirySection() {
 
           {/* Project Enquiry Form Column */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-3xl bg-neutral-900/60 border border-white/10 shadow-2xl">
+            <div className="p-8 sm:p-10 rounded-3xl bg-neutral-900/70 border border-white/15 shadow-2xl">
               {submitted ? (
                 <div className="text-center py-12 space-y-4">
                   <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mx-auto">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">
+                  <h3 className="text-2xl font-black text-white">
                     Thank You for Contacting PrimeLense Media!
                   </h3>
-                  <p className="text-sm text-neutral-300 max-w-md mx-auto leading-relaxed">
-                    We have received your project enquiry. A member of our executive team will review your specifications and contact you shortly.
+                  <p className="text-sm text-neutral-200 max-w-md mx-auto leading-relaxed font-medium">
+                    We have received your project enquiry. Our executive team will review your specifications and send an itemised quote within 24 hours.
                   </p>
                   <AppButton
                     variant="glass"
                     size="sm"
                     onClick={() => setSubmitted(false)}
-                    className="mt-4"
+                    className="mt-4 font-bold"
                   >
                     Submit Another Request
                   </AppButton>
@@ -193,33 +236,36 @@ export default function ContactAndEnquirySection() {
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                   <div className="border-b border-white/10 pb-4 mb-4">
-                    <h3 className="text-xl font-bold text-white">Project Enquiry Form</h3>
-                    <p className="text-xs text-neutral-400">
-                      Fill out the details below to receive a consultation and project proposal.
+                    <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold block mb-1">
+                      Project Brief
+                    </span>
+                    <h3 className="text-2xl font-black text-white">Tell Us About the Shoot</h3>
+                    <p className="text-xs sm:text-sm text-neutral-300 font-medium mt-1">
+                      Fill out your requirements below to receive a custom itemised quote.
                     </p>
                   </div>
 
                   {/* Name and Company */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-mono uppercase text-white/60 block mb-1.5">
-                        Full Name *
+                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                        <User className="w-3.5 h-3.5" /> Full Name *
                       </label>
                       <input
                         {...register('name', { required: true })}
                         placeholder="e.g. Adebayo Ogunlesi"
-                        className="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-xs placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
                         required
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-mono uppercase text-white/60 block mb-1.5">
-                        Company / Organisation
+                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                        <Building2 className="w-3.5 h-3.5" /> Company / Organisation
                       </label>
                       <input
                         {...register('company')}
-                        placeholder="e.g. Apex Media Ltd."
-                        className="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-xs placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors"
+                        placeholder="e.g. Apex Media Ltd. or Private Client"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
                       />
                     </div>
                   </div>
@@ -227,99 +273,129 @@ export default function ContactAndEnquirySection() {
                   {/* Email and Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-mono uppercase text-white/60 block mb-1.5">
-                        Email Address *
+                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                        <Mail className="w-3.5 h-3.5" /> Email Address *
                       </label>
                       <input
                         type="email"
                         {...register('email', { required: true })}
                         placeholder="you@organisation.com"
-                        className="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-xs placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
                         required
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-mono uppercase text-white/60 block mb-1.5">
-                        Phone / WhatsApp Number *
+                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                        <Phone className="w-3.5 h-3.5" /> Phone / WhatsApp *
                       </label>
                       <input
                         {...register('phone', { required: true })}
                         placeholder="e.g. 08035128084"
-                        className="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-xs placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
                         required
                       />
                     </div>
                   </div>
 
-                  {/* Service Selection */}
-                  <div>
-                    <label className="text-xs font-mono uppercase text-white/60 block mb-1.5">
-                      Service Interested In
-                    </label>
-                    <select
-                      {...register('service')}
-                      className="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-xs focus:outline-none focus:border-amber-400 transition-colors"
-                    >
-                      <option value="Media Production">Media Production (Documentary, Corporate, Events)</option>
-                      <option value="Television Production">Television & Studio Production</option>
-                      <option value="Podcast Production">Podcast Production (Audio & Video)</option>
-                      <option value="Content Creation">Content Creation (Reels, YouTube, Social)</option>
-                      <option value="Commercial Production">Commercial & Advertising Production</option>
-                      <option value="Studio Design">Studio Design & Concept Visualisation</option>
-                      <option value="Studio Fabrication">Studio Fabrication & Construction</option>
-                      <option value="Media Consultation">Media Consultation & Creative Direction</option>
-                      <option value="Other">Other Project</option>
-                    </select>
+                  {/* Service Category & Shoot Location */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5">
+                        Service Category *
+                      </label>
+                      <select
+                        {...register('service')}
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-bold focus:outline-none focus:border-amber-400 transition-colors"
+                      >
+                        <option value="Media Production">Media Production (Documentary, Corporate, Events)</option>
+                        <option value="Television & Studio Production">Television & Studio Production</option>
+                        <option value="Podcast Production">Podcast Production (Audio + 4K Video)</option>
+                        <option value="Content Creation">Content Creation (Reels, TikTok, YouTube)</option>
+                        <option value="Commercial & Advertising">Commercial & Advertising Production (TVC)</option>
+                        <option value="Studio Design & Fabrication">Studio Design & Fabrication (Turnkey)</option>
+                        <option value="Media Consultation">Media Consultation & Creative Direction</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5" /> Shoot Location / City *
+                      </label>
+                      <input
+                        {...register('location', { required: true })}
+                        placeholder="e.g. Lagos (VI, Lekki), Abuja, On-Location"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
+                        required
+                      />
+                    </div>
                   </div>
 
                   {/* Estimated Budget & Timeline */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-mono uppercase text-white/60 block mb-1.5">
-                        Estimated Budget
+                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                        <DollarSign className="w-3.5 h-3.5" /> Estimated Budget
                       </label>
-                      <input
+                      <select
                         {...register('budget')}
-                        placeholder="e.g. ₦3M - ₦10M / Flexible"
-                        className="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-xs placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors"
-                      />
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold focus:outline-none focus:border-amber-400 transition-colors"
+                      >
+                        <option value="Under ₦1,500,000">Under ₦1,500,000</option>
+                        <option value="₦1,500,000 – ₦5,000,000">₦1,500,000 – ₦5,000,000</option>
+                        <option value="₦5,000,000 – ₦15,000,000">₦5,000,000 – ₦15,000,000</option>
+                        <option value="₦15,000,000+">₦15,000,000+ (Full Production)</option>
+                        <option value="Flexible">Flexible / Open to Quote</option>
+                      </select>
                     </div>
+
                     <div>
-                      <label className="text-xs font-mono uppercase text-white/60 block mb-1.5">
-                        Preferred Start Date / Timeline
+                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5" /> Shoot Date / Target Timeline
                       </label>
                       <input
                         {...register('timeline')}
-                        placeholder="e.g. Within 2–4 Weeks"
-                        className="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-xs placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors"
+                        placeholder="e.g. Next Month, or Specific Date"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
                       />
                     </div>
                   </div>
 
-                  {/* Message */}
+                  {/* Reference Links & Inspiration */}
                   <div>
-                    <label className="text-xs font-mono uppercase text-white/60 block mb-1.5">
-                      Tell Us About Your Project *
+                    <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                      <LinkIcon className="w-3.5 h-3.5" /> Reference Links & Inspiration (Optional)
+                    </label>
+                    <input
+                      {...register('referenceLinks')}
+                      placeholder="e.g. Links to YouTube, Vimeo, Google Drive moodboards, or Instagram styles"
+                      className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-medium placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
+                    />
+                  </div>
+
+                  {/* Project Details */}
+                  <div>
+                    <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                      <FileText className="w-3.5 h-3.5" /> Tell Us What You Need *
                     </label>
                     <textarea
                       rows={4}
                       {...register('message', { required: true })}
-                      placeholder="Describe your story, production requirements, studio space dimensions, or creative goals..."
-                      className="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-white text-xs placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors resize-none"
+                      placeholder="Describe what you need: target deliverables (e.g. 1 main brand video + 3 vertical cuts), story concept, desired styling, or studio room dimensions..."
+                      className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-medium placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors resize-none leading-relaxed"
                       required
                     />
                   </div>
 
-                  {/* Submit */}
+                  {/* Submit Button */}
                   <AppButton
                     type="submit"
                     variant="primary"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full font-semibold text-xs shadow-lg shadow-white/10"
+                    className="w-full font-black text-sm shadow-[0_0_30px_rgba(255,255,255,0.25)] py-4"
                   >
-                    <Send className="w-3.5 h-3.5 mr-1" />
-                    <span>{isSubmitting ? 'Submitting...' : 'Submit Project Request'}</span>
+                    <Send className="w-4 h-4 mr-2" />
+                    <span>{isSubmitting ? 'Transmitting Brief...' : 'Submit Brief & Request Itemised Quote'}</span>
                   </AppButton>
                 </form>
               )}

@@ -30,9 +30,9 @@ const Header = observer(function Header() {
         <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-4 pointer-events-auto">
           {/* Brand Logo & RC Tag on Top Left */}
           <div className="flex flex-col items-start">
-            <span className="text-[9px] sm:text-[10px] font-mono tracking-widest text-white/50 uppercase ml-0.5">
+            {/* <span className="text-[9px] sm:text-[10px] font-mono tracking-widest text-white/50 uppercase ml-0.5">
               {siteConfig.registrationNumber}
-            </span>
+            </span> */}
             <a
               href="#"
               className="flex items-center transition-transform duration-300 hover:scale-105 active:scale-95 group focus:outline-none"
