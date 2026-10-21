@@ -5,7 +5,7 @@ import { siteConfig } from '@/config/site'
 import { consultationStore } from '@/store/consultation.store'
 import { primaryMenu } from '@/config/menus/primary-menu'
 import Image from 'next/image'
-import { Sparkles, MapPin, ArrowUpRight } from 'lucide-react'
+import { Sparkles, MapPin, Phone, Mail, MessageSquare } from 'lucide-react'
 import AppButton from '@/components/shared/ui/AppButton'
 
 export default function Footer() {
@@ -13,57 +13,71 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const servicesList = [
+    'Media Production',
+    'Television & Studio Production',
+    'Podcast Production',
+    'Content Creation',
+    'Commercial Production',
+    'Studio Design & Fabrication',
+    'Media Consultation',
+  ]
+
   return (
-    <footer className="relative bg-neutral-950 border-t border-white/10 pt-20 pb-12 px-6 md:px-12 text-white overflow-hidden z-20">
+    <footer className="relative bg-neutral-950 border-t border-white/10 pt-20 pb-12 px-4 sm:px-6 md:px-12 text-white overflow-hidden z-20">
       <div className="max-w-6xl mx-auto">
         {/* Top Callout Card */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-neutral-900/80 to-neutral-950 border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-20">
+        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-neutral-900/90 to-neutral-950 border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-20 shadow-2xl">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-amber-400 mb-2">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Worldwide Availability</span>
+              <span>Full-Service Creative Media & Studio Solutions</span>
             </div>
             <h3 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-2">
-              Ready to command the room?
+              Have an Idea? Let's Bring It to Life.
             </h3>
             <p className="text-sm text-neutral-400 max-w-xl">
-              Initiate a tailored consultation for feature film direction, modular brand content, set architecture, or podcast studio builds.
+              From documentaries and commercials to custom-fabricated podcast and television studios, PrimeLense Media is ready to help turn your vision into reality.
             </p>
           </div>
 
           <AppButton
             variant="primary"
             size="lg"
-            onClick={() => consultationStore.open('filmmaking')}
+            onClick={() => consultationStore.open('media-production')}
             className="shrink-0 font-semibold text-sm shadow-[0_0_35px_rgba(255,255,255,0.25)]"
           >
-            Schedule Session
+            Start a Project
           </AppButton>
         </div>
 
         {/* Global Studio Locations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-16 border-b border-white/10">
-          <div className="md:col-span-1">
-            <div className="relative h-10 w-44 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-16 border-b border-white/10">
+          {/* Column 1: Brand & Registration */}
+          <div className="md:col-span-1 space-y-4">
+            <div className="relative h-12 w-48 mb-2">
               <Image
-                src="/primelense_media_logo_4k.png"
-                alt="Primelense Media"
+                src="/primelense_media_logo_clean.png"
+                alt="PrimeLense Media"
                 fill
-                sizes="176px"
+                sizes="192px"
                 className="object-contain object-left"
               />
             </div>
-            <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-              {siteConfig.tagline}
+            <p className="text-xs text-neutral-400 leading-relaxed">
+              {siteConfig.description}
             </p>
-            <p className="text-[10px] font-mono text-white/40">
-              {siteConfig.coordinates}
-            </p>
+            <div className="text-[11px] font-mono text-white/50 space-y-1 pt-1">
+              <p>Registered: {siteConfig.legalName}</p>
+              <p>RC Number: {siteConfig.registrationNumber}</p>
+              <p>{siteConfig.office.coordinates}</p>
+            </div>
           </div>
 
+          {/* Column 2: Quick Links */}
           <div className="md:col-span-1">
             <h4 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
-              Services
+              Quick Links
             </h4>
             <ul className="space-y-2.5 text-xs text-neutral-400">
               {primaryMenu.map((m) => (
@@ -79,53 +93,90 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Column 3: Core Services */}
           <div className="md:col-span-1">
             <h4 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
-              Studio Network
-            </h4>
-            <ul className="space-y-3 text-xs text-neutral-400">
-              {siteConfig.studios.map((s, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-white/50 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="text-white font-medium">{s.city}</span>
-                    <p className="text-[10px] text-white/40">{s.location} ({s.timezone})</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:col-span-1">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
-              Social Portals
+              Our Services
             </h4>
             <ul className="space-y-2.5 text-xs text-neutral-400">
-              {Object.entries(siteConfig.socials).map(([name, url]) => (
-                <li key={name}>
+              {servicesList.map((service, i) => (
+                <li key={i}>
                   <a
-                    href={url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-white transition-colors capitalize flex items-center gap-1 group"
+                    href="#services"
+                    className="hover:text-white transition-colors"
                   >
-                    <span>{name}</span>
-                    <ArrowUpRight className="w-3 h-3 text-white/30 group-hover:text-white transition-colors" />
+                    {service}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
+
+          {/* Column 4: Contact & Socials */}
+          <div className="md:col-span-1 space-y-3">
+            <h4 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
+              Connect With Us
+            </h4>
+            <div className="space-y-2 text-xs text-neutral-400">
+              <p className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span>{siteConfig.phoneNumbers[0]}</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <span>{siteConfig.email}</span>
+              </p>
+              <p className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5" />
+                <span className="leading-tight">Oyodu Berger, Lagos</span>
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2 pt-3">
+              <a
+                href={siteConfig.socials.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white/70 hover:text-white"
+              >
+                Instagram
+              </a>
+              <a
+                href={siteConfig.socials.facebook}
+                target="_blank"
+                rel="noreferrer"
+                className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white/70 hover:text-white"
+              >
+                Facebook
+              </a>
+              <a
+                href={siteConfig.socials.youtube}
+                target="_blank"
+                rel="noreferrer"
+                className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white/70 hover:text-white"
+              >
+                YouTube
+              </a>
+              <a
+                href={siteConfig.socials.tiktok}
+                target="_blank"
+                rel="noreferrer"
+                className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-white/70 hover:text-white"
+              >
+                TikTok
+              </a>
+            </div>
+          </div>
         </div>
 
-        {/* Bottom Copyright & Back to Top */}
+        {/* Bottom Credits & Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40 font-mono">
-          <p>© {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} PrimeLense Media Ltd. All rights reserved.</p>
           <button
             onClick={scrollToTop}
-            className="hover:text-white transition-colors flex items-center gap-1"
+            className="hover:text-white transition-colors"
           >
-            <span>Back to top [▲]</span>
+            ↑ Back to Top
           </button>
         </div>
       </div>

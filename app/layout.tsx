@@ -128,14 +128,16 @@ export default function RootLayout({
     description: siteConfig.description,
     sameAs: [
       siteConfig.socials.instagram,
-      siteConfig.socials.vimeo,
+      siteConfig.socials.facebook,
       siteConfig.socials.youtube,
       siteConfig.socials.linkedin,
+      siteConfig.socials.tiktok,
     ],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'production inquiry',
-      email: 'studio@primelensemedia.com',
+      telephone: siteConfig.phoneNumbers[0],
+      email: siteConfig.email,
     },
   }
 

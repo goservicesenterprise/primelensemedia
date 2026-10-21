@@ -1,7 +1,12 @@
 export type DisciplineId =
-  | 'filmmaking'
+  | 'media-production'
+  | 'television-studio'
+  | 'podcast-production'
   | 'content-creation'
+  | 'commercial-advertising'
+  | 'studio-design'
   | 'media-consultation'
+  | 'filmmaking'
   | 'set-fabrication'
   | 'podcast-brand-videos'
 
@@ -48,5 +53,4 @@ export interface MenuItem {
   href: string
   icon?: string
   position: number
-  isExternal?: boolean
 }

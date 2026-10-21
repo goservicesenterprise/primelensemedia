@@ -1,9 +1,11 @@
 import { makeAutoObservable } from 'mobx'
 import { DisciplineId } from '@/types'
-import { DISCIPLINES } from '@/config/disciplines'
+import { SERVICES_CONFIG, SERVICE_KEYS } from '@/config/disciplines'
+
+const DEFAULT_DISCIPLINE_ID: DisciplineId = 'media-production'
 
 class ThemeStore {
-  activeDisciplineId: DisciplineId = 'filmmaking'
+  activeDisciplineId: DisciplineId = DEFAULT_DISCIPLINE_ID
   isHudVisible: boolean = true
   isSoundEnabled: boolean = false
 
@@ -26,7 +28,11 @@ class ThemeStore {
   }
 
   get currentDiscipline() {
-    return DISCIPLINES[this.activeDisciplineId] || DISCIPLINES.filmmaking
+    return (
+      SERVICES_CONFIG[this.activeDisciplineId] ||
+      SERVICES_CONFIG[DEFAULT_DISCIPLINE_ID] ||
+      SERVICES_CONFIG[SERVICE_KEYS[0]]
+    )
   }
 }
 

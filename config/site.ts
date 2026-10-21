@@ -1,20 +1,30 @@
 export const siteConfig = {
-  name: 'Primelensemedia',
-  legalName: 'Primelensemedia Ltd.',
+  name: 'PrimeLense Media',
+  legalName: 'PrimeLense Media Ltd.',
+  registrationNumber: 'RC 1766519',
   description:
-    'International film production, brand media velocity, stage architecture, creative consultation, and broadcast studios.',
+    'Creative media production and studio solutions company dedicated to transforming ideas into compelling visual stories and purposeful creative spaces.',
   url: 'https://primelensemedia.com',
-  tagline: 'Cinema Crafted with Architectural Intent',
-  coordinates: '51.5074° N, 0.1278° W // LONDON & GLOBAL',
-  studios: [
-    { city: 'London', location: 'Shoreditch Stage 01', timezone: 'GMT' },
-    { city: 'Paris', location: 'Le Marais Atelier', timezone: 'CET' },
-    { city: 'Lagos', location: 'Victoria Island Media Hub', timezone: 'WAT' },
-  ],
+  tagline: 'Ideas in Motion. Spaces with Purpose.',
+  subTagline: 'Ideas in Motion. Spaces with Purpose. Stories That Last.',
+  operatingHours: '9:00 AM – 7:00 PM (Mon – Sat)',
+  phoneNumbers: ['08035128084', '08038604624'],
+  whatsapp: {
+    number: '08035128084',
+    international: '2348035128084',
+    defaultMessage: 'Hello PrimeLense Media, I would like to enquire about starting a project.',
+  },
+  email: 'primelensemediatv@gmail.com',
+  office: {
+    address: '11A, Oyibo Orumila Street, Unity Estate, Ojodu Berger, Lagos State, Nigeria',
+    coordinates: '6.6385° N, 3.3619° E // LAGOS & GLOBAL',
+  },
   socials: {
     instagram: 'https://instagram.com/primelensemedia',
-    vimeo: 'https://vimeo.com/primelensemedia',
-    youtube: 'https://youtube.com/@primelensemedia',
+    facebook: 'https://facebook.com/primelensemedia',
+    tiktok: 'https://tiktok.com/@primelense.media',
+    youtube: 'https://youtube.com/@primelensemediatv',
     linkedin: 'https://linkedin.com/company/primelensemedia',
+    whatsapp: 'https://wa.me/2348035128084',
   },
 } as const

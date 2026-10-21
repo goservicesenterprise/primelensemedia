@@ -1,10 +1,12 @@
 import { makeAutoObservable } from 'mobx'
 import { DisciplineId } from '@/types'
-import { DISCIPLINES } from '@/config/disciplines'
+import { SERVICES_CONFIG, SERVICE_KEYS } from '@/config/disciplines'
+
+const DEFAULT_DISCIPLINE_ID: DisciplineId = 'media-production'
 
 class ConsultationStore {
   isOpen: boolean = false
-  selectedDisciplineId: DisciplineId = 'filmmaking'
+  selectedDisciplineId: DisciplineId = DEFAULT_DISCIPLINE_ID
 
   constructor() {
     makeAutoObservable(this)
@@ -26,7 +28,11 @@ class ConsultationStore {
   }
 
   get activeConfig() {
-    return DISCIPLINES[this.selectedDisciplineId] || DISCIPLINES.filmmaking
+    return (
+      SERVICES_CONFIG[this.selectedDisciplineId] ||
+      SERVICES_CONFIG[DEFAULT_DISCIPLINE_ID] ||
+      SERVICES_CONFIG[SERVICE_KEYS[0]]
+    )
   }
 }
 
