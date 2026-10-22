@@ -50,7 +50,7 @@ export default function ContactAndEnquirySection() {
     defaultValues: {
       service: 'Media Production',
       location: 'Lagos, Nigeria',
-      budget: '₦1,500,000 – ₦5,000,000',
+      budget: '₦1,500,000 – ₦5,000,000 / $1k–$3.5k / £800–£2.8k',
       timeline: 'Next 30 Days',
     },
   })
@@ -340,11 +340,11 @@ export default function ContactAndEnquirySection() {
                         {...register('budget')}
                         className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold focus:outline-none focus:border-amber-400 transition-colors"
                       >
-                        <option value="Under ₦1,500,000">Under ₦1,500,000</option>
-                        <option value="₦1,500,000 – ₦5,000,000">₦1,500,000 – ₦5,000,000</option>
-                        <option value="₦5,000,000 – ₦15,000,000">₦5,000,000 – ₦15,000,000</option>
-                        <option value="₦15,000,000+">₦15,000,000+ (Full Production)</option>
-                        <option value="Flexible">Flexible / Open to Quote</option>
+                        <option value="Under ₦1,500,000 / $1,000 / £800">Under ₦1,500,000 / $1,000 / £800</option>
+                        <option value="₦1,500,000 – ₦5,000,000 / $1k–$3.5k / £800–£2.8k">₦1,500,000 – ₦5,000,000 / $1k–$3.5k / £800–£2.8k</option>
+                        <option value="₦5,000,000 – ₦15,000,000 / $3.5k–$10k / £2.8k–£8k">₦5,000,000 – ₦15,000,000 / $3.5k–$10k / £2.8k–£8k</option>
+                        <option value="₦15,000,000+ / $10k+ / £8k+">₦15,000,000+ / $10k+ / £8k+ (Full Production)</option>
+                        <option value="Flexible / Open to Quote">Flexible / Open to Quote</option>
                       </select>
                     </div>
 

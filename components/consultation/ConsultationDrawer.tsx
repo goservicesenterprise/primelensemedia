@@ -54,17 +54,17 @@ const PROJECT_TYPES = [
   'Television & Talk Show Production',
   'Podcast Production (Audio + Video)',
   'Corporate Profile & Internal Video',
-  'High-End Event Coverage',
+  'Event Production / Coverage',
   'Turnkey Studio Design & Fabrication',
   'Social Media Content Package (Reels/TikTok)',
   'Creative Consultation & Tech Blueprint',
 ]
 
 const BUDGET_RANGES = [
-  'Under ₦1,500,000 / $1,000',
-  '₦1,500,000 – ₦5,000,000 / $1k–$3.5k',
-  '₦5,000,000 – ₦15,000,000 / $3.5k–$10k',
-  '₦15,000,000+ / $10k+ (Comprehensive)',
+  'Under ₦1,500,000 / $1,000 / £800',
+  '₦1,500,000 – ₦5,000,000 / $1k–$3.5k / £800–£2.8k',
+  '₦5,000,000 – ₦15,000,000 / $3.5k–$10k / £2.8k–£8k',
+  '₦15,000,000+ / $10k+ / £8k+ (Comprehensive)',
   'Flexible / Open to Recommendation',
 ]
 
@@ -92,7 +92,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
       stages: ['pre-production', 'production', 'post-production'],
       location: 'Lagos, Nigeria',
       timeline: 'Next 30 Days',
-      budget: '₦1,500,000 – ₦5,000,000 / $1k–$3.5k',
+      budget: '₦1,500,000 – ₦5,000,000 / $1k–$3.5k / £800–£2.8k',
       referenceLinks: '',
       projectScope: '',
     },
