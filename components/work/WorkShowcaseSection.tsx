@@ -4,9 +4,17 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight, Play, Film, Sparkles } from 'lucide-react'
 import Image from 'next/image'
+import { useSection } from '@/components/shared/context/CMSContext'
 
 export default function WorkShowcaseSection() {
   const [activeFilter, setActiveFilter] = useState('ALL')
+  const cms = useSection('work-showcase')
+
+  const badgeText = cms?.badge || 'Featured Work'
+  const titleText = cms?.title || 'Selected Projects & Productions'
+  const descriptionText =
+    cms?.description ||
+    'A cross-section of our work across corporate profiles, commercials, broadcast television, and studio builds.'
 
   const filters = [
     'ALL',
@@ -85,15 +93,15 @@ export default function WorkShowcaseSection() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-amber-400 font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-red-400 font-semibold mb-4">
             <Sparkles className="w-4 h-4" />
-            <span>Featured Portfolio</span>
+            <span>{badgeText}</span>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
-            Ideas Brought to Life. Stories Told. Spaces Transformed.
+            {titleText}
           </h2>
           <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
-            Explore selected documentaries, commercials, television broadcasts, podcast series, and turnkey studio fabrication projects.
+            {descriptionText}
           </p>
         </div>
 
@@ -143,10 +151,10 @@ export default function WorkShowcaseSection() {
 
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <span className="text-xs sm:text-[11px] font-mono text-amber-400 font-bold block mb-1.5">
+                    <span className="text-xs sm:text-[11px] font-mono text-red-400 font-bold block mb-1.5">
                       Client: {proj.client} • {proj.year}
                     </span>
-                    <h3 className="text-xl sm:text-lg font-bold text-white group-hover:text-amber-200 transition-colors">
+                    <h3 className="text-xl sm:text-lg font-bold text-white group-hover:text-red-200 transition-colors">
                       {proj.title}
                     </h3>
                     <p className="text-sm sm:text-xs text-neutral-300 sm:text-neutral-400 mt-2 leading-relaxed font-normal">

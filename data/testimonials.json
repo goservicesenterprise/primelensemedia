@@ -1,0 +1,38 @@
+[
+  {
+    "id": "t-1",
+    "author": "Chief Adebayo Adeleke",
+    "role": "Executive Director of Communications",
+    "company": "Pan-African Leadership Initiative",
+    "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+    "content": "PrimeLense Media managed camera operation, lighting, and sound for our continental documentary. The final master met our international broadcast partner specifications without review delays.",
+    "rating": 5,
+    "serviceTag": "Media Production",
+    "isFeatured": true,
+    "createdAt": "2026-11-05T11:21:07.159Z"
+  },
+  {
+    "id": "t-2",
+    "author": "Folashade Balogun",
+    "role": "Head of Brand Marketing",
+    "company": "Vanguard Sovereign Holdings",
+    "avatarUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+    "content": "They handled our corporate profiles and multi-cam live event broadcast reliably and on schedule. We have already booked them for our next annual showcase.",
+    "rating": 5,
+    "serviceTag": "Live Broadcast & Events",
+    "isFeatured": true,
+    "createdAt": "2026-11-05T11:21:07.160Z"
+  },
+  {
+    "id": "t-3",
+    "author": "David O. Mensah",
+    "role": "Founder & Managing Director",
+    "company": "Helios Industrial Group",
+    "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+    "content": "The acoustic wall treatment and camera setup they built for our in-house studio cut our production time in half and improved our video quality noticeably.",
+    "rating": 5,
+    "serviceTag": "Studio Design & Acoustic Engineering",
+    "isFeatured": true,
+    "createdAt": "2026-11-05T11:21:07.160Z"
+  }
+]

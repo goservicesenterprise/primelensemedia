@@ -36,14 +36,12 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.legalName,
   publisher: siteConfig.legalName,
-  manifest: '/manifest.json',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
       { url: '/icons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/icons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/icons/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
-      { url: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
       { url: '/primelense_media_logo_4k.png', sizes: '4096x4096', type: 'image/png' },
     ],
     shortcut: ['/favicon.ico'],
@@ -51,11 +49,6 @@ export const metadata: Metadata = {
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
     ],
-  },
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'black-translucent',
-    title: siteConfig.name,
   },
   formatDetection: {
     telephone: false,

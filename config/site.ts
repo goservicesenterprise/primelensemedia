@@ -3,7 +3,7 @@ export const siteConfig = {
   legalName: 'PrimeLense Media Ltd.',
   registrationNumber: 'RC 1766519',
   description:
-    'Creative media production and studio solutions company dedicated to transforming ideas into compelling visual stories and purposeful creative spaces.',
+    'PrimeLense Media is a video production and studio fabrication company in Lagos. We produce documentaries, commercials, podcasts, and television programs, and design custom production spaces.',
   url: 'https://primelensemedia.com',
   tagline: 'Ideas in Motion. Spaces with Purpose.',
   subTagline: 'Ideas in Motion. Spaces with Purpose.',

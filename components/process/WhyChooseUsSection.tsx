@@ -2,32 +2,40 @@
 
 import React from 'react'
 import { Flame, Award, ShieldCheck, Clock, Sparkles } from 'lucide-react'
+import { useSection } from '@/components/shared/context/CMSContext'
 
 export default function WhyChooseUsSection() {
+  const cms = useSection('why-choose-us')
+
+  const badgeText = cms?.badge || 'Core Values'
+  const titleText = cms?.title || 'Why PrimeLense Media'
+  const descriptionText =
+    cms?.description ||
+    'We bring camera crew, post-production, and studio carpentry together so you work with one accountable team.'
   const pillars = [
     {
       icon: Flame,
       color: 'text-rose-400 bg-rose-500/10 border-rose-500/20',
-      title: 'Passion',
-      desc: 'We bring boundless energy, artistic curiosity, and genuine commitment to every frame and fabrication blueprint we undertake.',
+      title: 'Practical Focus',
+      desc: 'We care about framing, clean audio, and durable set builds on every job.',
     },
     {
       icon: Award,
-      color: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
-      title: 'Excellence',
-      desc: 'Great work is found in meticulous attention to detail. We pursue premier technical and creative standards from concept to finishing.',
+      color: 'text-red-400 bg-red-500/10 border-red-500/20',
+      title: 'Standards',
+      desc: 'Our video files and audio levels meet broadcast and streaming technical guidelines.',
     },
     {
       icon: ShieldCheck,
       color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
-      title: 'Integrity',
-      desc: 'We value transparent communication, truthful budgeting, and enduring working relationships founded on mutual trust.',
+      title: 'Transparency',
+      desc: 'Itemised quotes, clear timelines, and direct communication throughout production.',
     },
     {
       icon: Clock,
       color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
       title: 'Timely Delivery',
-      desc: 'We respect production deadlines and work diligently with disciplined schedules to deliver projects on or ahead of time.',
+      desc: 'We plan shoot days and post-production milestones carefully to hit your deadlines.',
     },
   ]
 
@@ -35,27 +43,27 @@ export default function WhyChooseUsSection() {
     {
       num: '01',
       title: 'Discover',
-      desc: 'We understand your core idea, objectives, target audience, and functional requirements.',
+      desc: 'We review your goals, audience, deliverables, and budget.',
     },
     {
       num: '02',
       title: 'Develop',
-      desc: 'We develop creative concepts, scripts, storyboards, and 3D architectural schemes.',
+      desc: 'We draft scripts, storyboards, shoot schedules, or 3D room plans.',
     },
     {
       num: '03',
       title: 'Plan',
-      desc: 'We construct a clear production rundown, equipment schedule, and fabrication blueprint.',
+      desc: 'We confirm call sheets, equipment packages, and build materials.',
     },
     {
       num: '04',
       title: 'Create',
-      desc: 'Our directors and fabrication crews bring the vision to life with professional execution.',
+      desc: 'Our camera crew shoots on location, or our carpentry team builds on site.',
     },
     {
       num: '05',
       title: 'Deliver',
-      desc: 'We finish, master, and hand over the completed media or turnkey production studio.',
+      desc: 'We complete editing, audio mixing, color grading, and deliver finished masters.',
     },
   ]
 
@@ -65,15 +73,15 @@ export default function WhyChooseUsSection() {
         {/* Why Choose Us */}
         <div>
           <div className="flex flex-col items-center text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-amber-400 font-semibold mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-red-400 font-semibold mb-4">
               <Sparkles className="w-4 h-4" />
-              <span>Core Values</span>
+              <span>{badgeText}</span>
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
-              Why PrimeLense Media
+              {titleText}
             </h2>
             <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
-              We merge hands-on experience, creative vision, integrated production, and architectural capabilities under one roof.
+              {descriptionText}
             </p>
           </div>
 
@@ -112,7 +120,7 @@ export default function WhyChooseUsSection() {
               From Idea to Final Delivery
             </h2>
             <p className="text-base sm:text-sm text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
-              A structured, transparent methodology ensuring creative brilliance and punctual handovers.
+              How we take projects from early discussions to final delivery.
             </p>
           </div>
 
@@ -123,7 +131,7 @@ export default function WhyChooseUsSection() {
                 className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col justify-between relative group hover:border-white/30 transition-all"
               >
                 <div>
-                  <span className="text-2xl sm:text-2xl font-bold font-mono text-amber-400/90 block mb-3">
+                  <span className="text-2xl sm:text-2xl font-bold font-mono text-red-400/90 block mb-3">
                     {w.num}
                   </span>
                   <h4 className="text-lg sm:text-base font-bold text-white mb-2">{w.title}</h4>

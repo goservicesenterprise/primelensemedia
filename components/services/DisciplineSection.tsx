@@ -107,7 +107,7 @@ const DisciplineSection = observer(function DisciplineSection({ config, index }:
                   boxShadow: `0 0 25px ${config.accentHex}40`,
                 }}
               >
-                <Sparkles className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
+                <Sparkles className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform" />
                 Book {config.title.split(' ')[0]} Consultation
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </AppButton>
@@ -164,7 +164,7 @@ const DisciplineSection = observer(function DisciplineSection({ config, index }:
                       <span>{project.client}</span>
                       <span>{project.year}</span>
                     </div>
-                    <h4 className="text-lg font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">
+                    <h4 className="text-lg font-bold text-white mb-2 group-hover:text-red-300 transition-colors">
                       {project.title}
                     </h4>
                     <p className="text-xs text-neutral-400 line-clamp-2 leading-relaxed mb-4">
@@ -223,7 +223,7 @@ const DisciplineSection = observer(function DisciplineSection({ config, index }:
                 onClick={() => consultationStore.open(config.id)}
                 className="w-full py-2.5 px-4 rounded-xl text-xs font-medium text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-center flex items-center justify-center gap-2"
               >
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <Sparkles className="w-3.5 h-3.5 text-red-400" />
                 Customize {config.title.split(' ')[0]} Scope
               </button>
             </div>

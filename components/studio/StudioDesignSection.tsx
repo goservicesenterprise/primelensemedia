@@ -6,9 +6,23 @@ import { consultationStore } from '@/store/consultation.store'
 import { Sparkles, Layers, ArrowRight, Check } from 'lucide-react'
 import AppButton from '@/components/shared/ui/AppButton'
 import Image from 'next/image'
+import { useSection } from '@/components/shared/context/CMSContext'
+import UniversalMedia from '@/components/shared/ui/UniversalMedia'
 
 export default function StudioDesignSection() {
   const [activeStep, setActiveStep] = useState(0)
+  const cms = useSection('studio-design')
+
+  const badgeText = cms?.badge || 'Studio Architecture & Build'
+  const titleText = cms?.title || 'We Design and Build Production Sets'
+  const descriptionText =
+    cms?.description ||
+    'Turn empty commercial spaces into broadcast-grade television sets, multi-camera podcast rooms, and acoustic creator studios.'
+  const primaryCta = cms?.ctaPrimaryLabel || 'Commission a Studio Build'
+
+  const mediaType = cms?.mediaType || 'image'
+  const mediaSource = cms?.mediaSource || 'cloudinary'
+  const mediaUrl = cms?.mediaUrl
 
   const steps = [
     {
@@ -54,13 +68,13 @@ export default function StudioDesignSection() {
         <div className="flex flex-col items-center text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-semibold mb-4">
             <Sparkles className="w-4 h-4" />
-            <span>Turnkey Studio Architecture</span>
+            <span>{badgeText}</span>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
-            We Don't Just Produce Content. We Build the Spaces Where It Comes Alive.
+            {titleText}
           </h2>
           <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
-            PrimeLense Media designs and fabricates custom production environments tailored to broadcasters, corporate organisations, brands, churches, and digital creators.
+            {descriptionText}
           </p>
         </div>
 
@@ -68,10 +82,10 @@ export default function StudioDesignSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-20">
           <div className="lg:col-span-5 space-y-6">
             <h3 className="text-2xl sm:text-2xl md:text-3xl font-black sm:font-bold text-white">
-              Studio Environments Tailored to Your Vision
+              Built Around Your Equipment and Workflow
             </h3>
             <p className="text-base sm:text-sm text-neutral-200 sm:text-neutral-300 font-medium sm:font-normal leading-relaxed">
-              Every great broadcast begins with an inspiring environment. Whether turning an ordinary corporate boardroom into a multi-cam podcast studio or fabricating a prime-time television set, our fabrication teams deliver turnkey excellence.
+              We design around camera sightlines, presenter count, lighting angles, and room acoustics. Whether you need a boardroom converted into a podcast room or a dedicated television studio built from the ground up, we manage the work from 3D layout to final installation.
             </p>
 
             <div className="space-y-3 sm:space-y-2.5">
@@ -151,7 +165,7 @@ export default function StudioDesignSection() {
                   <h4 className="text-xl sm:text-lg font-bold text-white">
                     {steps[activeStep].title}
                   </h4>
-                  <p className="text-xs sm:text-xs text-amber-300 font-mono font-medium">
+                  <p className="text-xs sm:text-xs text-red-300 font-mono font-medium">
                     {steps[activeStep].subtitle}
                   </p>
                 </div>

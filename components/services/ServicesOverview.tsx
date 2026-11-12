@@ -7,10 +7,18 @@ import { consultationStore } from '@/store/consultation.store'
 import { ArrowUpRight, Sparkles, CheckCircle2 } from 'lucide-react'
 import AppButton from '@/components/shared/ui/AppButton'
 import Image from 'next/image'
+import { useSection } from '@/components/shared/context/CMSContext'
 
 export default function ServicesOverview() {
   const [activeTab, setActiveTab] = useState<string>('media-production')
   const currentService = SERVICES_CONFIG[activeTab] || SERVICES_CONFIG['media-production']
+  const cms = useSection('services')
+
+  const badgeText = cms?.badge || 'Our Capabilities'
+  const titleText = cms?.title || 'Media Production & Studio Solutions'
+  const descriptionText =
+    cms?.description ||
+    'Full-service media production and studio design. Select a category below to view scope, specifications, and previous work.'
 
   const serviceCategories = [
     { id: 'media-production', icon: '🎥', label: 'Media Production' },
@@ -27,15 +35,15 @@ export default function ServicesOverview() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-amber-400 font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-[11px] font-mono uppercase tracking-widest text-red-400 font-semibold mb-4">
             <Sparkles className="w-4 h-4" />
-            <span>Creative Solutions for Powerful Ideas</span>
+            <span>{badgeText}</span>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
-            Media Production & Studio Solutions
+            {titleText}
           </h2>
           <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-300 font-medium sm:font-normal max-w-3xl leading-relaxed">
-            We provide a range of media production and studio solutions designed to help individuals, brands and organisations communicate, connect and create.
+            {descriptionText}
           </p>
         </div>
 
@@ -73,7 +81,7 @@ export default function ServicesOverview() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column: Info & Specs */}
               <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-xs font-mono font-semibold text-amber-400">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-xs font-mono font-semibold text-red-400">
                   <span>{currentService.heroBadge}</span>
                 </div>
 
@@ -81,7 +89,7 @@ export default function ServicesOverview() {
                   <h3 className="text-3xl sm:text-4xl font-black sm:font-bold text-white mb-2 leading-tight">
                     {currentService.title}
                   </h3>
-                  <p className="text-base sm:text-base text-amber-200/90 font-medium sm:font-light italic">
+                  <p className="text-base sm:text-base text-red-200/90 font-medium sm:font-light italic">
                     "{currentService.tagline}"
                   </p>
                 </div>
@@ -98,7 +106,7 @@ export default function ServicesOverview() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-2.5">
                     {currentService.specialties.map((spec, i) => (
                       <div key={i} className="flex items-start gap-2.5 text-sm sm:text-xs text-neutral-200 font-medium sm:font-normal">
-                        <CheckCircle2 className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-red-400 shrink-0 mt-0.5" />
                         <span>{spec}</span>
                       </div>
                     ))}
@@ -131,7 +139,7 @@ export default function ServicesOverview() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5">
-                    <span className="text-xs sm:text-[10px] font-mono text-amber-400 uppercase tracking-widest font-bold block mb-1">
+                    <span className="text-xs sm:text-[10px] font-mono text-red-400 uppercase tracking-widest font-bold block mb-1">
                       Featured Showcase
                     </span>
                     <h4 className="text-xl sm:text-lg font-bold text-white">

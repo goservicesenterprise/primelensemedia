@@ -5,12 +5,22 @@ import { motion } from 'framer-motion'
 import { observer } from 'mobx-react-lite'
 import { themeStore } from '@/store/theme.store'
 import { consultationStore } from '@/store/consultation.store'
-import { siteConfig } from '@/config/site'
 import { ArrowDown, Clapperboard, Sparkles, Play } from 'lucide-react'
 import AppButton from '@/components/shared/ui/AppButton'
+import { useSection } from '@/components/shared/context/CMSContext'
 
 const HeroSection = observer(function HeroSection() {
   const { currentDiscipline } = themeStore
+  const cms = useSection('hero')
+
+  const badgeText = cms?.badge || 'Creative Media Production & Studio Solutions'
+  const titleText = cms?.title || 'Ideas in Motion.'
+  const highlightText = cms?.highlightText || 'Spaces with Purpose.'
+  const descriptionText =
+    cms?.description ||
+    'Creative media production and turnkey studio solutions. From documentaries, commercials, and podcasts to broadcast television and custom-built studios.'
+  const primaryCtaLabel = cms?.ctaPrimaryLabel || 'Start a Project'
+  const secondaryCtaLabel = cms?.ctaSecondaryLabel || 'View Our Work'
 
   const scrollToServices = () => {
     const el = document.getElementById('services')
@@ -42,8 +52,8 @@ const HeroSection = observer(function HeroSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/10 text-xs sm:text-[11px] uppercase tracking-wider sm:tracking-widest font-semibold text-white/90 mb-6"
         >
-          <Clapperboard className="w-4 h-4 text-amber-400" />
-          <span>Creative Media Production & Studio Solutions</span>
+          <Clapperboard className="w-4 h-4 text-red-400" />
+          <span>{badgeText}</span>
         </motion.div>
 
         {/* Primary Headline */}
@@ -53,7 +63,7 @@ const HeroSection = observer(function HeroSection() {
           transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight sm:tracking-tighter text-white max-w-5xl leading-[1.05] sm:leading-[1.0] mb-6"
         >
-          Ideas in Motion.{' '}
+          {titleText}{' '}
           <span
             className="italic font-extrabold transition-colors duration-700 block sm:inline mt-1 sm:mt-0"
             style={{
@@ -61,7 +71,7 @@ const HeroSection = observer(function HeroSection() {
               textShadow: `0 0 35px ${currentDiscipline?.accentHex || '#8B0A1A'}80`,
             }}
           >
-            Spaces with Purpose.
+            {highlightText}
           </span>
         </motion.h1>
 
@@ -72,7 +82,7 @@ const HeroSection = observer(function HeroSection() {
           transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="text-base sm:text-lg md:text-xl text-neutral-200 font-medium sm:font-normal max-w-2xl leading-relaxed mb-10 tracking-normal"
         >
-          Creative media production and turnkey studio solutions. From documentaries, commercials, and podcasts to broadcast television and custom-built studios.
+          {descriptionText}
         </motion.p>
 
         {/* Call to Actions */}
@@ -88,8 +98,8 @@ const HeroSection = observer(function HeroSection() {
             onClick={() => consultationStore.open('media-production')}
             className="w-full sm:w-auto font-bold text-base sm:text-sm shadow-[0_0_40px_rgba(255,255,255,0.25)] py-4 sm:py-3.5"
           >
-            <Sparkles className="w-4 h-4 text-amber-400" />
-            Start a Project
+            <Sparkles className="w-4 h-4 text-red-400" />
+            {primaryCtaLabel}
           </AppButton>
 
           <AppButton
@@ -99,7 +109,7 @@ const HeroSection = observer(function HeroSection() {
             className="w-full sm:w-auto text-base sm:text-sm font-semibold border-white/20 hover:border-white/40 text-neutral-100 py-4 sm:py-3.5"
           >
             <Play className="w-3.5 h-3.5 fill-current text-white/70" />
-            View Our Work
+            {secondaryCtaLabel}
           </AppButton>
         </motion.div>
 

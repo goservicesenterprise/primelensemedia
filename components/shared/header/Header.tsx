@@ -88,7 +88,7 @@ const Header = observer(function Header() {
               onClick={() => consultationStore.open(currentDiscipline?.id || 'media-production')}
               className="border-white/20 hover:border-white/50 text-xs font-semibold shadow-lg shadow-black/50"
             >
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <Sparkles className="w-3.5 h-3.5 text-red-400" />
               <span className="hidden xs:inline">Start a Project</span>
               <span className="xs:hidden">Enquire</span>
             </AppButton>
@@ -120,7 +120,7 @@ const Header = observer(function Header() {
                 <span className="text-xs font-mono uppercase tracking-widest text-white/40">
                   Navigation
                 </span>
-                <span className="text-xs text-amber-400 font-mono">
+                <span className="text-xs text-red-400 font-mono">
                   {siteConfig.registrationNumber}
                 </span>
               </div>
@@ -143,7 +143,7 @@ const Header = observer(function Header() {
                   href={`tel:${siteConfig.phoneNumbers[0]}`}
                   className="flex items-center gap-2 text-xs text-white/70 hover:text-white"
                 >
-                  <Phone className="w-3.5 h-3.5 text-amber-400" />
+                  <Phone className="w-3.5 h-3.5 text-red-400" />
                   <span>{siteConfig.phoneNumbers[0]}</span>
                 </a>
                 <a

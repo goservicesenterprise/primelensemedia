@@ -4,20 +4,20 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
   'media-production': {
     id: 'media-production',
     title: 'Media Production',
-    tagline: 'Stories worth telling. Productions worth watching.',
+    tagline: 'Documentaries, corporate profiles, and event coverage filmed on cinema rigs.',
     heroBadge: 'Media & Production',
     ambientColor: 'rgba(107, 1, 11, 0.20)',
     ambientGlow: 'rgba(180, 20, 40, 0.40)',
     accentHex: '#8B0A1A',
     description:
-      'We create professional productions that communicate ideas, tell meaningful stories and connect with audiences across different platforms.',
+      'We shoot and edit video for broadcasts, businesses, and digital platforms.',
     leadParagraph:
-      'From in-depth investigative documentaries and corporate brand profiles to cinematic short films, high-level interviews, and full-scale event production & coverage, we deploy seasoned directors, cinematographers, precision lighting, and world-class post-production finishing.',
+      'We handle investigative documentaries, corporate overviews, executive interviews, short films, and live multi-camera events. Our team manages every stage: location scouting, filming with 4K/6K cinema cameras, lighting, sound capture, and post-production color grading.',
     specialties: [
       'Documentary Production',
       'Corporate Videos & Executive Profiles',
       'High-Level Interviews & Dialogue',
-      'Short Films & Cinematic Storytelling',
+      'Short Films & Narrative Projects',
       'Full-Scale Event Production & Coverage',
       'Branded Video Content & Creative Series',
     ],
@@ -48,7 +48,7 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
         year: '2026',
         aspectRatio: '16:9',
         imageUrl: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1600&q=80',
-        description: 'High-production institutional film detailing 25 years of market innovation and executive governance.',
+        description: 'Institutional film detailing 25 years of market operations and executive governance.',
         tags: ['Corporate Video', 'Executive Interviews', 'Broadcast'],
       },
     ],
@@ -67,15 +67,15 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
   'television-studio': {
     id: 'television-studio',
     title: 'Television & Studio Production',
-    tagline: 'Professional productions for powerful conversations and stories.',
+    tagline: 'Multi-camera studio shoots ready for broadcast distribution.',
     heroBadge: 'Broadcast & Studio',
     ambientColor: 'rgba(217, 119, 6, 0.18)',
     ambientGlow: 'rgba(245, 158, 11, 0.35)',
     accentHex: '#D97706',
     description:
-      'We provide creative and technical support for television programmes, syndicated talk shows, and studio-based productions ready for national and global transmission.',
+      'We run technical and creative production for television shows, syndicated talk programs, and studio broadcasts.',
     leadParagraph:
-      'Our team coordinates live multi-camera vision mixing, tally integration, studio director communications, and broadcast audio mastering so your programmes meet strict international television delivery specifications.',
+      'We provide multi-camera vision mixing, intercom and tally setups, floor management, and broadcast audio so your feed meets television network delivery standards.',
     specialties: [
       'Talk Show Production & Moderation Sets',
       'Television Programme & Series Production',
@@ -121,20 +121,20 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
   'podcast-production': {
     id: 'podcast-production',
     title: 'Podcast Production',
-    tagline: 'Turn conversations into content that connects.',
+    tagline: 'Multi-camera video podcasts with broadcast audio and social cutdowns.',
     heroBadge: 'Podcast & Audio Visual',
     ambientColor: 'rgba(168, 85, 247, 0.18)',
     ambientGlow: 'rgba(192, 132, 252, 0.35)',
     accentHex: '#9333EA',
     description:
-      'Whether you are launching a brand-new podcast or scaling an existing show, PrimeLense Media provides full creative, technical, and video production support.',
+      'We record, edit, and package video podcasts for creators and businesses launching or expanding their shows.',
     leadParagraph:
-      'From multi-angle 4K video podcast capture and broadcast-grade microphone acoustic treatment to fast-turnaround video cutdowns and social reels, we make your show look and sound world-class.',
+      'We record multi-angle 4K video, tune room acoustics for clear speech, and cut full episodes into vertical clips formatted for YouTube Shorts, TikTok, and Instagram Reels.',
     specialties: [
       'Studio Podcast Recording (Audio & 4K Video)',
       'Multi-Cam Video Podcast Direction & Switching',
       'Professional Podcast Post-Production & Mixing',
-      'Viral Short-Form Clips & Social Cutdowns',
+      'Short-Form Clips & Social Cutdowns',
       'Podcast Format Development & Creative Direction',
       'Show Distribution & Monetization Consultation',
     ],
@@ -175,20 +175,20 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
   'content-creation': {
     id: 'content-creation',
     title: 'Content Creation',
-    tagline: 'Content designed for today’s dynamic digital audience.',
+    tagline: 'Short-form video assets and YouTube series produced in focused sprints.',
     heroBadge: 'Digital & Growth',
     ambientColor: 'rgba(6, 182, 212, 0.18)',
     ambientGlow: 'rgba(14, 165, 233, 0.35)',
     accentHex: '#0891B2',
     description:
-      'We help brands, institutions, and creators produce engaging visual content built specifically to capture attention and drive measurable action across digital platforms.',
+      'We produce short-form video libraries and YouTube series designed to hold attention on social platforms.',
     leadParagraph:
-      'By merging punchy visual pacing with cinematic color and crisp audio, our digital content units produce full libraries of vertical reels, YouTube videos, and branded campaigns in focused production sprints.',
+      'We shoot and edit batches of vertical reels, product demonstrations, and brand promos in single production runs so you have weeks of content ready to publish.',
     specialties: [
       'Social Media Video Campaigns (Reels & TikTok)',
       'Branded Video Content & Narrative Shorts',
       'YouTube Channel Production & Optimization',
-      'High-Paced Short-Form Video Assets',
+      'Short-Form Video Assets',
       'Product Demonstrations & Creative Showcases',
       'Promotional Launch Sequences & Teasers',
     ],
@@ -210,7 +210,7 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
         year: '2026',
         aspectRatio: '9:16',
         imageUrl: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80',
-        description: 'High-octane mobile-first promotional rollout generating over 12 million viral impressions.',
+        description: 'Mobile-first promotional rollout generating over 12 million impressions.',
         tags: ['Content Creation', 'Reels', 'Social Campaign'],
       },
     ],
@@ -229,21 +229,21 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
   'commercial-advertising': {
     id: 'commercial-advertising',
     title: 'Commercial & Advertising Production',
-    tagline: 'Creative content that helps brands get attention and drive impact.',
+    tagline: 'Television ads and digital video campaigns built to drive conversions.',
     heroBadge: 'Commercial & Brand',
     ambientColor: 'rgba(239, 68, 68, 0.18)',
     ambientGlow: 'rgba(248, 113, 113, 0.35)',
     accentHex: '#DC2626',
     description:
-      'We develop visual campaigns and advertising content engineered to stop thumbs, capture market share, and position brands at the pinnacle of their industries.',
+      'We write, film, and finish commercials for television broadcast and paid digital campaigns.',
     leadParagraph:
-      'From television commercials and digital ad campaigns to premium product launch films, we pair conceptual storytelling with precision production to turn messaging into measurable commercial velocity.',
+      'We produce 15, 30, and 60-second commercials along with social cutdowns. We manage casting, studio lighting, high-speed camera work, and delivery formats that comply with broadcast regulatory clearances.',
     specialties: [
       'Television Commercials (TVC) & Broadcast Ads',
       'High-Conversion Digital Adverts (Paid Media)',
       'Promotional Brand Videos & Showcases',
       'Product Launch & Macro Cinematography',
-      'Comprehensive Brand Narrative Campaigns',
+      'Brand Narrative Campaigns',
       'Creative Scripting, Storyboarding & Direction',
     ],
     specs: [
@@ -283,15 +283,15 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
   'studio-design': {
     id: 'studio-design',
     title: 'Studio Design & Fabrication',
-    tagline: 'Spaces designed for creativity. Built for production.',
+    tagline: 'Custom studio construction, acoustic wall treatments, and lighting rigs.',
     heroBadge: 'Design & Fabrication',
     ambientColor: 'rgba(16, 185, 129, 0.18)',
     ambientGlow: 'rgba(52, 211, 153, 0.35)',
     accentHex: '#059669',
     description:
-      'We don’t just produce content. We design and build the creative production spaces, television sets, podcast studios, and feature walls where great content comes alive.',
+      'We design and build television sets, podcast rooms, creator studios, and acoustic backdrops.',
     leadParagraph:
-      'From 3D architectural visualisation and acoustic space optimization to CNC carpentry fabrication, LED accent integration, and final turnkey installation, we turn ordinary rooms into showstopping broadcast sets.',
+      'We handle the full build process: 3D concept renders, acoustic room analysis, custom carpentry, lighting grid installation, and final equipment integration.',
     specialties: [
       'Television Studio Design & Set Construction',
       'Podcast Studios & Acoustic Lounge Sets',
@@ -349,22 +349,22 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
   'media-consultation': {
     id: 'media-consultation',
     title: 'Media Consultation & Creative Direction',
-    tagline: 'The right strategy before the cameras start rolling.',
+    tagline: 'Technical blueprints, gear specifications, and production planning.',
     heroBadge: 'Strategy & Direction',
     ambientColor: 'rgba(59, 130, 246, 0.18)',
     ambientGlow: 'rgba(96, 165, 250, 0.35)',
     accentHex: '#2563EB',
     description:
-      'Great productions begin with the right strategy. We provide professional consultation, creative direction, and production planning to help you develop and execute successful media operations.',
+      'We advise organizations on studio setup, camera kit purchases, production budgets, and technical workflows.',
     leadParagraph:
-      'We work alongside CEOs, executive directors, creative leads, and media teams to architect their content roadmaps, select the right studio equipment, optimize production budgets, and run efficient crews.',
+      'We work with creative directors, corporate teams, and institutions to evaluate facilities, recommend gear, structure production schedules, and streamline crew workflows before work starts.',
     specialties: [
-      'Comprehensive Media & Broadcast Strategy',
-      'Content Strategy & Audience Positioning',
-      'Creative Direction & Brand Visual Identity',
+      'Media & Broadcast Planning',
+      'Content Planning & Audience Positioning',
+      'Creative Direction & Visual Identity',
       'Production Budgeting & Technical Planning',
       'Studio Equipment Sourcing & Technical Auditing',
-      'Project Coordination & Executive Supervision',
+      'Project Coordination & Supervision',
     ],
     specs: [
       { label: 'Deliverable', value: 'Full Technical Roadmap & Architecture Deck' },

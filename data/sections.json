@@ -1,0 +1,80 @@
+{
+  "hero": {
+    "id": "hero",
+    "title": "Precision in Every Frame. Craft in Every Cut.",
+    "badge": "Media Production & Studio Solutions",
+    "tagline": "PrimeLense Media Studios",
+    "description": "Video production company and studio fabrication team based in Lagos. We shoot documentaries, commercials, and podcasts, and build custom production sets.",
+    "richTextHtml": "<p>PrimeLense Media shoots with cinema cameras (RED, Sony CineAlta, ARRI) using ACES color management for television, commercial, and streaming releases.</p>",
+    "imageUrl": "/primelense_media_logo_clean.png",
+    "ogTitle": "PrimeLense Media | Video Production & Studio Fabrication",
+    "ogDescription": "Video production company delivering documentaries, commercials, podcasts, and custom studio builds.",
+    "ogImage": "/opengraph-image.png",
+    "updatedAt": "2026-11-09T20:00:00.000Z"
+  },
+  "company-profile": {
+    "id": "company-profile",
+    "title": "Company Profile",
+    "badge": "About PrimeLense Media",
+    "tagline": "Registered Enterprise RC: 1766519",
+    "description": "Based in Lagos, Nigeria, PrimeLense Media produces video content and builds custom studios for businesses, television networks, and independent creators.",
+    "richTextHtml": "<p>PrimeLense Media provides media production, multi-camera live coverage, podcast production, and custom studio fabrication.</p>",
+    "imageUrl": "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80",
+    "ogTitle": "Company Profile - PrimeLense Media",
+    "ogDescription": "Learn about PrimeLense Media production capabilities and studio services.",
+    "ogImage": "/og-image-square.png",
+    "updatedAt": "2026-11-09T20:00:00.000Z"
+  },
+  "mission": {
+    "id": "mission",
+    "title": "Our Mission",
+    "badge": "Mission",
+    "tagline": "Reliable Production and Studio Builds",
+    "description": "To provide high-quality video production and studio fabrication that helps brands and creators tell their stories with technical clarity.",
+    "richTextHtml": "<p>We deliver dependable camera crews, proper lighting, clean sound, and tailored studio sets that meet broadcast delivery standards.</p>",
+    "imageUrl": "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80",
+    "ogTitle": "Our Mission - PrimeLense Media",
+    "ogDescription": "Our mission and production standards at PrimeLense Media.",
+    "ogImage": "/opengraph-image.png",
+    "updatedAt": "2026-11-09T20:00:00.000Z"
+  },
+  "vision": {
+    "id": "vision",
+    "title": "Our Vision",
+    "badge": "Vision",
+    "tagline": "A Trusted Production Partner in Nigeria",
+    "description": "To be the most dependable production company and studio builder for broadcast television, corporate video, and podcast studios.",
+    "richTextHtml": "<p>A production house recognized for straightforward client service, disciplined timelines, and technical consistency.</p>",
+    "imageUrl": "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1200&q=80",
+    "ogTitle": "Our Vision - PrimeLense Media",
+    "ogDescription": "Vision and future direction for PrimeLense Media.",
+    "ogImage": "/opengraph-image.png",
+    "updatedAt": "2026-11-09T20:00:00.000Z"
+  },
+  "who-we-serve": {
+    "id": "who-we-serve",
+    "title": "Who We Serve",
+    "badge": "Clients",
+    "tagline": "Businesses, Broadcasters, Agencies & Creators",
+    "description": "We work with corporate institutions, television broadcasters, advertising agencies, churches, NGOs, and independent creators.",
+    "richTextHtml": "<ul><li><strong>Corporates & Financial Institutions:</strong> Executive interviews, investor videos, and annual meeting broadcasts.</li><li><strong>Agencies & Brands:</strong> Commercial spots, product launch videos, and digital ad sets.</li><li><strong>Broadcasters & Independent Producers:</strong> Documentaries, talk shows, and color grading.</li><li><strong>Creators & Podcasters:</strong> Multi-cam podcast setups and studio recording spaces.</li></ul>",
+    "imageUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80",
+    "ogTitle": "Who We Serve - PrimeLense Media",
+    "ogDescription": "Production and studio solutions for businesses, creators, and broadcasters.",
+    "ogImage": "/opengraph-image.png",
+    "updatedAt": "2026-11-09T20:00:00.000Z"
+  },
+  "services": {
+    "id": "services",
+    "title": "Production Disciplines & Services",
+    "badge": "Services",
+    "tagline": "From Planning to Final Delivery",
+    "description": "Media Production, Live Event Broadcasting, Podcast Production, Studio Design & Fabrication, Commercials, and Media Consultation.",
+    "richTextHtml": "<p>Each project is run by experienced crew members using industry software (DaVinci Resolve Studio, Pro Tools, Premiere Pro) and cinema-grade hardware.</p>",
+    "imageUrl": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80",
+    "ogTitle": "Services & Disciplines - PrimeLense Media",
+    "ogDescription": "Video production, studio fabrication, live broadcasting, and podcast setups.",
+    "ogImage": "/opengraph-image.png",
+    "updatedAt": "2026-11-09T20:00:00.000Z"
+  }
+}

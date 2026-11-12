@@ -56,7 +56,24 @@ export default function ContactAndEnquirySection() {
   })
 
   const onSubmit = async (data: ContactFormInputs) => {
-    const task = new Promise((resolve) => setTimeout(resolve, 1200))
+    const task = fetch('/api/enquiries', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fullName: data.name,
+        email: data.email,
+        phone: data.phone,
+        organization: data.company,
+        service: data.service,
+        location: data.location,
+        budget: data.budget,
+        timeline: data.timeline,
+        referenceLinks: data.referenceLinks,
+        projectScope: data.message,
+        type: 'contact',
+      }),
+    })
+
     await promise(task, {
       loading: 'Transmitting brief to PrimeLense Media team...',
       success: 'Enquiry received! Our executive producer will send an itemised quote shortly.',
@@ -78,7 +95,7 @@ export default function ContactAndEnquirySection() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono uppercase tracking-widest text-amber-400 font-bold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono uppercase tracking-widest text-red-400 font-bold mb-4">
             <Sparkles className="w-4 h-4" />
             <span>Start a Project • Contact Us</span>
           </div>
@@ -96,7 +113,7 @@ export default function ContactAndEnquirySection() {
           <div className="lg:col-span-5 space-y-6">
             <div className="p-6 sm:p-8 rounded-3xl bg-black/60 border border-white/10 space-y-6">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold block mb-1">
+                <span className="text-xs font-mono uppercase tracking-widest text-red-400 font-bold block mb-1">
                   Registered Enterprise
                 </span>
                 <h3 className="text-2xl font-black text-white">
@@ -109,7 +126,7 @@ export default function ContactAndEnquirySection() {
 
               {/* Direct Booking & Production Steps */}
               <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold block">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-red-400 font-bold block">
                   How Booking Works
                 </span>
                 <ul className="space-y-2.5 text-xs text-neutral-300">
@@ -134,7 +151,7 @@ export default function ContactAndEnquirySection() {
 
               <div className="space-y-4 pt-1">
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-amber-400">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-red-400">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -236,7 +253,7 @@ export default function ContactAndEnquirySection() {
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                   <div className="border-b border-white/10 pb-4 mb-4">
-                    <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold block mb-1">
+                    <span className="text-xs font-mono uppercase tracking-widest text-red-400 font-bold block mb-1">
                       Project Brief
                     </span>
                     <h3 className="text-2xl font-black text-white">Tell Us About the Shoot</h3>
@@ -248,24 +265,24 @@ export default function ContactAndEnquirySection() {
                   {/* Name and Company */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                      <label className="text-xs font-mono uppercase text-red-400 font-bold block mb-1.5 flex items-center gap-1.5">
                         <User className="w-3.5 h-3.5" /> Full Name *
                       </label>
                       <input
                         {...register('name', { required: true })}
                         placeholder="e.g. Adebayo Ogunlesi"
-                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-red-400 transition-colors"
                         required
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                      <label className="text-xs font-mono uppercase text-red-400 font-bold block mb-1.5 flex items-center gap-1.5">
                         <Building2 className="w-3.5 h-3.5" /> Company / Organisation
                       </label>
                       <input
                         {...register('company')}
                         placeholder="e.g. Apex Media Ltd. or Private Client"
-                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-red-400 transition-colors"
                       />
                     </div>
                   </div>
@@ -273,25 +290,25 @@ export default function ContactAndEnquirySection() {
                   {/* Email and Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                      <label className="text-xs font-mono uppercase text-red-400 font-bold block mb-1.5 flex items-center gap-1.5">
                         <Mail className="w-3.5 h-3.5" /> Email Address *
                       </label>
                       <input
                         type="email"
                         {...register('email', { required: true })}
                         placeholder="you@organisation.com"
-                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-red-400 transition-colors"
                         required
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                      <label className="text-xs font-mono uppercase text-red-400 font-bold block mb-1.5 flex items-center gap-1.5">
                         <Phone className="w-3.5 h-3.5" /> Phone / WhatsApp *
                       </label>
                       <input
                         {...register('phone', { required: true })}
                         placeholder="e.g. 08035128084"
-                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-red-400 transition-colors"
                         required
                       />
                     </div>
@@ -300,12 +317,12 @@ export default function ContactAndEnquirySection() {
                   {/* Service Category & Shoot Location */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5">
+                      <label className="text-xs font-mono uppercase text-red-400 font-bold block mb-1.5">
                         Service Category *
                       </label>
                       <select
                         {...register('service')}
-                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-bold focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-bold focus:outline-none focus:border-red-400 transition-colors"
                       >
                         <option value="Media Production">Media Production (Documentary, Corporate, Events)</option>
                         <option value="Television & Studio Production">Television & Studio Production</option>
@@ -318,13 +335,13 @@ export default function ContactAndEnquirySection() {
                     </div>
 
                     <div>
-                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                      <label className="text-xs font-mono uppercase text-red-400 font-bold block mb-1.5 flex items-center gap-1.5">
                         <MapPin className="w-3.5 h-3.5" /> Shoot Location / City *
                       </label>
                       <input
                         {...register('location', { required: true })}
                         placeholder="e.g. Lagos (VI, Lekki), Abuja, On-Location"
-                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-red-400 transition-colors"
                         required
                       />
                     </div>
@@ -333,12 +350,12 @@ export default function ContactAndEnquirySection() {
                   {/* Estimated Budget & Timeline */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                      <label className="text-xs font-mono uppercase text-red-400 font-bold block mb-1.5 flex items-center gap-1.5">
                         <DollarSign className="w-3.5 h-3.5" /> Estimated Budget
                       </label>
                       <select
                         {...register('budget')}
-                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold focus:outline-none focus:border-red-400 transition-colors"
                       >
                         <option value="Under ₦1,500,000 / $1,000 / £800">Under ₦1,500,000 / $1,000 / £800</option>
                         <option value="₦1,500,000 – ₦5,000,000 / $1k–$3.5k / £800–£2.8k">₦1,500,000 – ₦5,000,000 / $1k–$3.5k / £800–£2.8k</option>
@@ -349,39 +366,39 @@ export default function ContactAndEnquirySection() {
                     </div>
 
                     <div>
-                      <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                      <label className="text-xs font-mono uppercase text-red-400 font-bold block mb-1.5 flex items-center gap-1.5">
                         <Calendar className="w-3.5 h-3.5" /> Shoot Date / Target Timeline
                       </label>
                       <input
                         {...register('timeline')}
                         placeholder="e.g. Next Month, or Specific Date"
-                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-semibold placeholder:text-neutral-500 focus:outline-none focus:border-red-400 transition-colors"
                       />
                     </div>
                   </div>
 
                   {/* Reference Links & Inspiration */}
                   <div>
-                    <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                    <label className="text-xs font-mono uppercase text-red-400 font-bold block mb-1.5 flex items-center gap-1.5">
                       <LinkIcon className="w-3.5 h-3.5" /> Reference Links & Inspiration (Optional)
                     </label>
                     <input
                       {...register('referenceLinks')}
                       placeholder="e.g. Links to YouTube, Vimeo, Google Drive moodboards, or Instagram styles"
-                      className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-medium placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-medium placeholder:text-neutral-500 focus:outline-none focus:border-red-400 transition-colors"
                     />
                   </div>
 
                   {/* Project Details */}
                   <div>
-                    <label className="text-xs font-mono uppercase text-amber-400 font-bold block mb-1.5 flex items-center gap-1.5">
+                    <label className="text-xs font-mono uppercase text-red-400 font-bold block mb-1.5 flex items-center gap-1.5">
                       <FileText className="w-3.5 h-3.5" /> Tell Us What You Need *
                     </label>
                     <textarea
                       rows={4}
                       {...register('message', { required: true })}
                       placeholder="Describe what you need: target deliverables (e.g. 1 main brand video + 3 vertical cuts), story concept, desired styling, or studio room dimensions..."
-                      className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-medium placeholder:text-neutral-500 focus:outline-none focus:border-amber-400 transition-colors resize-none leading-relaxed"
+                      className="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white text-sm font-medium placeholder:text-neutral-500 focus:outline-none focus:border-red-400 transition-colors resize-none leading-relaxed"
                       required
                     />
                   </div>

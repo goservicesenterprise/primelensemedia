@@ -29,7 +29,7 @@ export default function Footer() {
         {/* Top Callout Card */}
         <div className="p-7 sm:p-12 rounded-3xl bg-gradient-to-b from-neutral-900/90 to-neutral-950 border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-20 shadow-2xl">
           <div>
-            <div className="flex items-center gap-2 text-xs sm:text-xs font-mono uppercase tracking-widest text-amber-400 font-bold mb-2">
+            <div className="flex items-center gap-2 text-xs sm:text-xs font-mono uppercase tracking-widest text-red-400 font-bold mb-2">
               <Sparkles className="w-4 h-4" />
               <span>Full-Service Creative Media & Studio Solutions</span>
             </div>
@@ -119,7 +119,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-3 sm:space-y-2 text-sm sm:text-xs text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal">
               <p className="flex items-center gap-2">
-                <Phone className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-amber-400 shrink-0" />
+                <Phone className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-red-400 shrink-0" />
                 <span>{siteConfig.phoneNumbers[0]}</span>
               </p>
               <p className="flex items-center gap-2">

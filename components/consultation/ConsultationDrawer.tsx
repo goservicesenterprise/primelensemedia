@@ -119,7 +119,14 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
   }
 
   const onSubmit = async (data: ConsultationFormValues) => {
-    const submitTask = new Promise((resolve) => setTimeout(resolve, 1400))
+    const submitTask = fetch('/api/enquiries', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...data,
+        type: 'consultation',
+      }),
+    })
 
     await promise(submitTask, {
       loading: 'Securing director availability & creating itemised brief...',
@@ -172,7 +179,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
             }}
           >
             <div>
-              <div className="flex items-center gap-2 text-xs font-mono tracking-wider uppercase text-amber-400 font-bold mb-1">
+              <div className="flex items-center gap-2 text-xs font-mono tracking-wider uppercase text-red-400 font-bold mb-1">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Build Your Creative Brief • Get Itemised Quote</span>
               </div>
@@ -200,7 +207,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                 type="button"
                 onClick={() => setCurrentStep(1)}
                 className={`flex items-center gap-2 text-xs font-mono font-bold uppercase transition-colors ${
-                  currentStep === 1 ? 'text-amber-400' : 'text-white/40 hover:text-white'
+                  currentStep === 1 ? 'text-red-400' : 'text-white/40 hover:text-white'
                 }`}
               >
                 <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[11px]">
@@ -215,7 +222,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                 type="button"
                 onClick={() => setCurrentStep(2)}
                 className={`flex items-center gap-2 text-xs font-mono font-bold uppercase transition-colors ${
-                  currentStep === 2 ? 'text-amber-400' : 'text-white/40 hover:text-white'
+                  currentStep === 2 ? 'text-red-400' : 'text-white/40 hover:text-white'
                 }`}
               >
                 <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[11px]">
@@ -230,7 +237,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                 type="button"
                 onClick={() => setCurrentStep(3)}
                 className={`flex items-center gap-2 text-xs font-mono font-bold uppercase transition-colors ${
-                  currentStep === 3 ? 'text-amber-400' : 'text-white/40 hover:text-white'
+                  currentStep === 3 ? 'text-red-400' : 'text-white/40 hover:text-white'
                 }`}
               >
                 <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[11px]">
@@ -258,7 +265,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                 className="space-y-6"
               >
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2">
                     1. Select Project Category *
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -271,7 +278,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                           type="radio"
                           value={type}
                           {...register('shootType')}
-                          className="text-amber-400 bg-black focus:ring-0"
+                          className="text-red-400 bg-black focus:ring-0"
                         />
                         <span className="text-xs font-semibold text-white">{type}</span>
                       </label>
@@ -280,7 +287,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2">
                     2. Production Stages Required (Select all that apply) *
                   </label>
                   <div className="space-y-2.5">
@@ -292,14 +299,14 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                           onClick={() => toggleStage(st.id)}
                           className={`p-3.5 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${
                             isChecked
-                              ? 'bg-amber-400/10 border-amber-400/50'
+                              ? 'bg-red-500/10 border-red-500/50'
                               : 'bg-neutral-900/60 border-white/10 hover:border-white/25'
                           }`}
                         >
                           <div
                             className={`w-5 h-5 rounded-md flex items-center justify-center shrink-0 mt-0.5 border ${
                               isChecked
-                                ? 'bg-amber-400 text-black border-amber-400'
+                                ? 'bg-red-400 text-black border-red-400'
                                 : 'border-white/30 bg-black'
                             }`}
                           >
@@ -346,14 +353,14 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2 flex items-center gap-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2 flex items-center gap-1.5">
                       <MapPin className="w-3.5 h-3.5" /> Shoot Location / City *
                     </label>
                     <input
                       type="text"
                       placeholder="e.g. Lagos (Victoria Island), Abuja, On-Location"
                       {...register('location')}
-                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-amber-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-red-400 transition-colors"
                     />
                     {errors.location && (
                       <p className="text-xs text-rose-400 mt-1 font-mono">{errors.location.message}</p>
@@ -361,14 +368,14 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2 flex items-center gap-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2 flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" /> Shoot Date / Target Timeline *
                     </label>
                     <input
                       type="text"
                       placeholder="e.g. November 15–20, or Within 30 Days"
                       {...register('timeline')}
-                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-amber-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-red-400 transition-colors"
                     />
                     {errors.timeline && (
                       <p className="text-xs text-rose-400 mt-1 font-mono">{errors.timeline.message}</p>
@@ -377,12 +384,12 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2 flex items-center gap-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2 flex items-center gap-1.5">
                     <DollarSign className="w-3.5 h-3.5" /> Estimated Budget Range *
                   </label>
                   <select
                     {...register('budget')}
-                    className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white text-sm font-semibold focus:outline-none focus:border-amber-400 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white text-sm font-semibold focus:outline-none focus:border-red-400 transition-colors"
                   >
                     {BUDGET_RANGES.map((b) => (
                       <option key={b} value={b}>
@@ -393,26 +400,26 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2 flex items-center gap-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2 flex items-center gap-1.5">
                     <LinkIcon className="w-3.5 h-3.5" /> Reference Links, Moodboards & Inspiration (Optional)
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. YouTube/Vimeo links, Google Drive moodboard, or Instagram references"
                     {...register('referenceLinks')}
-                    className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-amber-400 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-red-400 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2 flex items-center gap-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2 flex items-center gap-1.5">
                     <FileText className="w-3.5 h-3.5" /> Project Brief & Key Requirements *
                   </label>
                   <textarea
                     rows={4}
                     placeholder="Describe what you need: deliverables (e.g. 60s brand film + 3 vertical reels), story concept, number of shoot days, or studio build room dimensions..."
                     {...register('projectScope')}
-                    className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-amber-400 transition-colors resize-none leading-relaxed"
+                    className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-red-400 transition-colors resize-none leading-relaxed"
                   />
                   {errors.projectScope && (
                     <p className="text-xs text-rose-400 mt-1 font-mono">{errors.projectScope.message}</p>
@@ -452,14 +459,14 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2 flex items-center gap-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2 flex items-center gap-1.5">
                       <User className="w-3.5 h-3.5" /> Your Full Name *
                     </label>
                     <input
                       type="text"
                       placeholder="e.g. Adebayo Ogunlesi"
                       {...register('fullName')}
-                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-amber-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-red-400 transition-colors"
                     />
                     {errors.fullName && (
                       <p className="text-xs text-rose-400 mt-1 font-mono">{errors.fullName.message}</p>
@@ -467,14 +474,14 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2 flex items-center gap-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2 flex items-center gap-1.5">
                       <Mail className="w-3.5 h-3.5" /> Email Address *
                     </label>
                     <input
                       type="email"
                       placeholder="you@organisation.com"
                       {...register('email')}
-                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-amber-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-red-400 transition-colors"
                     />
                     {errors.email && (
                       <p className="text-xs text-rose-400 mt-1 font-mono">{errors.email.message}</p>
@@ -482,14 +489,14 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2 flex items-center gap-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2 flex items-center gap-1.5">
                       <Phone className="w-3.5 h-3.5" /> Phone / WhatsApp Number *
                     </label>
                     <input
                       type="text"
                       placeholder="e.g. 08035128084 or +234..."
                       {...register('phone')}
-                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-amber-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-red-400 transition-colors"
                     />
                     {errors.phone && (
                       <p className="text-xs text-rose-400 mt-1 font-mono">{errors.phone.message}</p>
@@ -497,14 +504,14 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-amber-400 font-bold mb-2 flex items-center gap-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-red-400 font-bold mb-2 flex items-center gap-1.5">
                       <Building2 className="w-3.5 h-3.5" /> Company / Brand / Individual
                     </label>
                     <input
                       type="text"
                       placeholder="e.g. Apex Media Ltd. or Private Client"
                       {...register('organization')}
-                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-amber-400 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-white/30 text-sm font-medium focus:outline-none focus:border-red-400 transition-colors"
                     />
                   </div>
                 </div>
