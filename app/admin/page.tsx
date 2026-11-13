@@ -23,9 +23,11 @@ export default async function AdminDashboardPage() {
     redirect('/admin/login')
   }
 
-  const enquiries = getEnquiries()
-  const testimonials = getTestimonials()
-  const sections = getSections()
+  const [enquiries, testimonials, sections] = await Promise.all([
+    getEnquiries(),
+    getTestimonials(),
+    getSections(),
+  ])
 
   const newEnquiriesCount = enquiries.filter((e) => e.status === 'new').length
   const featuredTestimonialsCount = testimonials.filter((t) => t.isFeatured).length
@@ -50,17 +52,19 @@ export default async function AdminDashboardPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <Link
-            href="/admin/enquiries"
-            className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-xs tracking-wide transition-all shadow-lg shadow-red-600/30 inline-flex items-center gap-1.5"
+            href="/"
+            target="_blank"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs font-medium transition-colors"
           >
-            <Inbox className="w-4 h-4" />
-            <span>Review Enquiries</span>
+            <Eye className="w-4 h-4 text-neutral-400" />
+            <span>View Live Site</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-neutral-500" />
           </Link>
           <Link
             href="/admin/cms"
-            className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-xs tracking-wide transition-all border border-white/10 inline-flex items-center gap-1.5"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold shadow-lg shadow-red-900/40 transition-colors"
           >
             <FileText className="w-4 h-4" />
             <span>Edit Sections</span>
@@ -68,212 +72,215 @@ export default async function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* Basic Statistics Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Card 1: Total Enquiries */}
-        <div className="p-5 rounded-2xl bg-neutral-900/70 border border-white/10 shadow-lg relative overflow-hidden group">
-          <div className="flex items-center justify-between text-neutral-400 mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider font-semibold">Total Enquiries</span>
-            <div className="p-2 rounded-xl bg-red-500/10 text-red-400 border border-red-500/20">
-              <Inbox className="w-4 h-4" />
+      {/* KPI Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <Link
+          href="/admin/enquiries"
+          className="group p-6 rounded-2xl bg-neutral-900/60 border border-white/10 hover:border-red-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-red-950/20"
+        >
+          <div className="flex items-center justify-between">
+            <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+              <Inbox className="w-6 h-6" />
             </div>
+            {newEnquiriesCount > 0 && (
+              <span className="px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 text-[10px] font-mono font-bold uppercase tracking-wider">
+                {newEnquiriesCount} New
+              </span>
+            )}
           </div>
-          <div className="text-3xl font-black text-white">{enquiries.length}</div>
-          <div className="mt-2 text-xs text-neutral-400 flex items-center gap-1">
-            <span className="text-red-400 font-semibold">{newEnquiriesCount} new</span> awaiting response
+          <div className="mt-4">
+            <div className="text-3xl font-black text-white">{enquiries.length}</div>
+            <div className="text-xs text-neutral-400 font-medium mt-1">Total Project Enquiries</div>
           </div>
-          <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-50" />
-        </div>
+          <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-neutral-400 group-hover:text-blue-400 transition-colors">
+            <span>Manage pipeline</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </div>
+        </Link>
 
-        {/* Card 2: New Actionable Leads */}
-        <div className="p-5 rounded-2xl bg-neutral-900/70 border border-white/10 shadow-lg relative overflow-hidden group">
-          <div className="flex items-center justify-between text-neutral-400 mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider font-semibold">Pending Bookings</span>
-            <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
-              <Clock className="w-4 h-4" />
+        <Link
+          href="/admin/enquiries"
+          className="group p-6 rounded-2xl bg-neutral-900/60 border border-white/10 hover:border-red-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-red-950/20"
+        >
+          <div className="flex items-center justify-between">
+            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+              <Clock className="w-6 h-6" />
             </div>
+            <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 text-[10px] font-mono font-bold uppercase tracking-wider">
+              Pending
+            </span>
           </div>
-          <div className="text-3xl font-black text-white">{newEnquiriesCount}</div>
-          <div className="mt-2 text-xs text-neutral-400 flex items-center gap-1">
-            <TrendingUp className="w-3.5 h-3.5 text-red-400" />
-            <span>Updated in real time</span>
+          <div className="mt-4">
+            <div className="text-3xl font-black text-white">{newEnquiriesCount}</div>
+            <div className="text-xs text-neutral-400 font-medium mt-1">Awaiting Review</div>
           </div>
-          <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-50" />
-        </div>
+          <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-neutral-400 group-hover:text-amber-400 transition-colors">
+            <span>Review submissions</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </div>
+        </Link>
 
-        {/* Card 3: Testimonials */}
-        <div className="p-5 rounded-2xl bg-neutral-900/70 border border-white/10 shadow-lg relative overflow-hidden group">
-          <div className="flex items-center justify-between text-neutral-400 mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider font-semibold">Client Testimonials</span>
-            <div className="p-2 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
-              <MessageSquareQuote className="w-4 h-4" />
+        <Link
+          href="/admin/testimonials"
+          className="group p-6 rounded-2xl bg-neutral-900/60 border border-white/10 hover:border-red-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-red-950/20"
+        >
+          <div className="flex items-center justify-between">
+            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <MessageSquareQuote className="w-6 h-6" />
             </div>
+            <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-mono font-bold uppercase tracking-wider">
+              {featuredTestimonialsCount} Active
+            </span>
           </div>
-          <div className="text-3xl font-black text-white">{testimonials.length}</div>
-          <div className="mt-2 text-xs text-neutral-400">
-            <span className="text-white font-semibold">{featuredTestimonialsCount}</span> featured on home
+          <div className="mt-4">
+            <div className="text-3xl font-black text-white">{testimonials.length}</div>
+            <div className="text-xs text-neutral-400 font-medium mt-1">Client Testimonials</div>
           </div>
-          <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50" />
-        </div>
+          <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-neutral-400 group-hover:text-emerald-400 transition-colors">
+            <span>Manage reviews</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </div>
+        </Link>
 
-        {/* Card 4: CMS Sections */}
-        <div className="p-5 rounded-2xl bg-neutral-900/70 border border-white/10 shadow-lg relative overflow-hidden group">
-          <div className="flex items-center justify-between text-neutral-400 mb-3">
-            <span className="text-xs font-mono uppercase tracking-wider font-semibold">CMS Sections</span>
-            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <FileText className="w-4 h-4" />
+        <Link
+          href="/admin/cms"
+          className="group p-6 rounded-2xl bg-neutral-900/60 border border-white/10 hover:border-red-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-red-950/20"
+        >
+          <div className="flex items-center justify-between">
+            <div className="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400">
+              <FileText className="w-6 h-6" />
             </div>
+            <span className="px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 text-[10px] font-mono font-bold uppercase tracking-wider">
+              Live
+            </span>
           </div>
-          <div className="text-3xl font-black text-white">{totalSectionsCount}</div>
-          <div className="mt-2 text-xs text-neutral-400">
-            Rich-Text & OpenGraph Enabled
+          <div className="mt-4">
+            <div className="text-3xl font-black text-white">{totalSectionsCount}</div>
+            <div className="text-xs text-neutral-400 font-medium mt-1">Configured Sections</div>
           </div>
-          <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-50" />
-        </div>
+          <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-neutral-400 group-hover:text-red-400 transition-colors">
+            <span>Open CMS</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </div>
+        </Link>
       </div>
 
-      {/* Main Grid: Recent Enquiries & Quick CMS Summary */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Recent Enquiries List */}
-        <div className="lg:col-span-8 space-y-4">
+      {/* Recent Enquiries & Quick Access */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Left Column: Recent Enquiries */}
+        <div className="lg:col-span-2 rounded-2xl bg-neutral-900/60 border border-white/10 p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-bold text-white">Recent Client Enquiries</h2>
-              <p className="text-xs text-neutral-400">Latest consultations and production briefs.</p>
+              <h2 className="text-base font-bold text-white">Recent Project Briefs</h2>
+              <p className="text-xs text-neutral-400 mt-0.5">
+                Latest submissions from website consultation and booking forms.
+              </p>
             </div>
             <Link
               href="/admin/enquiries"
-              className="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center gap-1 transition-colors"
+              className="text-xs font-mono text-red-400 hover:text-red-300 uppercase tracking-wider flex items-center gap-1"
             >
               <span>View All ({enquiries.length})</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-neutral-900/60 overflow-hidden shadow-xl">
-            {recentEnquiries.length === 0 ? (
-              <div className="p-8 text-center text-neutral-500 text-sm">
-                <Inbox className="w-8 h-8 mx-auto mb-2 opacity-40 text-red-400" />
-                <p>No enquiries recorded yet.</p>
-                <p className="text-xs text-neutral-600 mt-1">Form submissions from the site will appear here.</p>
-              </div>
-            ) : (
-              <div className="divide-y divide-white/5">
-                {recentEnquiries.map((item) => (
-                  <div key={item.id} className="p-4 sm:p-5 hover:bg-white/[0.02] transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-white text-sm">{item.fullName}</span>
-                        {item.organization && (
-                          <span className="text-xs text-neutral-400 font-normal">
-                            • {item.organization}
-                          </span>
-                        )}
-                        <span
-                          className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded-full border font-semibold ${
-                            item.status === 'new'
-                              ? 'bg-red-500/10 border-red-500/30 text-red-400'
-                              : item.status === 'in-progress'
-                              ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
-                              : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
-                          }`}
-                        >
-                          {item.status}
-                        </span>
-                      </div>
-                      <div className="text-xs text-neutral-300 flex flex-wrap items-center gap-x-3 gap-y-1">
-                        <span className="text-neutral-400">{item.email}</span>
-                        {item.phone && <span className="text-neutral-500">| {item.phone}</span>}
-                        <span className="text-red-400 font-mono text-[11px] font-medium">
-                          {item.service}
-                        </span>
-                        {item.budget && (
-                          <span className="text-neutral-400 font-mono text-[11px]">
-                            Budget: {item.budget}
-                          </span>
-                        )}
-                      </div>
-                      {item.projectScope && (
-                        <p className="text-xs text-neutral-400 line-clamp-1 italic mt-1">
-                          "{item.projectScope}"
-                        </p>
+          {recentEnquiries.length === 0 ? (
+            <div className="py-12 text-center text-neutral-500 text-xs">
+              No enquiries recorded yet. Submissions from the website will appear here in real-time.
+            </div>
+          ) : (
+            <div className="divide-y divide-white/5">
+              {recentEnquiries.map((enq) => (
+                <div
+                  key={enq.id}
+                  className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-white/[0.02] -mx-2 px-2 rounded-lg transition-colors"
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-white text-sm">{enq.fullName}</span>
+                      {enq.organization && (
+                        <span className="text-xs text-neutral-400">· {enq.organization}</span>
                       )}
-                    </div>
-
-                    <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
-                      <span className="text-[11px] font-mono text-neutral-500">
-                        {new Date(item.createdAt).toLocaleDateString()}
-                      </span>
-                      <Link
-                        href="/admin/enquiries"
-                        className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white transition-colors"
-                        title="View details"
+                      <span
+                        className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded-full ${
+                          enq.status === 'new'
+                            ? 'bg-blue-500/20 text-blue-400'
+                            : enq.status === 'reviewed'
+                            ? 'bg-amber-500/20 text-amber-400'
+                            : enq.status === 'in-progress'
+                            ? 'bg-purple-500/20 text-purple-400'
+                            : enq.status === 'completed'
+                            ? 'bg-emerald-500/20 text-emerald-400'
+                            : 'bg-neutral-800 text-neutral-400'
+                        }`}
                       >
-                        <Eye className="w-4 h-4" />
-                      </Link>
+                        {enq.status}
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-400">
+                      <span>{enq.service}</span>
+                      {enq.budget && <span>· Budget: {enq.budget}</span>}
+                      {enq.location && <span>· {enq.location}</span>}
                     </div>
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
+
+                  <div className="text-right shrink-0">
+                    <span className="text-[11px] font-mono text-neutral-500 block">
+                      {new Date(enq.createdAt).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                      })}
+                    </span>
+                    <Link
+                      href="/admin/enquiries"
+                      className="text-xs text-red-400 hover:text-red-300 font-medium inline-block mt-0.5"
+                    >
+                      Open details →
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Right Column: CMS Quick Links & Testimonial Spotlights */}
-        <div className="lg:col-span-4 space-y-6">
-          {/* CMS Sections Quick View */}
-          <div className="p-5 rounded-2xl bg-neutral-900/60 border border-white/10 space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white">CMS Sections</h3>
-              <Link href="/admin/cms" className="text-xs text-red-400 hover:text-red-300 font-semibold">
-                Manage
-              </Link>
-            </div>
-            <div className="space-y-2 text-xs">
-              {Object.values(sections).map((sec) => (
-                <div
-                  key={sec.id}
-                  className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between hover:bg-white/[0.04] transition-colors"
-                >
-                  <div className="min-w-0 pr-2">
-                    <p className="font-semibold text-white truncate">{sec.title}</p>
-                    <span className="text-[10px] font-mono text-neutral-500 uppercase">{sec.id}</span>
-                  </div>
-                  <Link
-                    href={`/admin/cms?section=${sec.id}`}
-                    className="p-1.5 rounded-lg bg-white/5 hover:bg-red-600 text-neutral-300 hover:text-white transition-colors shrink-0"
-                  >
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              ))}
+        {/* Right Column: Quick Status & Info */}
+        <div className="space-y-6">
+          <div className="rounded-2xl bg-neutral-900/60 border border-white/10 p-6 space-y-4">
+            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+              <TrendingUp className="w-4 h-4 text-red-400" />
+              <span>Platform Health & Status</span>
+            </h3>
+
+            <div className="space-y-3 text-xs">
+              <div className="flex items-center justify-between py-2 border-b border-white/5">
+                <span className="text-neutral-400">Database Engine</span>
+                <span className="font-mono text-emerald-400 font-semibold">SQLite / LibSQL</span>
+              </div>
+              <div className="flex items-center justify-between py-2 border-b border-white/5">
+                <span className="text-neutral-400">Cloud Storage</span>
+                <span className="font-mono text-emerald-400 font-semibold">Cloudinary Active</span>
+              </div>
+              <div className="flex items-center justify-between py-2 border-b border-white/5">
+                <span className="text-neutral-400">Email Notifications</span>
+                <span className="font-mono text-emerald-400 font-semibold">Resend Configured</span>
+              </div>
+              <div className="flex items-center justify-between py-2 border-b border-white/5">
+                <span className="text-neutral-400">CMS Dynamic Sync</span>
+                <span className="font-mono text-emerald-400 font-semibold">Live Mode</span>
+              </div>
             </div>
           </div>
 
-          {/* Testimonials Quick View */}
-          <div className="p-5 rounded-2xl bg-neutral-900/60 border border-white/10 space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white">Active Testimonials</h3>
-              <Link href="/admin/testimonials" className="text-xs text-red-400 hover:text-red-300 font-semibold">
-                All ({testimonials.length})
-              </Link>
+          <div className="rounded-2xl bg-gradient-to-br from-red-950/40 to-neutral-900/60 border border-red-500/20 p-6 space-y-3">
+            <div className="text-xs font-mono uppercase tracking-widest text-red-400 font-bold">
+              Tip for Administrators
             </div>
-            <div className="space-y-3">
-              {testimonials.slice(0, 2).map((test) => (
-                <div key={test.id} className="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white">{test.author}</span>
-                    <span className="text-[10px] font-mono text-red-400 uppercase font-semibold">
-                      {test.rating}★
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-neutral-400 line-clamp-2 italic">
-                    "{test.content}"
-                  </p>
-                  <span className="text-[10px] text-neutral-500 block">{test.company}</span>
-                </div>
-              ))}
-            </div>
+            <p className="text-xs text-neutral-300 leading-relaxed">
+              When updating website copy or images in the <strong>CMS Section Manager</strong>, changes propagate instantly to the live landing page without requiring a redeployment.
+            </p>
           </div>
         </div>
       </div>

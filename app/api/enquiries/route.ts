@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'Full name and email are required' }, { status: 400 })
     }
 
-    const item = saveEnquiry({
+    const item = await saveEnquiry({
       type: type || 'consultation',
       fullName,
       email,

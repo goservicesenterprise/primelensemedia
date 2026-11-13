@@ -5,7 +5,7 @@ import HomePageClient from '@/components/home/HomePageClient'
 export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
-  const sections = getSections()
+  const sections = await getSections()
 
   return <HomePageClient initialSections={sections} />
 }

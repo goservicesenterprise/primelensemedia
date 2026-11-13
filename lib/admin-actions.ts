@@ -18,9 +18,11 @@ import { sendEnquiryEmails } from '@/lib/email'
 
 // --- DASHBOARD STATS ---
 export async function getDashboardStatsAction(): Promise<DashboardStats> {
-  const enquiries = getEnquiries()
-  const testimonials = getTestimonials()
-  const sections = getSections()
+  const [enquiries, testimonials, sections] = await Promise.all([
+    getEnquiries(),
+    getTestimonials(),
+    getSections(),
+  ])
 
   return {
     totalEnquiries: enquiries.length,
@@ -39,7 +41,7 @@ export async function getEnquiriesAction() {
 export async function createEnquiryAction(
   data: Omit<EnquiryItem, 'id' | 'createdAt' | 'status'> & { status?: EnquiryItem['status'] }
 ) {
-  const item = saveEnquiry(data)
+  const item = await saveEnquiry(data)
   sendEnquiryEmails(item).catch((err) => {
     console.error('[Admin Action] Error dispatching emails:', err)
   })
@@ -53,14 +55,14 @@ export async function updateEnquiryStatusAction(
   status: EnquiryItem['status'],
   notes?: string
 ) {
-  const updated = updateEnquiryStatus(id, status, notes)
+  const updated = await updateEnquiryStatus(id, status, notes)
   revalidatePath('/admin')
   revalidatePath('/admin/enquiries')
   return { success: !!updated, item: updated }
 }
 
 export async function deleteEnquiryAction(id: string) {
-  const success = deleteEnquiry(id)
+  const success = await deleteEnquiry(id)
   revalidatePath('/admin')
   revalidatePath('/admin/enquiries')
   return { success }
@@ -74,7 +76,7 @@ export async function getTestimonialsAction() {
 export async function createTestimonialAction(
   data: Omit<TestimonialItem, 'id' | 'createdAt'>
 ) {
-  const item = saveTestimonial(data)
+  const item = await saveTestimonial(data)
   revalidatePath('/admin')
   revalidatePath('/admin/testimonials')
   revalidatePath('/')
@@ -85,7 +87,7 @@ export async function updateTestimonialAction(
   id: string,
   data: Partial<Omit<TestimonialItem, 'id' | 'createdAt'>>
 ) {
-  const updated = updateTestimonial(id, data)
+  const updated = await updateTestimonial(id, data)
   revalidatePath('/admin')
   revalidatePath('/admin/testimonials')
   revalidatePath('/')
@@ -93,7 +95,7 @@ export async function updateTestimonialAction(
 }
 
 export async function deleteTestimonialAction(id: string) {
-  const success = deleteTestimonial(id)
+  const success = await deleteTestimonial(id)
   revalidatePath('/admin')
   revalidatePath('/admin/testimonials')
   revalidatePath('/')
@@ -106,7 +108,7 @@ export async function getSectionsAction() {
 }
 
 export async function saveSectionAction(section: SectionContent) {
-  const saved = saveSection(section)
+  const saved = await saveSection(section)
   revalidatePath('/admin')
   revalidatePath('/admin/cms')
   revalidatePath('/')

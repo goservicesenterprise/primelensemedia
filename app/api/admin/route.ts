@@ -17,21 +17,23 @@ export async function GET(req: NextRequest) {
   const resource = searchParams.get('resource') || 'stats'
 
   if (resource === 'enquiries') {
-    return NextResponse.json({ success: true, data: getEnquiries() })
+    return NextResponse.json({ success: true, data: await getEnquiries() })
   }
 
   if (resource === 'testimonials') {
-    return NextResponse.json({ success: true, data: getTestimonials() })
+    return NextResponse.json({ success: true, data: await getTestimonials() })
   }
 
   if (resource === 'sections') {
-    return NextResponse.json({ success: true, data: getSections() })
+    return NextResponse.json({ success: true, data: await getSections() })
   }
 
   // Default: stats
-  const enquiries = getEnquiries()
-  const testimonials = getTestimonials()
-  const sections = getSections()
+  const [enquiries, testimonials, sections] = await Promise.all([
+    getEnquiries(),
+    getTestimonials(),
+    getSections(),
+  ])
 
   return NextResponse.json({
     success: true,
@@ -55,37 +57,37 @@ export async function POST(req: NextRequest) {
 
     if (resource === 'enquiries') {
       if (action === 'create') {
-        const item = saveEnquiry(payload)
+        const item = await saveEnquiry(payload)
         return NextResponse.json({ success: true, item })
       }
       if (action === 'updateStatus') {
-        const item = updateEnquiryStatus(payload.id, payload.status, payload.notes)
+        const item = await updateEnquiryStatus(payload.id, payload.status, payload.notes)
         return NextResponse.json({ success: !!item, item })
       }
       if (action === 'delete') {
-        const success = deleteEnquiry(payload.id)
+        const success = await deleteEnquiry(payload.id)
         return NextResponse.json({ success })
       }
     }
 
     if (resource === 'testimonials') {
       if (action === 'create') {
-        const item = saveTestimonial(payload)
+        const item = await saveTestimonial(payload)
         return NextResponse.json({ success: true, item })
       }
       if (action === 'update') {
-        const item = updateTestimonial(payload.id, payload)
+        const item = await updateTestimonial(payload.id, payload)
         return NextResponse.json({ success: !!item, item })
       }
       if (action === 'delete') {
-        const success = deleteTestimonial(payload.id)
+        const success = await deleteTestimonial(payload.id)
         return NextResponse.json({ success })
       }
     }
 
     if (resource === 'sections') {
       if (action === 'save') {
-        const item = saveSection(payload)
+        const item = await saveSection(payload)
         return NextResponse.json({ success: true, item })
       }
     }

@@ -16,7 +16,7 @@ export default async function EnquiriesPage() {
     redirect('/admin/login')
   }
 
-  const enquiries = getEnquiries()
+  const enquiries = await getEnquiries()
 
   return <EnquiriesManager initialEnquiries={enquiries} />
 }

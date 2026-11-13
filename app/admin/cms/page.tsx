@@ -16,7 +16,7 @@ export default async function CMSPage() {
     redirect('/admin/login')
   }
 
-  const sections = getSections()
+  const sections = await getSections()
 
   return (
     <Suspense fallback={<div className="p-12 text-center text-neutral-400">Loading CMS Console...</div>}>

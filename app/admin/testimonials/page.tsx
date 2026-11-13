@@ -16,7 +16,7 @@ export default async function TestimonialsPage() {
     redirect('/admin/login')
   }
 
-  const testimonials = getTestimonials()
+  const testimonials = await getTestimonials()
 
   return <TestimonialsManager initialTestimonials={testimonials} />
 }
