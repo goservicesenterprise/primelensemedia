@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { saveEnquiry } from '@/lib/admin-store'
+import { sendEnquiryEmails } from '@/lib/email'
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,6 +25,11 @@ export async function POST(req: NextRequest) {
       projectScope,
       referenceLinks,
       stages,
+    })
+
+    // Trigger emails via Resend in the background
+    sendEnquiryEmails(item).catch((err) => {
+      console.error('[Enquiries API] Email sending failed in background:', err)
     })
 
     return NextResponse.json({ success: true, item })

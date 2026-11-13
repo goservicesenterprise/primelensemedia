@@ -14,6 +14,7 @@ import {
   saveSection,
 } from '@/lib/admin-store'
 import { EnquiryItem, TestimonialItem, SectionContent, DashboardStats } from '@/types/admin'
+import { sendEnquiryEmails } from '@/lib/email'
 
 // --- DASHBOARD STATS ---
 export async function getDashboardStatsAction(): Promise<DashboardStats> {
@@ -39,6 +40,9 @@ export async function createEnquiryAction(
   data: Omit<EnquiryItem, 'id' | 'createdAt' | 'status'> & { status?: EnquiryItem['status'] }
 ) {
   const item = saveEnquiry(data)
+  sendEnquiryEmails(item).catch((err) => {
+    console.error('[Admin Action] Error dispatching emails:', err)
+  })
   revalidatePath('/admin')
   revalidatePath('/admin/enquiries')
   return { success: true, item }

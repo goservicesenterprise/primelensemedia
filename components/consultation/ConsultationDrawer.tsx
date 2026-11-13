@@ -81,7 +81,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
     watch,
     formState: { errors, isSubmitting },
   } = useForm<ConsultationFormValues>({
-    resolver: zodResolver(consultationSchema),
+    resolver: zodResolver(consultationSchema) as any,
     defaultValues: {
       fullName: '',
       email: '',
@@ -119,34 +119,63 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
   }
 
   const onSubmit = async (data: ConsultationFormValues) => {
-    const submitTask = fetch('/api/enquiries', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...data,
-        type: 'consultation',
-      }),
-    })
-
-    await promise(submitTask, {
-      loading: 'Securing director availability & creating itemised brief...',
-      success: `Brief received! Our executive producer will send an itemised quote to ${data.email} within 24 hours.`,
-      error: `Unable to submit at this moment. Please WhatsApp us at ${siteConfig.whatsapp.number}.`,
-    })
-
     try {
-      confetti({
-        particleCount: 80,
-        spread: 60,
-        origin: { y: 0.6 },
-      })
-    } catch {
-      // ignore
-    }
+      const submitTask = (async () => {
+        const res = await fetch('/api/enquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...data,
+            type: 'consultation',
+          }),
+        })
+        const json = await res.json()
+        if (!res.ok || !json.success) {
+          throw new Error(json.error || 'Failed to submit enquiry')
+        }
+        return json
+      })()
 
-    reset()
-    setCurrentStep(1)
-    consultationStore.close()
+      await promise(submitTask, {
+        loading: 'Securing director availability & creating itemised brief...',
+        success: `Brief received! Our executive producer will send an itemised quote to ${data.email} within 24 hours.`,
+        error: `Unable to submit at this moment. Please WhatsApp us at ${siteConfig.whatsapp.number}.`,
+      })
+
+      try {
+        confetti({
+          particleCount: 80,
+          spread: 60,
+          origin: { y: 0.6 },
+        })
+      } catch {
+        // ignore
+      }
+
+      reset()
+      setCurrentStep(1)
+      consultationStore.close()
+    } catch (err) {
+      console.error('Submission error:', err)
+    }
+  }
+
+  const onInvalid = (fieldErrors: any) => {
+    console.warn('Form validation errors:', fieldErrors)
+    // If error is in Step 1
+    if (fieldErrors.service || fieldErrors.shootType || fieldErrors.stages) {
+      setCurrentStep(1)
+      return
+    }
+    // If error is in Step 2
+    if (fieldErrors.location || fieldErrors.timeline || fieldErrors.budget || fieldErrors.projectScope) {
+      setCurrentStep(2)
+      return
+    }
+    // Step 3
+    if (fieldErrors.fullName || fieldErrors.email || fieldErrors.phone) {
+      setCurrentStep(3)
+    }
   }
 
   if (!isOpen) return null
@@ -254,7 +283,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
 
           {/* Form Body */}
           <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit, onInvalid)}
             className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1 text-left"
           >
             {/* STEP 1: Type & Production Stages */}

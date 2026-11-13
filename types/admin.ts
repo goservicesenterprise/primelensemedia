@@ -1,6 +1,21 @@
 export type MediaType = 'image' | 'video'
 export type MediaSource = 'cloudinary' | 'youtube' | 'local' | 'url'
 
+export interface ShowcaseProject {
+  id?: string
+  title: string
+  client: string
+  category: string
+  year: string
+  image: string
+  mediaType?: MediaType
+  mediaSource?: MediaSource
+  mediaUrl?: string
+  mediaPoster?: string
+  description: string
+  tags: string[]
+}
+
 export interface SectionContent {
   id: string
   title: string

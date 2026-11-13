@@ -49,9 +49,8 @@ export default function AdminSidebar() {
 
       {/* Sidebar Desktop & Mobile drawer */}
       <aside
-        className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-neutral-950 border-r border-white/10 flex flex-col justify-between p-4 transition-transform duration-200 ${
-          mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-        }`}
+        className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-neutral-950 border-r border-white/10 flex flex-col justify-between p-4 transition-transform duration-200 ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+          }`}
       >
         <div className="space-y-6">
           {/* Brand header */}
@@ -77,11 +76,10 @@ export default function AdminSidebar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all ${
-                    active
+                  className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all ${active
                       ? 'bg-red-600 text-white shadow-md shadow-red-600/25'
                       : 'text-neutral-400 hover:text-white hover:bg-white/5'
-                  }`}
+                    }`}
                 >
                   <Icon className="w-4 h-4 shrink-0" />
                   <span>{item.label}</span>
@@ -93,13 +91,6 @@ export default function AdminSidebar() {
 
         {/* Footer info & Return to site */}
         <div className="space-y-3 pt-4 border-t border-white/10">
-          <div className="px-3 py-2 rounded-xl bg-white/[0.03] border border-white/5">
-            <div className="flex items-center gap-1.5 text-[11px] font-mono text-red-400 font-bold uppercase mb-1">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Engine Status</span>
-            </div>
-            <p className="text-[11px] text-neutral-400">Next.js 16 • Turbo Actions Ready</p>
-          </div>
 
           <Link
             href="/"

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {
   Cloud,
   PlaySquare,
@@ -12,8 +12,15 @@ import {
   Video,
   Image as ImageIcon,
   Loader2,
+  XCircle,
+  Eye,
 } from 'lucide-react'
 import { MediaType, MediaSource } from '@/types/admin'
+import {
+  getCloudinarySignature,
+  uploadFileDirectToCloudinary,
+} from '@/lib/cloudinary-client'
+import UniversalMedia from '@/components/shared/ui/UniversalMedia'
 
 interface MediaUploadPickerProps {
   mediaType: MediaType
@@ -24,6 +31,7 @@ interface MediaUploadPickerProps {
   onMediaSourceChange: (source: MediaSource) => void
   onMediaUrlChange: (url: string) => void
   onMediaPosterChange?: (poster: string) => void
+  showInlinePreview?: boolean
 }
 
 export default function MediaUploadPicker({
@@ -35,49 +43,117 @@ export default function MediaUploadPicker({
   onMediaSourceChange,
   onMediaUrlChange,
   onMediaPosterChange,
+  showInlinePreview = true,
 }: MediaUploadPickerProps) {
+  // Local input state for immediate responsiveness and sync
+  const [localUrl, setLocalUrl] = useState(mediaUrl || '')
   const [isUploading, setIsUploading] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState(0)
   const [uploadError, setUploadError] = useState<string | null>(null)
   const [uploadSuccess, setUploadSuccess] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const abortControllerRef = useRef<AbortController | null>(null)
+
+  // Keep local input in sync whenever parent mediaUrl changes
+  useEffect(() => {
+    setLocalUrl(mediaUrl || '')
+  }, [mediaUrl])
+
+  const handleCancelUpload = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort()
+      abortControllerRef.current = null
+      setIsUploading(false)
+      setUploadProgress(0)
+      setUploadError('Upload cancelled')
+    }
+  }
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
 
     setIsUploading(true)
+    setUploadProgress(0)
     setUploadError(null)
     setUploadSuccess(null)
 
+    abortControllerRef.current = new AbortController()
+
+    const isVideoFile =
+      file.type.startsWith('video/') ||
+      file.name.match(/\.(mp4|webm|mov|mkv)$/i) !== null
+    const resourceType = isVideoFile ? 'video' : 'image'
+
     try {
-      const formData = new FormData()
-      formData.append('file', file)
-      formData.append('destination', mediaSource === 'local' ? 'local' : 'cloudinary')
+      if (mediaSource === 'cloudinary') {
+        // DIRECT CLOUDINARY UPLOAD via SDK signature
+        const signature = await getCloudinarySignature()
+        const result = await uploadFileDirectToCloudinary(file, signature, resourceType, {
+          abortSignal: abortControllerRef.current.signal,
+          onProgress: (_loaded, _total, percent) => {
+            setUploadProgress(percent)
+          },
+        })
 
-      const res = await fetch('/api/admin/upload', {
-        method: 'POST',
-        body: formData,
-      })
-      const data = await res.json()
+        const uploadedUrl = result.secure_url || (result as any).url
+        if (!uploadedUrl) {
+          throw new Error('Cloudinary response did not return a secure URL')
+        }
 
-      if (!res.ok || !data.success) {
-        throw new Error(data.error || 'Upload failed')
+        // Immediately update local input display, parent state, and media presentation type
+        setLocalUrl(uploadedUrl)
+        onMediaUrlChange(uploadedUrl)
+        onMediaTypeChange(isVideoFile ? 'video' : 'image')
+        setUploadSuccess(
+          `Uploaded to Cloudinary (folder: ${signature.folder}) successfully!`
+        )
+      } else {
+        // LOCAL SERVER STORAGE FALLBACK
+        const formData = new FormData()
+        formData.append('file', file)
+        formData.append('destination', 'local')
+
+        const res = await fetch('/api/admin/upload', {
+          method: 'POST',
+          body: formData,
+          signal: abortControllerRef.current.signal,
+        })
+        const data = await res.json()
+
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || 'Local upload failed')
+        }
+
+        const uploadedUrl = data.url
+        setLocalUrl(uploadedUrl)
+        onMediaUrlChange(uploadedUrl)
+        if (data.mediaType) {
+          onMediaTypeChange(data.mediaType)
+        }
+        setUploadSuccess(`Saved file locally to /public/uploads!`)
       }
 
-      onMediaUrlChange(data.url)
-      if (data.mediaType) {
-        onMediaTypeChange(data.mediaType)
-      }
-      setUploadSuccess(`Successfully uploaded to ${mediaSource.toUpperCase()}!`)
-      setTimeout(() => setUploadSuccess(null), 3500)
+      setTimeout(() => setUploadSuccess(null), 4000)
     } catch (err: any) {
-      setUploadError(err.message || 'Error uploading file')
+      if (err.name === 'AbortError') {
+        setUploadError('Upload cancelled')
+      } else {
+        setUploadError(err.message || 'Error uploading file')
+      }
     } finally {
       setIsUploading(false)
+      setUploadProgress(0)
+      abortControllerRef.current = null
       if (fileInputRef.current) {
         fileInputRef.current.value = ''
       }
     }
+  }
+
+  const handleUrlInputChange = (val: string) => {
+    setLocalUrl(val)
+    onMediaUrlChange(val)
   }
 
   return (
@@ -91,7 +167,7 @@ export default function MediaUploadPicker({
           <button
             type="button"
             onClick={() => onMediaTypeChange('image')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all cursor-pointer ${
               mediaType === 'image'
                 ? 'bg-red-600 text-white font-semibold shadow-sm'
                 : 'text-neutral-400 hover:text-white'
@@ -103,7 +179,7 @@ export default function MediaUploadPicker({
           <button
             type="button"
             onClick={() => onMediaTypeChange('video')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all cursor-pointer ${
               mediaType === 'video'
                 ? 'bg-red-600 text-white font-semibold shadow-sm'
                 : 'text-neutral-400 hover:text-white'
@@ -121,18 +197,18 @@ export default function MediaUploadPicker({
           Upload Destination & Source
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {/* Cloudinary */}
+          {/* Cloudinary Direct SDK */}
           <button
             type="button"
             onClick={() => onMediaSourceChange('cloudinary')}
-            className={`p-2.5 rounded-xl border flex flex-col items-center gap-1.5 text-xs transition-all ${
+            className={`p-2.5 rounded-xl border flex flex-col items-center gap-1.5 text-xs transition-all cursor-pointer ${
               mediaSource === 'cloudinary'
                 ? 'bg-red-600/15 border-red-500 text-white font-semibold'
                 : 'bg-neutral-900/60 border-white/10 text-neutral-400 hover:text-white hover:bg-neutral-800'
             }`}
           >
             <Cloud className="w-4 h-4 text-red-400" />
-            <span>Cloudinary</span>
+            <span>Cloudinary Direct</span>
           </button>
 
           {/* YouTube */}
@@ -142,7 +218,7 @@ export default function MediaUploadPicker({
               onMediaSourceChange('youtube')
               onMediaTypeChange('video')
             }}
-            className={`p-2.5 rounded-xl border flex flex-col items-center gap-1.5 text-xs transition-all ${
+            className={`p-2.5 rounded-xl border flex flex-col items-center gap-1.5 text-xs transition-all cursor-pointer ${
               mediaSource === 'youtube'
                 ? 'bg-red-600/15 border-red-500 text-white font-semibold'
                 : 'bg-neutral-900/60 border-white/10 text-neutral-400 hover:text-white hover:bg-neutral-800'
@@ -156,21 +232,21 @@ export default function MediaUploadPicker({
           <button
             type="button"
             onClick={() => onMediaSourceChange('local')}
-            className={`p-2.5 rounded-xl border flex flex-col items-center gap-1.5 text-xs transition-all ${
+            className={`p-2.5 rounded-xl border flex flex-col items-center gap-1.5 text-xs transition-all cursor-pointer ${
               mediaSource === 'local'
                 ? 'bg-red-600/15 border-red-500 text-white font-semibold'
                 : 'bg-neutral-900/60 border-white/10 text-neutral-400 hover:text-white hover:bg-neutral-800'
             }`}
           >
             <HardDrive className="w-4 h-4 text-emerald-400" />
-            <span>Local File</span>
+            <span>Local Storage</span>
           </button>
 
           {/* Direct External URL */}
           <button
             type="button"
             onClick={() => onMediaSourceChange('url')}
-            className={`p-2.5 rounded-xl border flex flex-col items-center gap-1.5 text-xs transition-all ${
+            className={`p-2.5 rounded-xl border flex flex-col items-center gap-1.5 text-xs transition-all cursor-pointer ${
               mediaSource === 'url'
                 ? 'bg-red-600/15 border-red-500 text-white font-semibold'
                 : 'bg-neutral-900/60 border-white/10 text-neutral-400 hover:text-white hover:bg-neutral-800'
@@ -182,8 +258,7 @@ export default function MediaUploadPicker({
         </div>
       </div>
 
-      {/* 3. Action Area depending on Source */}
-      {/* Upload button for Cloudinary or Local */}
+      {/* 3. Action Area for Cloudinary or Local Upload */}
       {(mediaSource === 'cloudinary' || mediaSource === 'local') && (
         <div className="space-y-2 pt-1">
           <input
@@ -193,28 +268,49 @@ export default function MediaUploadPicker({
             onChange={handleFileUpload}
             className="hidden"
           />
-          <button
-            type="button"
-            disabled={isUploading}
-            onClick={() => fileInputRef.current?.click()}
-            className="w-full py-3 px-4 rounded-xl border border-dashed border-white/20 hover:border-red-500 bg-neutral-900/80 hover:bg-neutral-800/80 text-neutral-200 text-xs font-semibold flex items-center justify-center gap-2 transition-all disabled:opacity-50"
-          >
-            {isUploading ? (
-              <>
-                <Loader2 className="w-4 h-4 text-red-500 animate-spin" />
-                <span>Uploading {mediaType} to {mediaSource === 'cloudinary' ? 'Cloudinary (folder: primelensemedia)' : 'Local Storage'}...</span>
-              </>
-            ) : (
-              <>
-                <Upload className="w-4 h-4 text-red-400" />
-                <span>Choose {mediaType.toUpperCase()} File from Local Computer to Upload</span>
-              </>
-            )}
-          </button>
+
+          {!isUploading ? (
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="w-full py-3 px-4 rounded-xl border border-dashed border-white/20 hover:border-red-500 bg-neutral-900/80 hover:bg-neutral-800/80 text-neutral-200 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Upload className="w-4 h-4 text-red-400" />
+              <span>
+                Select {mediaType.toUpperCase()} file to upload via{' '}
+                {mediaSource === 'cloudinary' ? 'Cloudinary SDK (Direct)' : 'Local Disk'}
+              </span>
+            </button>
+          ) : (
+            <div className="p-3 rounded-xl bg-neutral-900 border border-white/15 space-y-2">
+              <div className="flex items-center justify-between text-xs">
+                <span className="flex items-center gap-2 text-neutral-300 font-mono">
+                  <Loader2 className="w-3.5 h-3.5 text-red-500 animate-spin" />
+                  Uploading directly to {mediaSource === 'cloudinary' ? 'Cloudinary (primelensemedia)' : 'Local server'}...
+                </span>
+                <span className="font-mono text-red-400 font-bold">{uploadProgress}%</span>
+              </div>
+              <div className="w-full bg-neutral-800 rounded-full h-1.5 overflow-hidden">
+                <div
+                  className="bg-red-600 h-full transition-all duration-200 rounded-full"
+                  style={{ width: `${uploadProgress}%` }}
+                />
+              </div>
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={handleCancelUpload}
+                  className="text-[11px] text-neutral-400 hover:text-white flex items-center gap-1 cursor-pointer"
+                >
+                  <XCircle className="w-3 h-3" /> Cancel
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
-      {/* Direct URL input */}
+      {/* Direct URL input: Immediately populated with uploaded URL */}
       <div className="space-y-1">
         <label className="block text-neutral-400 uppercase font-mono text-[10px] font-semibold">
           {mediaSource === 'youtube'
@@ -223,8 +319,8 @@ export default function MediaUploadPicker({
         </label>
         <input
           type="text"
-          value={mediaUrl}
-          onChange={(e) => onMediaUrlChange(e.target.value)}
+          value={localUrl}
+          onChange={(e) => handleUrlInputChange(e.target.value)}
           placeholder={
             mediaSource === 'youtube'
               ? 'https://www.youtube.com/watch?v=...'
@@ -247,6 +343,35 @@ export default function MediaUploadPicker({
             placeholder="https://... or /poster.jpg"
             className="w-full p-2.5 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-xs focus:outline-none focus:border-red-500"
           />
+        </div>
+      )}
+
+      {/* INLINE LIVE PREVIEW OF MEDIA (Shows image or video immediately upon upload/url entry) */}
+      {showInlinePreview && localUrl && (
+        <div className="pt-2 border-t border-white/10 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-mono text-neutral-300 font-semibold flex items-center gap-1.5">
+              <Eye className="w-3.5 h-3.5 text-red-400" />
+              Live Media Preview ({mediaType.toUpperCase()} • {mediaSource.toUpperCase()})
+            </span>
+            <span className="text-[10px] font-mono text-neutral-500 truncate max-w-[200px]">
+              {localUrl}
+            </span>
+          </div>
+
+          <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black/90 border border-white/15 shadow-inner">
+            <UniversalMedia
+              src={localUrl}
+              mediaType={mediaType}
+              mediaSource={mediaSource}
+              poster={mediaPoster}
+              alt="Media Preview"
+              containerClassName="w-full h-full"
+              className="object-contain w-full h-full"
+              controls={mediaType === 'video'}
+              autoPlay={false}
+            />
+          </div>
         </div>
       )}
 

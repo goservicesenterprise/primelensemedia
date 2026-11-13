@@ -56,38 +56,49 @@ export default function ContactAndEnquirySection() {
   })
 
   const onSubmit = async (data: ContactFormInputs) => {
-    const task = fetch('/api/enquiries', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        fullName: data.name,
-        email: data.email,
-        phone: data.phone,
-        organization: data.company,
-        service: data.service,
-        location: data.location,
-        budget: data.budget,
-        timeline: data.timeline,
-        referenceLinks: data.referenceLinks,
-        projectScope: data.message,
-        type: 'contact',
-      }),
-    })
-
-    await promise(task, {
-      loading: 'Transmitting brief to PrimeLense Media team...',
-      success: 'Enquiry received! Our executive producer will send an itemised quote shortly.',
-      error: `Could not send message. Please reach us directly on WhatsApp or at ${siteConfig.email}.`,
-    })
-
     try {
-      confetti({ particleCount: 70, spread: 50, origin: { y: 0.7 } })
-    } catch {
-      // ignore
-    }
+      const task = (async () => {
+        const res = await fetch('/api/enquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fullName: data.name,
+            email: data.email,
+            phone: data.phone,
+            organization: data.company,
+            service: data.service,
+            location: data.location,
+            budget: data.budget,
+            timeline: data.timeline,
+            referenceLinks: data.referenceLinks,
+            projectScope: data.message,
+            type: 'contact',
+          }),
+        })
+        const json = await res.json()
+        if (!res.ok || !json.success) {
+          throw new Error(json.error || 'Failed to transmit brief')
+        }
+        return json
+      })()
 
-    setSubmitted(true)
-    reset()
+      await promise(task, {
+        loading: 'Transmitting brief to PrimeLense Media team...',
+        success: 'Enquiry received! Our executive producer will send an itemised quote shortly.',
+        error: `Could not send message. Please reach us directly on WhatsApp or at ${siteConfig.email}.`,
+      })
+
+      try {
+        confetti({ particleCount: 70, spread: 50, origin: { y: 0.7 } })
+      } catch {
+        // ignore
+      }
+
+      setSubmitted(true)
+      reset()
+    } catch (err) {
+      console.error('Contact submit error:', err)
+    }
   }
 
   return (

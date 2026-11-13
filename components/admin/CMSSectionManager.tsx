@@ -12,11 +12,13 @@ import {
   Video,
   Image as ImageIcon,
 } from 'lucide-react'
-import { SectionContent, MediaType, MediaSource } from '@/types/admin'
+import { SectionContent, MediaType, MediaSource, ShowcaseProject } from '@/types/admin'
 import { saveSectionAction } from '@/lib/admin-actions'
 import RichTextEditor from '@/components/admin/RichTextEditor'
 import MediaUploadPicker from '@/components/admin/MediaUploadPicker'
 import UniversalMedia from '@/components/shared/ui/UniversalMedia'
+import ShowcaseProjectsManager from '@/components/admin/ShowcaseProjectsManager'
+import SectionLivePreviewModal from '@/components/admin/SectionLivePreviewModal'
 
 interface Props {
   initialSections: Record<string, SectionContent>
@@ -30,7 +32,7 @@ const SECTION_DESCRIPTIONS: Record<string, { label: string; icon: string }> = {
   'who-we-serve': { label: 'Who We Serve & Verticals', icon: '👥' },
   services: { label: '7 Capabilities & Services', icon: '⚙️' },
   'studio-design': { label: 'Studio Design & Turnkey Acoustics', icon: '🎛️' },
-  'work-showcase': { label: 'Selected Works & Portfolio', icon: '📽️' },
+  'work-showcase': { label: 'Selected Promotions & Recent Works', icon: '📽️' },
   showreel: { label: 'Official Showreel Experience', icon: '🎞️' },
   'why-choose-us': { label: 'Why Choose Us & 5-Step Process', icon: '🛡️' },
 }
@@ -342,52 +344,33 @@ export default function CMSSectionManager({ initialSections }: Props) {
                 }}
               />
             </div>
+
+            {/* If Selected Works Section, render Individual Projects Manager */}
+            {activeSectionId === 'work-showcase' && (
+              <ShowcaseProjectsManager
+                projects={(formData.metadata?.projects as ShowcaseProject[]) || []}
+                onChange={(updatedProjects) => {
+                  setFormData((prev) => ({
+                    ...prev,
+                    metadata: {
+                      ...(prev.metadata || {}),
+                      projects: updatedProjects,
+                    },
+                  }))
+                  setSaveSuccess(false)
+                }}
+              />
+            )}
           </div>
         </div>
 
-        {/* Right Column: Live Media Preview & Open Graph Meta */}
+        {/* Right Column: Live Section Preview & Open Graph Meta */}
         <div className="lg:col-span-4 space-y-6">
-          {/* Live Media Player Preview Box */}
-          <div className="p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-4 shadow-xl backdrop-blur-md">
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
-              <div className="flex items-center gap-2">
-                <Eye className="w-4 h-4 text-red-400" />
-                <h3 className="text-sm font-bold text-white">Live Frontend Media Preview</h3>
-              </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-red-400 uppercase font-bold">
-                {formData.mediaType || 'image'}
-              </span>
-            </div>
-
-            <div className="aspect-video w-full rounded-2xl bg-black border border-white/10 overflow-hidden relative shadow-inner">
-              {formData.mediaUrl ? (
-                <UniversalMedia
-                  mediaType={formData.mediaType || 'image'}
-                  mediaSource={formData.mediaSource || 'cloudinary'}
-                  src={formData.mediaUrl}
-                  poster={formData.mediaPoster}
-                  controls={formData.mediaType === 'video'}
-                  autoPlay={false}
-                />
-              ) : (
-                <div className="flex flex-col items-center justify-center h-full text-neutral-500 gap-1 text-xs">
-                  <ImageIcon className="w-6 h-6 opacity-40" />
-                  <span>No media URL provided</span>
-                </div>
-              )}
-            </div>
-
-            <div className="text-[11px] text-neutral-400 font-mono space-y-1">
-              <div className="flex justify-between">
-                <span>Source:</span>
-                <span className="text-white uppercase font-bold">{formData.mediaSource || 'cloudinary'}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Display mode:</span>
-                <span className="text-white uppercase font-bold">{formData.mediaType || 'image'}</span>
-              </div>
-            </div>
-          </div>
+          {/* Full Live Section Preview */}
+          <SectionLivePreviewModal
+            sectionId={activeSectionId}
+            data={formData}
+          />
 
           {/* Open Graph SEO */}
           <div className="p-6 rounded-2xl bg-neutral-900/80 border border-white/10 space-y-4 shadow-xl backdrop-blur-md">

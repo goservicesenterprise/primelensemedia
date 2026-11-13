@@ -418,6 +418,89 @@ function initDefaultData(db: DatabaseSync) {
   )
 
   // 8. Work Showcase
+  const defaultWorkShowcaseProjects = JSON.stringify({
+    projects: [
+      {
+        id: 'proj-1',
+        title: 'Legacy of Vision',
+        client: 'Pan-African Leadership Initiative',
+        category: 'FILM & DOCUMENTARIES',
+        year: '2025',
+        mediaType: 'image',
+        mediaSource: 'cloudinary',
+        mediaUrl: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80',
+        description: 'Feature documentary exploring leadership, continental infrastructure, and generational change.',
+        tags: ['Documentary', 'Cinema 4K', 'Global Broadcast'],
+      },
+      {
+        id: 'proj-2',
+        title: 'Apex Newsroom & Studio 01',
+        client: 'Continental Media Network',
+        category: 'STUDIO DESIGN',
+        year: '2026',
+        mediaType: 'image',
+        mediaSource: 'cloudinary',
+        mediaUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
+        description: 'Complete 3D design, acoustic fabrication, custom anchor desk, and DMX lighting array.',
+        tags: ['Studio Design', 'Turnkey Build', 'Broadcast'],
+      },
+      {
+        id: 'proj-3',
+        title: 'Beyond the Curve',
+        client: 'Founders Circle Africa',
+        category: 'PODCASTS',
+        year: '2026',
+        mediaType: 'image',
+        mediaSource: 'cloudinary',
+        mediaUrl: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80',
+        description: 'Flagship multi-cam video podcast capturing in-depth dialogue with prominent African business leaders.',
+        tags: ['Video Podcast', 'Multi-Cam', 'Social Cutdowns'],
+      },
+      {
+        id: 'proj-4',
+        title: 'Essence of Purity',
+        client: 'Aura Luxury Fragrances',
+        category: 'COMMERCIALS',
+        year: '2026',
+        mediaType: 'image',
+        mediaSource: 'cloudinary',
+        mediaUrl: 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1200&q=80',
+        description: 'High-speed television commercial and digital ad campaign driving premier luxury engagement.',
+        tags: ['Commercial', 'TVC', 'High-Speed Cinema'],
+      },
+      {
+        id: 'proj-5',
+        title: 'The Dialogue Hour',
+        client: 'National Broadcast Service',
+        category: 'TELEVISION',
+        year: '2025',
+        mediaType: 'image',
+        mediaSource: 'cloudinary',
+        mediaUrl: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1200&q=80',
+        description: 'Syndicated weekly talk show featuring multi-camera live switching and custom set backdrop.',
+        tags: ['Television', 'Talk Show', 'Syndication'],
+      },
+      {
+        id: 'proj-6',
+        title: 'Global Summit 2025',
+        client: 'West African Economic Forum',
+        category: 'EVENTS',
+        year: '2025',
+        mediaType: 'image',
+        mediaSource: 'cloudinary',
+        mediaUrl: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80',
+        description: 'Live broadcast production, keynote recording, and real-time social media video clip delivery.',
+        tags: ['Event Production', 'Live Stream', 'Multi-Cam'],
+      },
+    ],
+  })
+
   upsertSection.run(
     'work-showcase',
     'Selected Productions & Recent Works',
@@ -437,7 +520,7 @@ function initDefaultData(db: DatabaseSync) {
     'Our Work - PrimeLense Media',
     'Documentaries, commercial advertising, and event broadcast showcase.',
     '/opengraph-image.png',
-    null,
+    defaultWorkShowcaseProjects,
     new Date().toISOString()
   )
 
