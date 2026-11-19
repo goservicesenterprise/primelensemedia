@@ -1,43 +1,70 @@
 'use client'
 
 import React from 'react'
-import { Flame, Award, ShieldCheck, Clock, Sparkles } from 'lucide-react'
+import { Flame, Award, ShieldCheck, Clock, Sparkles, CheckCircle2, HeartHandshake, Layers, Target } from 'lucide-react'
 import { useSection } from '@/components/shared/context/CMSContext'
+
+const DEFAULT_PILLARS = [
+  {
+    title: 'Hands-On Experience',
+    desc: 'Our practical experience across cinematography, editing, directing, producing, and design gives us a well-rounded understanding of the production process.',
+  },
+  {
+    title: 'Creativity with Purpose',
+    desc: 'We combine fresh ideas with practical execution to create solutions that meet our clients’ objectives.',
+  },
+  {
+    title: 'A Passionate Team',
+    desc: 'Our talented team brings creativity, collaboration, and dedication to every project.',
+  },
+  {
+    title: 'Integrated Solutions',
+    desc: 'We offer both media production and studio design and fabrication, helping clients create compelling content and the spaces needed to produce it.',
+  },
+  {
+    title: 'Commitment to Excellence',
+    desc: 'We value integrity, attention to detail, and timely delivery in every client engagement.',
+  },
+]
+
+const PILLAR_ICONS = [
+  { icon: Flame, color: 'text-rose-400 bg-rose-500/10 border-rose-500/20' },
+  { icon: Target, color: 'text-red-400 bg-red-500/10 border-red-500/20' },
+  { icon: HeartHandshake, color: 'text-pink-400 bg-pink-500/10 border-pink-500/20' },
+  { icon: Layers, color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
+  { icon: Award, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
+  { icon: ShieldCheck, color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20' },
+]
 
 export default function WhyChooseUsSection() {
   const cms = useSection('why-choose-us')
 
   const badgeText = cms?.badge || 'Core Values'
-  const titleText = cms?.title || 'Why PrimeLense Media'
+  const titleText = cms?.title || 'Why Productions and Studios Choose PrimeLense'
   const descriptionText =
     cms?.description ||
     'We bring camera crew, post-production, and studio carpentry together so you work with one accountable team.'
-  const pillars = [
-    {
-      icon: Flame,
-      color: 'text-rose-400 bg-rose-500/10 border-rose-500/20',
-      title: 'Practical Focus',
-      desc: 'We care about framing, clean audio, and durable set builds on every job.',
-    },
-    {
-      icon: Award,
-      color: 'text-red-400 bg-red-500/10 border-red-500/20',
-      title: 'Standards',
-      desc: 'Our video files and audio levels meet broadcast and streaming technical guidelines.',
-    },
-    {
-      icon: ShieldCheck,
-      color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
-      title: 'Transparency',
-      desc: 'Itemised quotes, clear timelines, and direct communication throughout production.',
-    },
-    {
-      icon: Clock,
-      color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
-      title: 'Timely Delivery',
-      desc: 'We plan shoot days and post-production milestones carefully to hit your deadlines.',
-    },
-  ]
+
+  // Dynamic pillars from CMS metadata (with fallback to the requested 5 items)
+  const rawPillars =
+    cms?.metadata?.pillars ||
+    cms?.metadata?.items ||
+    DEFAULT_PILLARS
+
+  const pillars = Array.isArray(rawPillars) && rawPillars.length > 0
+    ? rawPillars.map((p: any, idx: number) => {
+        const style = PILLAR_ICONS[idx % PILLAR_ICONS.length]
+        return {
+          icon: style.icon,
+          color: style.color,
+          title: p.title || p.label || 'Commitment to Quality',
+          desc: p.description || p.desc || '',
+        }
+      })
+    : DEFAULT_PILLARS.map((p, idx) => ({
+        ...p,
+        ...PILLAR_ICONS[idx % PILLAR_ICONS.length],
+      }))
 
   const workflow = [
     {
@@ -85,7 +112,7 @@ export default function WhyChooseUsSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {pillars.map((p, i) => {
               const Icon = p.icon
               return (

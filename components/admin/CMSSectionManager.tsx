@@ -18,6 +18,7 @@ import RichTextEditor from '@/components/admin/RichTextEditor'
 import MediaUploadPicker from '@/components/admin/MediaUploadPicker'
 import UniversalMedia from '@/components/shared/ui/UniversalMedia'
 import ShowcaseProjectsManager from '@/components/admin/ShowcaseProjectsManager'
+import WhyChooseItemsManager, { WhyChooseItem } from '@/components/admin/WhyChooseItemsManager'
 import SectionLivePreviewModal from '@/components/admin/SectionLivePreviewModal'
 
 interface Props {
@@ -31,10 +32,11 @@ const SECTION_DESCRIPTIONS: Record<string, { label: string; icon: string }> = {
   vision: { label: 'Our Vision', icon: '🔭' },
   'who-we-serve': { label: 'Who We Serve & Verticals', icon: '👥' },
   services: { label: '7 Capabilities & Services', icon: '⚙️' },
-  'studio-design': { label: 'Studio Design & Turnkey Acoustics', icon: '🎛️' },
+  'studio-design': { label: 'Studio Design & Custom Acoustics', icon: '🎛️' },
   'work-showcase': { label: 'Selected Promotions & Recent Works', icon: '📽️' },
   showreel: { label: 'Official Showreel Experience', icon: '🎞️' },
   'why-choose-us': { label: 'Why Choose Us & 5-Step Process', icon: '🛡️' },
+  'who-we-work-with': { label: 'Who We Work With & Callout', icon: '🤝' },
 }
 
 export default function CMSSectionManager({ initialSections }: Props) {
@@ -355,6 +357,52 @@ export default function CMSSectionManager({ initialSections }: Props) {
                     metadata: {
                       ...(prev.metadata || {}),
                       projects: updatedProjects,
+                    },
+                  }))
+                  setSaveSuccess(false)
+                }}
+              />
+            )}
+
+            {/* If Why Choose Us Section, render Custom Pillars/Items Manager */}
+            {activeSectionId === 'why-choose-us' && (
+              <WhyChooseItemsManager
+                items={
+                  ((formData.metadata?.pillars || formData.metadata?.items) as WhyChooseItem[]) || [
+                    {
+                      title: 'Hands-On Experience',
+                      description:
+                        'Our practical experience across cinematography, editing, directing, producing, and design gives us a well-rounded understanding of the production process.',
+                    },
+                    {
+                      title: 'Creativity with Purpose',
+                      description:
+                        'We combine fresh ideas with practical execution to create solutions that meet our clients’ objectives.',
+                    },
+                    {
+                      title: 'A Passionate Team',
+                      description:
+                        'Our talented team brings creativity, collaboration, and dedication to every project.',
+                    },
+                    {
+                      title: 'Integrated Solutions',
+                      description:
+                        'We offer both media production and studio design and fabrication, helping clients create compelling content and the spaces needed to produce it.',
+                    },
+                    {
+                      title: 'Commitment to Excellence',
+                      description:
+                        'We value integrity, attention to detail, and timely delivery in every client engagement.',
+                    },
+                  ]
+                }
+                onChange={(updatedItems) => {
+                  setFormData((prev) => ({
+                    ...prev,
+                    metadata: {
+                      ...(prev.metadata || {}),
+                      pillars: updatedItems,
+                      items: updatedItems,
                     },
                   }))
                   setSaveSuccess(false)

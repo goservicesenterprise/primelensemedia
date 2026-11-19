@@ -45,7 +45,7 @@ export default function StudioDesignSection() {
     },
     {
       title: '04. Completed Studio',
-      subtitle: 'Turnkey Handover & Broadcast Ready',
+      subtitle: 'Complete Handover & Broadcast Ready',
       desc: 'Final acoustic tuning, lighting programming, camera pedestal alignment, and client team handover.',
       img: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80',
     },

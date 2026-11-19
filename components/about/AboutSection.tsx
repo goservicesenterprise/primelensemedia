@@ -28,7 +28,7 @@ export default function AboutSection() {
     'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80'
   const mediaPoster = aboutCms?.mediaPoster
   const mediaOverlayTitle = aboutCms?.highlightText || 'From Raw Space to Broadcast Reality'
-  const mediaOverlayBadge = aboutCms?.tagline || 'Turnkey Execution'
+  const mediaOverlayBadge = aboutCms?.tagline || 'Custom Execution'
 
   // Mission, Vision, Who We Serve
   const missionTitle = missionCms?.title || 'Our Mission'

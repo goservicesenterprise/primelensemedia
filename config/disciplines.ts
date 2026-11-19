@@ -300,7 +300,7 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
       'Corporate Content Studios & In-House Media Rooms',
       'Church Media Studios & Broadcast Auditoriums',
       'Architectural Feature Walls, Slatting & Backdrops',
-      'Turnkey 3D Visualisation, Fabrication & Installation',
+      'Complete 3D Visualisation, Fabrication & Installation',
     ],
     specs: [
       { label: 'Acoustics', value: 'Diffusion Panels & Custom Fabric Baffles' },
@@ -309,9 +309,9 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
       { label: 'Visualisation', value: 'Photorealistic 3D Concept Renders' },
     ],
     metrics: [
-      { label: 'Studios Built', value: '40+', sublabel: 'Turnkey fabrication projects' },
+      { label: 'Studios Built', value: '40+', sublabel: 'Complete fabrication projects' },
       { label: 'Client Space', value: 'Custom', sublabel: 'Tailored to room dimensions' },
-      { label: 'Handover Spec', value: 'Turnkey', sublabel: 'Plug-and-play ready' },
+      { label: 'Handover Spec', value: 'Complete', sublabel: 'Plug-and-play ready' },
     ],
     showcases: [
       {
@@ -321,7 +321,7 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
         aspectRatio: '16:9',
         imageUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1600&q=80',
         description: 'Complete studio fabrication featuring acoustic wall paneling, circular host desk, and DMX backlighting.',
-        tags: ['Studio Fabrication', 'Turnkey Build', 'Broadcast Set'],
+        tags: ['Studio Fabrication', 'Custom Build', 'Broadcast Set'],
       },
       {
         title: 'The Creator Loft',
@@ -337,7 +337,7 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
       questionLabel: 'Studio Project Requirements',
       options: [
         'Television / Broadcast Studio Design & Fabrication',
-        'Podcast Studio (Turnkey Build & Acoustics)',
+        'Podcast Studio (Custom Build & Acoustics)',
         'YouTube / Creator Studio Setup',
         'Church Media / Auditorium Set Design',
         'Corporate Content Studio / Meeting Room Conversion',

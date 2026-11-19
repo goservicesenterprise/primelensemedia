@@ -21,7 +21,8 @@ interface Props {
 }
 
 const CATEGORIES = [
-  'FILM & DOCUMENTARIES',
+  'DOCUMENTARIES',
+  'FILMS',
   'COMMERCIALS',
   'TELEVISION',
   'PODCASTS',

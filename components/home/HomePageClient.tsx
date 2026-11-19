@@ -11,6 +11,7 @@ import StudioDesignSection from '@/components/studio/StudioDesignSection'
 import WorkShowcaseSection from '@/components/work/WorkShowcaseSection'
 import ShowreelSection from '@/components/showreel/ShowreelSection'
 import WhyChooseUsSection from '@/components/process/WhyChooseUsSection'
+import WhoWeWorkWithSection from '@/components/about/WhoWeWorkWithSection'
 import TestimonialSection from '@/components/testimonials/TestimonialSection'
 import ContactAndEnquirySection from '@/components/contact/ContactAndEnquirySection'
 import ConsultationDrawer from '@/components/consultation/ConsultationDrawer'
@@ -72,7 +73,7 @@ const HomePageClient = observer(function HomePageClient({ initialSections }: Pro
         {/* 3. 7 Core Services Directory */}
         <ServicesOverview />
 
-        {/* 4. Studio Design & Turnkey Fabrication Feature */}
+        {/* 4. Studio Design & Custom Fabrication Feature */}
         <StudioDesignSection />
 
         {/* 5. Featured Work & Portfolio */}
@@ -83,6 +84,9 @@ const HomePageClient = observer(function HomePageClient({ initialSections }: Pro
 
         {/* 7. Why Choose Us & 5-Step Process */}
         <WhyChooseUsSection />
+
+        {/* 7b. Who We Work With */}
+        <WhoWeWorkWithSection />
 
         {/* 8. Client Testimonials & Endorsements */}
         <TestimonialSection />

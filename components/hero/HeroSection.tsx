@@ -18,7 +18,7 @@ const HeroSection = observer(function HeroSection() {
   const highlightText = cms?.highlightText || 'Spaces with Purpose.'
   const descriptionText =
     cms?.description ||
-    'Creative media production and turnkey studio solutions. From documentaries, commercials, and podcasts to broadcast television and custom-built studios.'
+    'Creative media production and custom studio solutions. From documentaries, commercials, and podcasts to broadcast television and custom-built studios.'
   const primaryCtaLabel = cms?.ctaPrimaryLabel || 'Start a Project'
   const secondaryCtaLabel = cms?.ctaSecondaryLabel || 'View Our Work'
 

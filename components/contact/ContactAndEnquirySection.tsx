@@ -155,7 +155,7 @@ export default function ContactAndEnquirySection() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="font-bold text-white shrink-0">4.</span>
-                    <span><strong>Review & deliver:</strong> You send notes, and we deliver finished masters or turnkey handover.</span>
+                    <span><strong>Review & deliver:</strong> You send notes, and we deliver finished masters or complete studio handover.</span>
                   </li>
                 </ul>
               </div>
@@ -340,7 +340,7 @@ export default function ContactAndEnquirySection() {
                         <option value="Podcast Production">Podcast Production (Audio + 4K Video)</option>
                         <option value="Content Creation">Content Creation (Reels, TikTok, YouTube)</option>
                         <option value="Commercial & Advertising">Commercial & Advertising Production (TVC)</option>
-                        <option value="Studio Design & Fabrication">Studio Design & Fabrication (Turnkey)</option>
+                        <option value="Studio Design & Fabrication">Studio Design & Custom Fabrication</option>
                         <option value="Media Consultation">Media Consultation & Creative Direction</option>
                       </select>
                     </div>

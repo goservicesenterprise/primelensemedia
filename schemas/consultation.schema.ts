@@ -6,7 +6,7 @@ export const consultationSchema = z.object({
   phone: z.string().min(7, 'Please enter a valid phone / WhatsApp number'),
   organization: z.string().default(''),
   service: z.string().min(1, 'Please select a primary service'),
-  shootType: z.string().default('Brand & Commercial Ads'),
+  shootType: z.string().default('Corporate & Brand Video Production'),
   stages: z.array(z.string()).default(['production']),
   location: z.string().default('Lagos, Nigeria'),
   timeline: z.string().default('Next 30 Days'),

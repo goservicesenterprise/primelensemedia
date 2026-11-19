@@ -11,7 +11,7 @@ const FALLBACK_PROJECTS: ShowcaseProject[] = [
   {
     title: 'Legacy of Vision',
     client: 'Pan-African Leadership Initiative',
-    category: 'FILM & DOCUMENTARIES',
+    category: 'DOCUMENTARIES',
     year: '2025',
     mediaType: 'image',
     mediaSource: 'cloudinary',
@@ -30,7 +30,7 @@ const FALLBACK_PROJECTS: ShowcaseProject[] = [
     mediaUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
     image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
     description: 'Complete 3D design, acoustic fabrication, custom anchor desk, and DMX lighting array.',
-    tags: ['Studio Design', 'Turnkey Build', 'Broadcast'],
+    tags: ['Studio Design', 'Custom Build', 'Broadcast'],
   },
   {
     title: 'Beyond the Curve',
@@ -102,7 +102,8 @@ export default function WorkShowcaseSection() {
   const projectCategories = Array.from(new Set(projects.map((p) => p.category).filter(Boolean)))
   const defaultFilters = [
     'ALL',
-    'FILM & DOCUMENTARIES',
+    'DOCUMENTARIES',
+    'FILMS',
     'COMMERCIALS',
     'TELEVISION',
     'PODCASTS',

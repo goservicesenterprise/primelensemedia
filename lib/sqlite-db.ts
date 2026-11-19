@@ -283,7 +283,7 @@ async function seedDefaultSections(db: Client) {
     'Who We Are',
     'PrimeLense Media Limited',
     'Built for Precision.',
-    'PrimeLense Media is a full-service creative media production company and turnkey studio design consultancy. Headquartered in Abuja, Nigeria, we serve corporations, broadcast networks, public institutions, and visionary creators across the continent.',
+    'PrimeLense Media is a full-service creative media production company and studio design consultancy. Headquartered in Abuja, Nigeria, we serve corporations, broadcast networks, public institutions, and visionary creators across the continent.',
     '<p>From award-winning corporate documentaries to state-of-the-art podcast facilities, we turn ambitious briefs into broadcast realities with unyielding technical discipline.</p>',
     'image',
     'cloudinary',
@@ -294,7 +294,7 @@ async function seedDefaultSections(db: Client) {
     'Schedule Consultation',
     '#start-a-project',
     'About PrimeLense Media',
-    'Creative production company and turnkey studio design consultancy.',
+    'Creative production company and studio design consultancy.',
     '/opengraph-image.png',
     null,
     now,
@@ -356,7 +356,7 @@ async function seedDefaultSections(db: Client) {
     'Tailored Solutions Across Industries',
     'Enterprise Caliber',
     'We partner with tier-1 corporations, non-governmental bodies, broadcast television channels, public ministries, and high-impact media personalities.',
-    '<p>Our clients demand broadcast confidentiality, technical compliance, and cinematic impact. We deliver turnkey creative pipelines adapted to each client’s operational scale.</p>',
+    '<p>Our clients demand broadcast confidentiality, technical compliance, and cinematic impact. We deliver creative pipelines adapted to each client’s operational scale.</p>',
     'image',
     'cloudinary',
     'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80',
@@ -378,7 +378,7 @@ async function seedDefaultSections(db: Client) {
     'End-to-End Capabilities Across Production & Studio Engineering',
     'Core Offerings',
     '7 Core Disciplines Under One Roof',
-    'Turnkey Excellence',
+    'Complete Excellence',
     'From concept scripting and camera ops to multi-cam switching and custom studio builds, our integrated service portfolio covers the entire media value chain.',
     '<p>Discover our dedicated services: Media Production, Television & Broadcast, Podcast Studios, Content Creation, Commercial Advertising, Studio Design, and Media Consultation.</p>',
     'image',
@@ -390,7 +390,7 @@ async function seedDefaultSections(db: Client) {
     null,
     null,
     'Services & Capabilities - PrimeLense Media',
-    'Full-service creative production and turnkey acoustic design.',
+    'Full-service creative production and custom acoustic design.',
     '/opengraph-image.png',
     null,
     now,
@@ -400,7 +400,7 @@ async function seedDefaultSections(db: Client) {
   await upsert([
     'studio-design',
     'Acoustic Design, Architectural Fabrication & Equipment Integration',
-    'Turnkey Spaces',
+    'Custom Spaces',
     'Calibrated for Broadcast Sound & Video',
     'Acoustic Integrity',
     'We architect, build, and equip bespoke podcast studios, television newsrooms, sound stages, and post-production suites with precision acoustic engineering.',
@@ -413,7 +413,7 @@ async function seedDefaultSections(db: Client) {
     '#start-a-project',
     'View Acoustic Specs',
     '#disciplines',
-    'Studio Design & Turnkey Acoustics - PrimeLense Media',
+    'Studio Design & Custom Acoustics - PrimeLense Media',
     'Custom podcast and television studios designed and built to acoustic perfection.',
     '/opengraph-image.png',
     null,
@@ -452,7 +452,7 @@ async function seedDefaultSections(db: Client) {
     },
     {
       id: 'proj-3',
-      title: 'Soundstage 4: Turnkey 4-Host Podcast Facility',
+      title: 'Soundstage 4: Custom 4-Host Podcast Facility',
       category: 'Studio Fabrication',
       client: 'Vanguard Media Group',
       year: '2025',
@@ -532,6 +532,58 @@ async function seedDefaultSections(db: Client) {
     null,
     'Why Choose Us - PrimeLense Media',
     'Our proven 5-stage production and studio fabrication framework.',
+    '/opengraph-image.png',
+    JSON.stringify({
+      pillars: [
+        {
+          title: 'Hands-On Experience',
+          description:
+            'Our practical experience across cinematography, editing, directing, producing, and design gives us a well-rounded understanding of the production process.',
+        },
+        {
+          title: 'Creativity with Purpose',
+          description:
+            'We combine fresh ideas with practical execution to create solutions that meet our clients’ objectives.',
+        },
+        {
+          title: 'A Passionate Team',
+          description:
+            'Our talented team brings creativity, collaboration, and dedication to every project.',
+        },
+        {
+          title: 'Integrated Solutions',
+          description:
+            'We offer both media production and studio design and fabrication, helping clients create compelling content and the spaces needed to produce it.',
+        },
+        {
+          title: 'Commitment to Excellence',
+          description:
+            'We value integrity, attention to detail, and timely delivery in every client engagement.',
+        },
+      ],
+    }),
+    now,
+  ])
+
+  // 11. Who We Work With
+  await upsert([
+    'who-we-work-with',
+    'Who We Work With',
+    'Partnerships & Clients',
+    'From Corporations to Creators',
+    "Let's Bring Your Vision to Life.",
+    'We work with corporate organisations, SMEs and growing brands, television stations and broadcasters, government institutions, advertising agencies, churches, NGOs, content creators, and individuals.',
+    '<p>Whatever the scale of your project, we take the time to understand your vision and develop an approach suited to your goals.</p><p><strong>Let’s Bring Your Vision to Life.</strong></p><p>Have an idea you want to produce, a story you want to tell, or a studio space you want to create? We would love to hear from you.</p><p>Let’s work together to turn your vision into something meaningful.</p><p><em>PrimeLense Media Ltd. — Ideas in Motion. Spaces with Purpose.</em></p>',
+    'image',
+    'cloudinary',
+    'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80',
+    null,
+    "Let's Bring Your Vision to Life",
+    '#start-a-project',
+    null,
+    null,
+    'Who We Work With - PrimeLense Media',
+    'We work with corporate organisations, SMEs and growing brands, television stations, government institutions, advertising agencies, churches, NGOs, content creators, and individuals.',
     '/opengraph-image.png',
     null,
     now,

@@ -49,14 +49,12 @@ const PRODUCTION_STAGES = [
 ]
 
 const PROJECT_TYPES = [
-  'Brand & Commercial Ads',
+  'Corporate & Brand Video Production',
   'Documentary & Narrative Film',
   'Television & Talk Show Production',
-  'Podcast Production (Audio + Video)',
-  'Corporate Profile & Internal Video',
+  'Podcast and Content Production (Audio + Video)',
   'Event Production / Coverage',
-  'Turnkey Studio Design & Fabrication',
-  'Social Media Content Package (Reels/TikTok)',
+  'Studio Design & Custom Fabrication',
   'Creative Consultation & Tech Blueprint',
 ]
 
@@ -88,7 +86,7 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
       phone: '',
       organization: '',
       service: activeConfig?.title || 'Media Production',
-      shootType: 'Brand & Commercial Ads',
+      shootType: 'Corporate & Brand Video Production',
       stages: ['pre-production', 'production', 'post-production'],
       location: 'Lagos, Nigeria',
       timeline: 'Next 30 Days',
