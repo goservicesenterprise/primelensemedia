@@ -172,59 +172,59 @@ export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
     },
   },
 
-  'content-creation': {
-    id: 'content-creation',
-    title: 'Content Creation',
-    tagline: 'Short-form video assets and YouTube series produced in focused sprints.',
-    heroBadge: 'Digital & Growth',
-    ambientColor: 'rgba(6, 182, 212, 0.18)',
-    ambientGlow: 'rgba(14, 165, 233, 0.35)',
-    accentHex: '#0891B2',
-    description:
-      'We produce short-form video libraries and YouTube series designed to hold attention on social platforms.',
-    leadParagraph:
-      'We shoot and edit batches of vertical reels, product demonstrations, and brand promos in single production runs so you have weeks of content ready to publish.',
-    specialties: [
-      'Social Media Video Campaigns (Reels & TikTok)',
-      'Branded Video Content & Narrative Shorts',
-      'YouTube Channel Production & Optimization',
-      'Short-Form Video Assets',
-      'Product Demonstrations & Creative Showcases',
-      'Promotional Launch Sequences & Teasers',
-    ],
-    specs: [
-      { label: 'Format Pacing', value: 'Vertical 9:16, 4:5 & 16:9 Native' },
-      { label: 'Sprint Output', value: 'Batch 15–40 Assets per Sprint' },
-      { label: 'Motion Graphics', value: 'Dynamic Typography & Brand Styling' },
-      { label: 'Optimized Delivery', value: 'Platform Native Compression' },
-    ],
-    metrics: [
-      { label: 'Digital Views', value: '80M+', sublabel: 'Generated for partner brands' },
-      { label: 'Average Engagement', value: '4.8x', sublabel: 'Compared to static media' },
-      { label: 'Content Vault', value: 'Batch', sublabel: 'Full quarterly calendar' },
-    ],
-    showcases: [
-      {
-        title: 'Horizon Launch Series',
-        client: 'Nebula Smart Mobility',
-        year: '2026',
-        aspectRatio: '9:16',
-        imageUrl: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80',
-        description: 'Mobile-first promotional rollout generating over 12 million impressions.',
-        tags: ['Content Creation', 'Reels', 'Social Campaign'],
-      },
-    ],
-    customInquiryFields: {
-      questionLabel: 'Content Scope & Goals',
-      options: [
-        'Monthly Social Media Retainer (Reels / TikTok)',
-        'Quarterly Content Sprint (Batch Production)',
-        'YouTube Channel Production & Editing',
-        'Product Launch Promo Campaign',
-      ],
-      placeholder: 'e.g. 20 short-form reels for product launch in Lagos',
-    },
-  },
+  // 'content-creation': {
+  //   id: 'content-creation',
+  //   title: 'Content Creation',
+  //   tagline: 'Short-form video assets and YouTube series produced in focused sprints.',
+  //   heroBadge: 'Digital & Growth',
+  //   ambientColor: 'rgba(6, 182, 212, 0.18)',
+  //   ambientGlow: 'rgba(14, 165, 233, 0.35)',
+  //   accentHex: '#0891B2',
+  //   description:
+  //     'We produce short-form video libraries and YouTube series designed to hold attention on social platforms.',
+  //   leadParagraph:
+  //     'We shoot and edit batches of vertical reels, product demonstrations, and brand promos in single production runs so you have weeks of content ready to publish.',
+  //   specialties: [
+  //     'Social Media Video Campaigns (Reels & TikTok)',
+  //     'Branded Video Content & Narrative Shorts',
+  //     'YouTube Channel Production & Optimization',
+  //     'Short-Form Video Assets',
+  //     'Product Demonstrations & Creative Showcases',
+  //     'Promotional Launch Sequences & Teasers',
+  //   ],
+  //   specs: [
+  //     { label: 'Format Pacing', value: 'Vertical 9:16, 4:5 & 16:9 Native' },
+  //     { label: 'Sprint Output', value: 'Batch 15–40 Assets per Sprint' },
+  //     { label: 'Motion Graphics', value: 'Dynamic Typography & Brand Styling' },
+  //     { label: 'Optimized Delivery', value: 'Platform Native Compression' },
+  //   ],
+  //   metrics: [
+  //     { label: 'Digital Views', value: '80M+', sublabel: 'Generated for partner brands' },
+  //     { label: 'Average Engagement', value: '4.8x', sublabel: 'Compared to static media' },
+  //     { label: 'Content Vault', value: 'Batch', sublabel: 'Full quarterly calendar' },
+  //   ],
+  //   showcases: [
+  //     {
+  //       title: 'Horizon Launch Series',
+  //       client: 'Nebula Smart Mobility',
+  //       year: '2026',
+  //       aspectRatio: '9:16',
+  //       imageUrl: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80',
+  //       description: 'Mobile-first promotional rollout generating over 12 million impressions.',
+  //       tags: ['Content Creation', 'Reels', 'Social Campaign'],
+  //     },
+  //   ],
+  //   customInquiryFields: {
+  //     questionLabel: 'Content Scope & Goals',
+  //     options: [
+  //       'Monthly Social Media Retainer (Reels / TikTok)',
+  //       'Quarterly Content Sprint (Batch Production)',
+  //       'YouTube Channel Production & Editing',
+  //       'Product Launch Promo Campaign',
+  //     ],
+  //     placeholder: 'e.g. 20 short-form reels for product launch in Lagos',
+  //   },
+  // },
 
   'commercial-advertising': {
     id: 'commercial-advertising',

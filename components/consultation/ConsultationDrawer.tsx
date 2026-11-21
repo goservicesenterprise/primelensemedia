@@ -55,7 +55,7 @@ const PROJECT_TYPES = [
   'Podcast and Content Production (Audio + Video)',
   'Event Production / Coverage',
   'Studio Design & Custom Fabrication',
-  'Creative Consultation & Tech Blueprint',
+  'Creative Consultation & Production Blueprint',
 ]
 
 const BUDGET_RANGES = [
@@ -233,9 +233,8 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
               <button
                 type="button"
                 onClick={() => setCurrentStep(1)}
-                className={`flex items-center gap-2 text-xs font-mono font-bold uppercase transition-colors ${
-                  currentStep === 1 ? 'text-red-400' : 'text-white/40 hover:text-white'
-                }`}
+                className={`flex items-center gap-2 text-xs font-mono font-bold uppercase transition-colors ${currentStep === 1 ? 'text-red-400' : 'text-white/40 hover:text-white'
+                  }`}
               >
                 <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[11px]">
                   1
@@ -248,9 +247,8 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
               <button
                 type="button"
                 onClick={() => setCurrentStep(2)}
-                className={`flex items-center gap-2 text-xs font-mono font-bold uppercase transition-colors ${
-                  currentStep === 2 ? 'text-red-400' : 'text-white/40 hover:text-white'
-                }`}
+                className={`flex items-center gap-2 text-xs font-mono font-bold uppercase transition-colors ${currentStep === 2 ? 'text-red-400' : 'text-white/40 hover:text-white'
+                  }`}
               >
                 <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[11px]">
                   2
@@ -263,9 +261,8 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
               <button
                 type="button"
                 onClick={() => setCurrentStep(3)}
-                className={`flex items-center gap-2 text-xs font-mono font-bold uppercase transition-colors ${
-                  currentStep === 3 ? 'text-red-400' : 'text-white/40 hover:text-white'
-                }`}
+                className={`flex items-center gap-2 text-xs font-mono font-bold uppercase transition-colors ${currentStep === 3 ? 'text-red-400' : 'text-white/40 hover:text-white'
+                  }`}
               >
                 <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[11px]">
                   3
@@ -324,18 +321,16 @@ const ConsultationDrawer = observer(function ConsultationDrawer() {
                         <div
                           key={st.id}
                           onClick={() => toggleStage(st.id)}
-                          className={`p-3.5 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${
-                            isChecked
+                          className={`p-3.5 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${isChecked
                               ? 'bg-red-500/10 border-red-500/50'
                               : 'bg-neutral-900/60 border-white/10 hover:border-white/25'
-                          }`}
+                            }`}
                         >
                           <div
-                            className={`w-5 h-5 rounded-md flex items-center justify-center shrink-0 mt-0.5 border ${
-                              isChecked
+                            className={`w-5 h-5 rounded-md flex items-center justify-center shrink-0 mt-0.5 border ${isChecked
                                 ? 'bg-red-400 text-black border-red-400'
                                 : 'border-white/30 bg-black'
-                            }`}
+                              }`}
                           >
                             {isChecked && <CheckCircle2 className="w-3.5 h-3.5 stroke-[3]" />}
                           </div>
