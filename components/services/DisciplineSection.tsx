@@ -92,7 +92,7 @@ const DisciplineSection = observer(function DisciplineSection({ config, index }:
           </div>
 
           <div className="lg:col-span-5 flex flex-col justify-between">
-            <p className="text-sm md:text-base text-neutral-400 leading-relaxed mb-6">
+            <p className="text-base sm:text-lg md:text-xl text-neutral-300 leading-relaxed mb-6 font-normal">
               {config.leadParagraph}
             </p>
 

@@ -73,7 +73,7 @@ export default function StudioDesignSection() {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
             {titleText}
           </h2>
-          <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
+          <p className="text-lg sm:text-lg md:text-xl text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
             {descriptionText}
           </p>
         </div>
@@ -84,13 +84,13 @@ export default function StudioDesignSection() {
             <h3 className="text-2xl sm:text-2xl md:text-3xl font-black sm:font-bold text-white">
               Built Around Your Equipment and Workflow
             </h3>
-            <p className="text-base sm:text-sm text-neutral-200 sm:text-neutral-300 font-medium sm:font-normal leading-relaxed">
+            <p className="text-lg sm:text-base text-neutral-200 sm:text-neutral-300 font-medium sm:font-normal leading-relaxed">
               We design around camera sightlines, presenter count, lighting angles, and room acoustics. Whether you need a boardroom converted into a podcast room or a dedicated television studio built from the ground up, we manage the work from 3D layout to final installation.
             </p>
 
             <div className="space-y-3 sm:space-y-2.5">
               {spacesDesigned.map((space, i) => (
-                <div key={i} className="flex items-center gap-3 text-sm sm:text-sm text-neutral-100 font-medium sm:font-normal">
+                <div key={i} className="flex items-center gap-3 text-base sm:text-base text-neutral-100 font-medium sm:font-normal">
                   <div className="w-6 h-6 sm:w-5 sm:h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0">
                     <Check className="w-3.5 h-3.5 sm:w-3 sm:h-3 text-emerald-400" />
                   </div>
@@ -171,7 +171,7 @@ export default function StudioDesignSection() {
                 </div>
               </div>
 
-              <p className="text-sm sm:text-sm text-neutral-200 sm:text-neutral-300 leading-relaxed font-medium sm:font-normal">
+              <p className="text-base sm:text-base text-neutral-200 sm:text-neutral-300 leading-relaxed font-medium sm:font-normal">
                 {steps[activeStep].desc}
               </p>
             </div>

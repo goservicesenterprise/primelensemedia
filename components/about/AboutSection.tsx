@@ -18,7 +18,7 @@ export default function AboutSection() {
   const titleText = aboutCms?.title || 'We Create. We Produce. We Build.'
   const descriptionText =
     aboutCms?.description ||
-    'PrimeLense Media Ltd. produces video and builds studios in Lagos. We combine hands-on camera work, directing, and carpentry to deliver projects for broadcasters, companies, and creators.'
+    ''
 
   // Media
   const mediaType = aboutCms?.mediaType || 'image'
@@ -58,18 +58,18 @@ export default function AboutSection() {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
             {titleText}
           </h2>
-          <p className="text-base sm:text-base md:text-lg text-neutral-300 font-medium sm:font-normal max-w-2xl leading-relaxed">
+          <p className="text-lg sm:text-lg md:text-xl text-neutral-300 font-medium sm:font-normal max-w-2xl leading-relaxed">
             {descriptionText}
           </p>
         </div>
 
         {/* Story & Background Two-Column */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-          <div className="space-y-5 text-base sm:text-base text-neutral-200 sm:text-neutral-300 leading-relaxed font-normal sm:font-light">
+          <div className="space-y-5 text-lg sm:text-lg text-neutral-200 sm:text-neutral-300 leading-relaxed font-normal sm:font-light">
             {aboutCms?.richTextHtml ? (
               <div
                 dangerouslySetInnerHTML={{ __html: aboutCms.richTextHtml }}
-                className="space-y-4 prose prose-invert max-w-none text-neutral-200"
+                className="space-y-4 prose prose-invert max-w-none text-neutral-200 text-xl"
               />
             ) : (
               <>
@@ -127,7 +127,7 @@ export default function AboutSection() {
               <Target className="w-6 h-6 sm:w-5 sm:h-5" />
             </div>
             <h4 className="text-xl sm:text-lg font-bold text-white mb-3">{missionTitle}</h4>
-            <p className="text-sm sm:text-sm text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal">
+            <p className="text-lg sm:text-xl text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal">
               {missionDesc}
             </p>
           </div>
@@ -137,7 +137,7 @@ export default function AboutSection() {
               <Award className="w-6 h-6 sm:w-5 sm:h-5" />
             </div>
             <h4 className="text-xl sm:text-lg font-bold text-white mb-3">{visionTitle}</h4>
-            <p className="text-sm sm:text-sm text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal">
+            <p className="text-lg sm:text-xl text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal">
               {visionDesc}
             </p>
           </div>
@@ -147,7 +147,7 @@ export default function AboutSection() {
               <Users className="w-6 h-6 sm:w-5 sm:h-5" />
             </div>
             <h4 className="text-xl sm:text-lg font-bold text-white mb-3">{whoWeServeTitle}</h4>
-            <p className="text-sm sm:text-sm text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal">
+            <p className="text-lg sm:text-xl text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal">
               {whoWeServeDesc}
             </p>
           </div>

@@ -113,7 +113,7 @@ export default function ContactAndEnquirySection() {
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white max-w-3xl mb-4 leading-tight">
             Have an Idea? Let's Bring It to Life.
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-neutral-300 font-medium max-w-2xl leading-relaxed">
+          <p className="text-lg sm:text-lg md:text-xl text-neutral-300 font-medium max-w-2xl leading-relaxed">
             Tell us about your shoot, production, or studio project. We'll prepare an itemised quote and tailored creative roadmap.
           </p>
         </div>
@@ -140,7 +140,7 @@ export default function ContactAndEnquirySection() {
                 <span className="text-[11px] font-mono uppercase tracking-widest text-red-400 font-bold block">
                   How Booking Works
                 </span>
-                <ul className="space-y-2.5 text-xs text-neutral-300">
+                <ul className="space-y-2.5 text-sm sm:text-xs text-neutral-300">
                   <li className="flex items-start gap-2">
                     <span className="font-bold text-white shrink-0">1.</span>
                     <span><strong>Tell us about the shoot:</strong> Share your timeline, services, deliverables, and references.</span>

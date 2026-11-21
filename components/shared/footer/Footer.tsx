@@ -36,7 +36,7 @@ export default function Footer() {
             <h3 className="text-3xl sm:text-4xl font-black sm:font-bold tracking-tight text-white mb-2 leading-tight">
               Have an Idea? Let's Bring It to Life.
             </h3>
-            <p className="text-base sm:text-sm text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-xl leading-relaxed">
+            <p className="text-lg sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-xl leading-relaxed">
               From documentaries and commercials to custom-fabricated podcast and television studios, PrimeLense Media is ready to help turn your vision into reality.
             </p>
           </div>

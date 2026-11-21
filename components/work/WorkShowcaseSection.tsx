@@ -129,7 +129,7 @@ export default function WorkShowcaseSection() {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
             {titleText}
           </h2>
-          <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
+          <p className="text-lg sm:text-lg md:text-xl text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
             {descriptionText}
           </p>
         </div>

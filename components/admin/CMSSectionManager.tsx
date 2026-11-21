@@ -12,12 +12,13 @@ import {
   Video,
   Image as ImageIcon,
 } from 'lucide-react'
-import { SectionContent, MediaType, MediaSource, ShowcaseProject } from '@/types/admin'
+import { SectionContent, MediaType, MediaSource, ShowcaseProject, CapabilityServiceItem } from '@/types/admin'
 import { saveSectionAction } from '@/lib/admin-actions'
 import RichTextEditor from '@/components/admin/RichTextEditor'
 import MediaUploadPicker from '@/components/admin/MediaUploadPicker'
 import UniversalMedia from '@/components/shared/ui/UniversalMedia'
 import ShowcaseProjectsManager from '@/components/admin/ShowcaseProjectsManager'
+import CapabilityServicesManager, { DEFAULT_CAPABILITY_SERVICES } from '@/components/admin/CapabilityServicesManager'
 import WhyChooseItemsManager, { WhyChooseItem } from '@/components/admin/WhyChooseItemsManager'
 import SectionLivePreviewModal from '@/components/admin/SectionLivePreviewModal'
 
@@ -346,6 +347,27 @@ export default function CMSSectionManager({ initialSections }: Props) {
                 }}
               />
             </div>
+
+            {/* If 7 Capabilities & Services Section, render Individual Services Manager */}
+            {activeSectionId === 'services' && (
+              <CapabilityServicesManager
+                items={
+                  ((formData.metadata?.services || formData.metadata?.items) as CapabilityServiceItem[]) ||
+                  DEFAULT_CAPABILITY_SERVICES
+                }
+                onChange={(updatedServices) => {
+                  setFormData((prev) => ({
+                    ...prev,
+                    metadata: {
+                      ...(prev.metadata || {}),
+                      services: updatedServices,
+                      items: updatedServices,
+                    },
+                  }))
+                  setSaveSuccess(false)
+                }}
+              />
+            )}
 
             {/* If Selected Works Section, render Individual Projects Manager */}
             {activeSectionId === 'work-showcase' && (

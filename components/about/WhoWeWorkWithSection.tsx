@@ -85,7 +85,7 @@ export default function WhoWeWorkWithSection() {
         {/* Callout Card */}
         <div className="relative rounded-3xl bg-gradient-to-b from-white/[0.04] to-transparent border border-white/15 p-8 sm:p-12 text-center overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-6">
-            <p className="text-base sm:text-lg text-neutral-300 leading-relaxed font-normal">
+            <p className="text-lg sm:text-xl text-neutral-300 leading-relaxed font-normal">
               Whatever the scale of your project, we take the time to understand your vision and develop an approach suited to your goals.
             </p>
 
@@ -93,7 +93,7 @@ export default function WhoWeWorkWithSection() {
               <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-3">
                 Let&apos;s Bring Your Vision to Life.
               </h3>
-              <p className="text-sm sm:text-base text-neutral-400 leading-relaxed max-w-xl mx-auto">
+              <p className="text-base sm:text-lg text-neutral-400 leading-relaxed max-w-xl mx-auto">
                 Have an idea you want to produce, a story you want to tell, or a studio space you want to create? We would love to hear from you.
               </p>
             </div>

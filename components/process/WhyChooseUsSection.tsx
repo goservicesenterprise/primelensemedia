@@ -107,7 +107,7 @@ export default function WhyChooseUsSection() {
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
               {titleText}
             </h2>
-            <p className="text-base sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
+            <p className="text-lg sm:text-lg md:text-xl text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
               {descriptionText}
             </p>
           </div>
@@ -127,7 +127,7 @@ export default function WhyChooseUsSection() {
                       <Icon className="w-7 h-7 sm:w-6 sm:h-6" />
                     </div>
                     <h3 className="text-2xl sm:text-xl font-bold text-white mb-2">{p.title}</h3>
-                    <p className="text-sm sm:text-sm text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal sm:font-light">
+                    <p className="text-base sm:text-base text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal sm:font-light">
                       {p.desc}
                     </p>
                   </div>
@@ -146,7 +146,7 @@ export default function WhyChooseUsSection() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black sm:font-bold tracking-tight text-white max-w-3xl mb-4 leading-tight">
               From Idea to Final Delivery
             </h2>
-            <p className="text-base sm:text-sm text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
+            <p className="text-lg sm:text-base md:text-lg text-neutral-200 sm:text-neutral-400 font-medium sm:font-normal max-w-2xl leading-relaxed">
               How we take projects from early discussions to final delivery.
             </p>
           </div>
@@ -162,7 +162,7 @@ export default function WhyChooseUsSection() {
                     {w.num}
                   </span>
                   <h4 className="text-lg sm:text-base font-bold text-white mb-2">{w.title}</h4>
-                  <p className="text-sm sm:text-xs text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal">
+                  <p className="text-base sm:text-sm text-neutral-300 sm:text-neutral-400 leading-relaxed font-normal">
                     {w.desc}
                   </p>
                 </div>

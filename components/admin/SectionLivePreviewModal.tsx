@@ -9,7 +9,7 @@ import {
   Monitor,
   CheckCircle,
 } from 'lucide-react'
-import { SectionContent, ShowcaseProject } from '@/types/admin'
+import { SectionContent, ShowcaseProject, CapabilityServiceItem } from '@/types/admin'
 import UniversalMedia from '@/components/shared/ui/UniversalMedia'
 
 interface Props {
@@ -31,6 +31,7 @@ export default function SectionLivePreviewModal({ sectionId, data }: Props) {
   const mediaPoster = data.mediaPoster
 
   const projects = (data.metadata?.projects as ShowcaseProject[]) || []
+  const services = ((data.metadata?.services || data.metadata?.items) as CapabilityServiceItem[]) || []
 
   return (
     <div className="rounded-2xl border border-white/10 bg-neutral-950 overflow-hidden shadow-2xl">
@@ -134,6 +135,44 @@ export default function SectionLivePreviewModal({ sectionId, data }: Props) {
                   {data.ctaSecondaryLabel}
                 </span>
               )}
+            </div>
+          )}
+
+          {/* Capabilities & Services Cards Preview if services */}
+          {sectionId === 'services' && services.length > 0 && (
+            <div className="pt-4 border-t border-white/10 space-y-3">
+              <span className="text-[11px] font-mono text-neutral-400 uppercase font-bold block">
+                Capabilities Feed ({services.length})
+              </span>
+              <div className="grid grid-cols-2 gap-2.5">
+                {services.slice(0, 4).map((s, idx) => (
+                  <div
+                    key={s.id || idx}
+                    className="p-2 rounded-xl bg-neutral-900 border border-white/10 space-y-2 overflow-hidden"
+                  >
+                    <div className="relative aspect-video rounded-lg overflow-hidden bg-neutral-950">
+                      <UniversalMedia
+                        src={s.mediaUrl || ''}
+                        mediaType={s.mediaType || 'image'}
+                        mediaSource={s.mediaSource || 'cloudinary'}
+                        poster={s.mediaPoster || ''}
+                        alt={s.title}
+                        containerClassName="w-full h-full"
+                        className="w-full h-full object-cover"
+                        controls={s.mediaType === 'video'}
+                        autoPlay={false}
+                      />
+                    </div>
+                    <div>
+                      <h5 className="text-[11px] font-bold text-white truncate flex items-center gap-1">
+                        <span>{s.icon || '⚙️'}</span>
+                        <span>{s.title}</span>
+                      </h5>
+                      <p className="text-[9px] text-neutral-400 font-mono truncate">{s.heroBadge || s.tagline}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 

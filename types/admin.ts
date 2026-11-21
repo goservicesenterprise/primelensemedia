@@ -16,6 +16,22 @@ export interface ShowcaseProject {
   tags: string[]
 }
 
+export interface CapabilityServiceItem {
+  id?: string
+  title: string
+  tagline?: string
+  heroBadge?: string
+  icon?: string
+  description?: string
+  specialties?: string[]
+  client?: string
+  featuredShowcaseTitle?: string
+  mediaType?: MediaType
+  mediaSource?: MediaSource
+  mediaUrl?: string
+  mediaPoster?: string
+}
+
 export interface SectionContent {
   id: string
   title: string

@@ -85,7 +85,7 @@ export default function TestimonialSection() {
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white max-w-3xl mb-4 leading-tight">
             What Clients Say About Working With Us
           </h2>
-          <p className="text-sm sm:text-base text-neutral-400 font-medium max-w-2xl leading-relaxed">
+          <p className="text-base sm:text-lg text-neutral-300 font-medium max-w-2xl leading-relaxed">
             Feedback from companies, directors, and organizations who hired us for production and studio work.
           </p>
         </div>
@@ -120,7 +120,7 @@ export default function TestimonialSection() {
                 </div>
 
                 {/* Quote Content */}
-                <p className="text-sm text-neutral-200 font-medium leading-relaxed italic">
+                <p className="text-base sm:text-base text-neutral-200 font-medium leading-relaxed italic">
                   "{item.content}"
                 </p>
               </div>

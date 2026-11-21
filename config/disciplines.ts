@@ -3,9 +3,9 @@ import { DisciplineConfig } from '@/types'
 export const SERVICES_CONFIG: Record<string, DisciplineConfig> = {
   'media-production': {
     id: 'media-production',
-    title: 'Media Production',
+    title: 'Corporate & Brand Video Production',
     tagline: 'Documentaries, corporate profiles, and event coverage filmed on cinema rigs.',
-    heroBadge: 'Media & Production',
+    heroBadge: 'Corporate & Brand Video Production',
     ambientColor: 'rgba(107, 1, 11, 0.20)',
     ambientGlow: 'rgba(180, 20, 40, 0.40)',
     accentHex: '#8B0A1A',

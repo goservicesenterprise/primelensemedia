@@ -80,7 +80,7 @@ const HeroSection = observer(function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="text-base sm:text-lg md:text-xl text-neutral-200 font-medium sm:font-normal max-w-2xl leading-relaxed mb-10 tracking-normal"
+          className="text-lg sm:text-xl md:text-2xl text-neutral-200 font-medium sm:font-normal max-w-2xl leading-relaxed mb-10 tracking-normal"
         >
           {descriptionText}
         </motion.p>
